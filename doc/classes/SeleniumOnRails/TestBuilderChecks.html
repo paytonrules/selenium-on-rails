@@ -168,10 +168,10 @@ Assert the message of the next alert matches the pattern.
             onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000041-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 284</span>
-284:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_alert</span> <span class="ruby-identifier">message_pattern</span>
-285:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertAlert'</span>, <span class="ruby-identifier">message_pattern</span>
-286:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 298</span>
+298:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_alert</span> <span class="ruby-identifier">message_pattern</span>
+299:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertAlert'</span>, <span class="ruby-identifier">message_pattern</span>
+300:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -194,11 +194,11 @@ Assert that an attribute contains the specified text.
             onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000021-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 186</span>
-186:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_attribute</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">value_pattern</span>
-187:     <span class="ruby-identifier">command</span>(<span class="ruby-value str">'assertAttribute'</span>, <span class="ruby-node">&quot;#{element_locator}@#{attribute_name}&quot;</span>,
-188:             <span class="ruby-identifier">value_pattern</span>)
-189:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 200</span>
+200:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_attribute</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">value_pattern</span>
+201:     <span class="ruby-identifier">command</span>(<span class="ruby-value str">'assertAttribute'</span>, <span class="ruby-node">&quot;#{element_locator}@#{attribute_name}&quot;</span>,
+202:             <span class="ruby-identifier">value_pattern</span>)
+203:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -221,10 +221,10 @@ Assert the message of the next confirmation matches the pattern.
             onclick="toggleCode('M000043-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000043-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 293</span>
-293:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_confirmation</span> <span class="ruby-identifier">message_pattern</span>
-294:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertConfirmation'</span>, <span class="ruby-identifier">message_pattern</span>
-295:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 307</span>
+307:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_confirmation</span> <span class="ruby-identifier">message_pattern</span>
+308:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertConfirmation'</span>, <span class="ruby-identifier">message_pattern</span>
+309:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -247,10 +247,10 @@ Assert that the specified element can be edited.
             onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000037-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 266</span>
-266:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_editable</span> <span class="ruby-identifier">input_locator</span>
-267:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertEditable'</span>, <span class="ruby-identifier">input_locator</span>
-268:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 280</span>
+280:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_editable</span> <span class="ruby-identifier">input_locator</span>
+281:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertEditable'</span>, <span class="ruby-identifier">input_locator</span>
+282:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -273,10 +273,10 @@ Assert that the specified element does not appear on the page.
             onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000029-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 224</span>
-224:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_element_not_present</span> <span class="ruby-identifier">element_locator</span>
-225:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertElementNotPresent'</span>, <span class="ruby-identifier">element_locator</span>
-226:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 238</span>
+238:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_element_not_present</span> <span class="ruby-identifier">element_locator</span>
+239:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertElementNotPresent'</span>, <span class="ruby-identifier">element_locator</span>
+240:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -299,10 +299,10 @@ Assert that the specified element appears on the page.
             onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000027-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 215</span>
-215:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_element_present</span> <span class="ruby-identifier">element_locator</span>
-216:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertElementPresent'</span>, <span class="ruby-identifier">element_locator</span>
-217:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 229</span>
+229:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_element_present</span> <span class="ruby-identifier">element_locator</span>
+230:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertElementPresent'</span>, <span class="ruby-identifier">element_locator</span>
+231:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -329,10 +329,10 @@ Assert that the browser is at the specified location.
             onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000009-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 128</span>
-128:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_location</span> <span class="ruby-identifier">relative_location</span>
-129:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertLocation'</span>, <span class="ruby-identifier">url_arg</span>(<span class="ruby-identifier">relative_location</span>)
-130:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 142</span>
+142:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_location</span> <span class="ruby-identifier">relative_location</span>
+143:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertLocation'</span>, <span class="ruby-identifier">url_arg</span>(<span class="ruby-identifier">relative_location</span>)
+144:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -355,10 +355,10 @@ Assert that the specified element cannot be edited.
             onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000039-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 275</span>
-275:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_editable</span> <span class="ruby-identifier">input_locator</span>
-276:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertNotEditable'</span>, <span class="ruby-identifier">input_locator</span>
-277:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 289</span>
+289:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_editable</span> <span class="ruby-identifier">input_locator</span>
+290:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertNotEditable'</span>, <span class="ruby-identifier">input_locator</span>
+291:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -381,10 +381,10 @@ Assert that the specified element is not visible (or is entirely missing).
             onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000035-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 256</span>
-256:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_visible</span> <span class="ruby-identifier">element_locator</span>
-257:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertNotVisible'</span>, <span class="ruby-identifier">element_locator</span>
-258:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 270</span>
+270:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_not_visible</span> <span class="ruby-identifier">element_locator</span>
+271:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertNotVisible'</span>, <span class="ruby-identifier">element_locator</span>
+272:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -407,10 +407,10 @@ Assert the message of the next prompt matches the pattern.
             onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000045-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 302</span>
-302:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_prompt</span> <span class="ruby-identifier">message_pattern</span>
-303:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertPrompt'</span>, <span class="ruby-identifier">message_pattern</span>
-304:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 316</span>
+316:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_prompt</span> <span class="ruby-identifier">message_pattern</span>
+317:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertPrompt'</span>, <span class="ruby-identifier">message_pattern</span>
+318:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -433,11 +433,11 @@ Assert that a <tt>select</tt> field has the specified option labels.
             onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000017-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 166</span>
-166:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_select_options</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">option_label_list</span>
-167:     <span class="ruby-identifier">ls</span> = <span class="ruby-identifier">option_label_list</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[\\,]/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\\#{s}&quot;</span> } }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
-168:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertSelectOptions'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">ls</span>
-169:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 180</span>
+180:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_select_options</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">option_label_list</span>
+181:     <span class="ruby-identifier">ls</span> = <span class="ruby-identifier">option_label_list</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[\\,]/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\\#{s}&quot;</span> } }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+182:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertSelectOptions'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">ls</span>
+183:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -461,10 +461,10 @@ field.
             onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000015-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 157</span>
-157:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_selected</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
-158:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertSelected'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
-159:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 171</span>
+171:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_selected</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
+172:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertSelected'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
+173:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -487,10 +487,10 @@ Assert that the specified table cell contains the specified value.
             onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000031-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 233</span>
-233:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_table</span> <span class="ruby-identifier">table_locator</span>, <span class="ruby-identifier">row</span>, <span class="ruby-identifier">column</span>, <span class="ruby-identifier">value_pattern</span>
-234:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTable'</span>, <span class="ruby-node">&quot;#{table_locator}.#{row}.#{column}&quot;</span>, <span class="ruby-identifier">value_pattern</span>
-235:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 247</span>
+247:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_table</span> <span class="ruby-identifier">table_locator</span>, <span class="ruby-identifier">row</span>, <span class="ruby-identifier">column</span>, <span class="ruby-identifier">value_pattern</span>
+248:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTable'</span>, <span class="ruby-node">&quot;#{table_locator}.#{row}.#{column}&quot;</span>, <span class="ruby-identifier">value_pattern</span>
+249:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -513,10 +513,10 @@ Assert that an element contains the specified text.
             onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000019-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 177</span>
-177:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_text</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
-178:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertText'</span>, <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
-179:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 191</span>
+191:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_text</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
+192:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertText'</span>, <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
+193:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -539,10 +539,10 @@ Assert that the specified text is not present anywhere on the page.
             onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000025-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 206</span>
-206:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_text_not_present</span> <span class="ruby-identifier">text</span>
-207:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTextNotPresent'</span>, <span class="ruby-identifier">text</span>
-208:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 220</span>
+220:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_text_not_present</span> <span class="ruby-identifier">text</span>
+221:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTextNotPresent'</span>, <span class="ruby-identifier">text</span>
+222:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -565,10 +565,10 @@ Assert that the specified text is present somewhere on the page.
             onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000023-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 197</span>
-197:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_text_present</span> <span class="ruby-identifier">text</span>
-198:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTextPresent'</span>, <span class="ruby-identifier">text</span>
-199:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 211</span>
+211:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_text_present</span> <span class="ruby-identifier">text</span>
+212:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTextPresent'</span>, <span class="ruby-identifier">text</span>
+213:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -591,10 +591,10 @@ Assert that the current page&#8217;s title matches the pattern.
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 139</span>
-139:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_title</span> <span class="ruby-identifier">title_pattern</span>
-140:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTitle'</span>, <span class="ruby-identifier">title_pattern</span>
-141:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 153</span>
+153:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_title</span> <span class="ruby-identifier">title_pattern</span>
+154:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertTitle'</span>, <span class="ruby-identifier">title_pattern</span>
+155:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -617,10 +617,10 @@ Assert the specified input field&#8217;s value matches the pattern.
             onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000013-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 148</span>
-148:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_value</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
-149:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertValue'</span>, <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
-150:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 162</span>
+162:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_value</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
+163:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertValue'</span>, <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
+164:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -645,10 +645,10 @@ parents.
             onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000033-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 244</span>
-244:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_visible</span> <span class="ruby-identifier">element_locator</span>
-245:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertVisible'</span>, <span class="ruby-identifier">element_locator</span>
-246:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 258</span>
+258:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_visible</span> <span class="ruby-identifier">element_locator</span>
+259:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'assertVisible'</span>, <span class="ruby-identifier">element_locator</span>
+260:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -671,10 +671,10 @@ Verify the message of the next alert matches the pattern.
             onclick="toggleCode('M000042-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000042-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 288</span>
-288:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_alert</span> <span class="ruby-identifier">message_pattern</span>
-289:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyAlert'</span>, <span class="ruby-identifier">message_pattern</span>
-290:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 302</span>
+302:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_alert</span> <span class="ruby-identifier">message_pattern</span>
+303:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyAlert'</span>, <span class="ruby-identifier">message_pattern</span>
+304:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -697,11 +697,11 @@ Verify that an attribute contains the specified text.
             onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000022-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 191</span>
-191:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_attribute</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">value_pattern</span>
-192:     <span class="ruby-identifier">command</span>(<span class="ruby-value str">'verifyAttribute'</span>, <span class="ruby-node">&quot;#{element_locator}@#{attribute_name}&quot;</span>,
-193:             <span class="ruby-identifier">value_pattern</span>)
-194:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 205</span>
+205:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_attribute</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">value_pattern</span>
+206:     <span class="ruby-identifier">command</span>(<span class="ruby-value str">'verifyAttribute'</span>, <span class="ruby-node">&quot;#{element_locator}@#{attribute_name}&quot;</span>,
+207:             <span class="ruby-identifier">value_pattern</span>)
+208:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -724,10 +724,10 @@ Verify the message of the next confirmation matches the pattern.
             onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000044-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 297</span>
-297:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_confirmation</span> <span class="ruby-identifier">message_pattern</span>
-298:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyConfirmation'</span>, <span class="ruby-identifier">message_pattern</span>
-299:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 311</span>
+311:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_confirmation</span> <span class="ruby-identifier">message_pattern</span>
+312:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyConfirmation'</span>, <span class="ruby-identifier">message_pattern</span>
+313:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -750,10 +750,10 @@ Verify that the specified element can be edited.
             onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000038-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 270</span>
-270:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_editable</span> <span class="ruby-identifier">input_locator</span>
-271:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyEditable'</span>, <span class="ruby-identifier">input_locator</span>
-272:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 284</span>
+284:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_editable</span> <span class="ruby-identifier">input_locator</span>
+285:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyEditable'</span>, <span class="ruby-identifier">input_locator</span>
+286:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -776,10 +776,10 @@ Verify that the specified element does not appear on the page.
             onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000030-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 228</span>
-228:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_element_not_present</span> <span class="ruby-identifier">element_locator</span>
-229:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyElementNotPresent'</span>, <span class="ruby-identifier">element_locator</span>
-230:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 242</span>
+242:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_element_not_present</span> <span class="ruby-identifier">element_locator</span>
+243:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyElementNotPresent'</span>, <span class="ruby-identifier">element_locator</span>
+244:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -802,10 +802,10 @@ Verify that the specified element appears on the page.
             onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000028-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 219</span>
-219:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_element_present</span> <span class="ruby-identifier">element_locator</span>
-220:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyElementPresent'</span>, <span class="ruby-identifier">element_locator</span>
-221:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 233</span>
+233:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_element_present</span> <span class="ruby-identifier">element_locator</span>
+234:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyElementPresent'</span>, <span class="ruby-identifier">element_locator</span>
+235:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -832,10 +832,10 @@ Verify that the browser is at the specified location.
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 134</span>
-134:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_location</span> <span class="ruby-identifier">relative_location</span>
-135:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyLocation'</span>, <span class="ruby-identifier">url_arg</span>(<span class="ruby-identifier">relative_location</span>)
-136:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 148</span>
+148:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_location</span> <span class="ruby-identifier">relative_location</span>
+149:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyLocation'</span>, <span class="ruby-identifier">url_arg</span>(<span class="ruby-identifier">relative_location</span>)
+150:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -858,10 +858,10 @@ Verify that the specified element cannot be edited.
             onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000040-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 279</span>
-279:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_not_editable</span> <span class="ruby-identifier">input_locator</span>
-280:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyNotEditable'</span>, <span class="ruby-identifier">input_locator</span>
-281:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 293</span>
+293:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_not_editable</span> <span class="ruby-identifier">input_locator</span>
+294:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyNotEditable'</span>, <span class="ruby-identifier">input_locator</span>
+295:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -884,10 +884,10 @@ Verify that the specified element is not visible (or is entirely missing).
             onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000036-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 261</span>
-261:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_not_visible</span> <span class="ruby-identifier">element_locator</span>
-262:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyNotVisible'</span>, <span class="ruby-identifier">element_locator</span>
-263:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 275</span>
+275:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_not_visible</span> <span class="ruby-identifier">element_locator</span>
+276:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyNotVisible'</span>, <span class="ruby-identifier">element_locator</span>
+277:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -910,10 +910,10 @@ Verify the message of the next prompt matches the pattern.
             onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000046-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 306</span>
-306:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_prompt</span> <span class="ruby-identifier">message_pattern</span>
-307:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyPrompt'</span>, <span class="ruby-identifier">message_pattern</span>
-308:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 320</span>
+320:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_prompt</span> <span class="ruby-identifier">message_pattern</span>
+321:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyPrompt'</span>, <span class="ruby-identifier">message_pattern</span>
+322:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -936,11 +936,11 @@ Verify that a <tt>select</tt> field has the specified option labels.
             onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000018-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 171</span>
-171:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_select_options</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">option_label_list</span>
-172:     <span class="ruby-identifier">ls</span> = <span class="ruby-identifier">option_label_list</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[\\,]/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\\#{s}&quot;</span> } }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
-173:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifySelectOptions'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">ls</span>
-174:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 185</span>
+185:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_select_options</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">option_label_list</span>
+186:     <span class="ruby-identifier">ls</span> = <span class="ruby-identifier">option_label_list</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[\\,]/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\\#{s}&quot;</span> } }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>)
+187:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifySelectOptions'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">ls</span>
+188:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -964,10 +964,10 @@ field.
             onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000016-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 161</span>
-161:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_selected</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
-162:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifySelected'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
-163:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 175</span>
+175:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_selected</span> <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
+176:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifySelected'</span>, <span class="ruby-identifier">select_locator</span>, <span class="ruby-identifier">option_specifier</span>
+177:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -990,10 +990,10 @@ Verify that the specified table cell contains the specified value.
             onclick="toggleCode('M000032-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000032-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 237</span>
-237:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_table</span> <span class="ruby-identifier">table_locator</span>, <span class="ruby-identifier">row</span>, <span class="ruby-identifier">column</span>, <span class="ruby-identifier">value_pattern</span>
-238:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTable'</span>, <span class="ruby-node">&quot;#{table_locator}.#{row}.#{column}&quot;</span>, <span class="ruby-identifier">value_pattern</span>
-239:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 251</span>
+251:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_table</span> <span class="ruby-identifier">table_locator</span>, <span class="ruby-identifier">row</span>, <span class="ruby-identifier">column</span>, <span class="ruby-identifier">value_pattern</span>
+252:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTable'</span>, <span class="ruby-node">&quot;#{table_locator}.#{row}.#{column}&quot;</span>, <span class="ruby-identifier">value_pattern</span>
+253:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -1016,10 +1016,10 @@ Verify that an element contains the specified text.
             onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000020-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 181</span>
-181:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_text</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
-182:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyText'</span>, <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
-183:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 195</span>
+195:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_text</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
+196:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyText'</span>, <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">text_pattern</span>
+197:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -1042,10 +1042,10 @@ Verify that the specified text is not present anywhere on the page.
             onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000026-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 210</span>
-210:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_text_not_present</span> <span class="ruby-identifier">text</span>
-211:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTextNotPresent'</span>, <span class="ruby-identifier">text</span>
-212:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 224</span>
+224:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_text_not_present</span> <span class="ruby-identifier">text</span>
+225:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTextNotPresent'</span>, <span class="ruby-identifier">text</span>
+226:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -1068,10 +1068,10 @@ Verify that the specified text is present somewhere on the page.
             onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000024-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 201</span>
-201:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_text_present</span> <span class="ruby-identifier">text</span>
-202:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTextPresent'</span>, <span class="ruby-identifier">text</span>
-203:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 215</span>
+215:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_text_present</span> <span class="ruby-identifier">text</span>
+216:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTextPresent'</span>, <span class="ruby-identifier">text</span>
+217:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -1094,10 +1094,10 @@ Verify that the current page&#8217;s title matches the pattern.
             onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000012-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 143</span>
-143:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_title</span> <span class="ruby-identifier">title_pattern</span>
-144:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTitle'</span>, <span class="ruby-identifier">title_pattern</span>
-145:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 157</span>
+157:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_title</span> <span class="ruby-identifier">title_pattern</span>
+158:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyTitle'</span>, <span class="ruby-identifier">title_pattern</span>
+159:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -1120,10 +1120,10 @@ Verify the specified input field&#8217;s value matches the pattern.
             onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000014-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 152</span>
-152:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_value</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
-153:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyValue'</span>, <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
-154:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 166</span>
+166:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_value</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
+167:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyValue'</span>, <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value_pattern</span>
+168:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -1148,10 +1148,10 @@ parents.
             onclick="toggleCode('M000034-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000034-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 250</span>
-250:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_visible</span> <span class="ruby-identifier">element_locator</span>
-251:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyVisible'</span>, <span class="ruby-identifier">element_locator</span>
-252:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 264</span>
+264:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_visible</span> <span class="ruby-identifier">element_locator</span>
+265:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'verifyVisible'</span>, <span class="ruby-identifier">element_locator</span>
+266:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

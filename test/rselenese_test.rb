@@ -2,15 +2,17 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class RSeleneseTest < Test::Unit::TestCase
   include ERB::Util
-
-  def rselenese name, input
-    @@view ||= ActionView::Base.new
-    @@view.assigns['page_title'] = name
-    @@view.render_template 'rsel', input
+  
+  def rselenese name, input, partial = nil, type = nil
+    view = TestView.new
+    view.override_partial partial, type do
+      view.assigns['page_title'] = name
+      view.render_template 'rsel', input
+    end
   end
 
-  def assert_rselenese expected, name, input
-    assert_text_equal(expected, rselenese(name, input))
+  def assert_rselenese expected, name, input, partial = nil, type = nil
+    assert_text_equal(expected, rselenese(name, input, partial, type))
   end
 
   def test_empty
@@ -130,4 +132,36 @@ END
     assert_generates_command(%w{assertTable foo.2.3 bar},
                              :assert_table, 'foo', 2, 3, 'bar')
   end
+  
+  def test_partial_support
+    expected = <<END
+<table>
+<tr><th colspan="3">Partial support</th></tr>
+<tr><td>type</td><td>partial</td><td>RSelenese partial</td></tr>
+</table>
+END
+    input = "include_partial 'override'"
+    partial = "type 'partial', 'RSelenese partial'"
+    assert_rselenese expected, 'Partial support', input, partial, 'rsel'
+  end
+  
+  def test_partial_support_with_local_assigns
+    expected = <<END_EXPECTED
+<table>
+<tr><th colspan="3">Partial support with local variables</th></tr>
+<tr><td>type</td><td>partial</td><td>RSelenese partial</td></tr>
+<tr><td>type</td><td>local</td><td>par</td></tr>
+<tr><td>type</td><td>local</td><td>tial</td></tr>
+</table>
+END_EXPECTED
+    input = "include_partial 'override', :locator => 'local', :input => ['par', 'tial']"
+    partial = <<END_PARTIAL
+type 'partial', 'RSelenese partial'
+input.each do |i|
+  type locator, i
+end
+END_PARTIAL
+    assert_rselenese expected, 'Partial support with local variables', input, partial, 'rsel'
+  end
+
 end

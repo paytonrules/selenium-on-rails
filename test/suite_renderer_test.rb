@@ -72,6 +72,7 @@ function openSuite(selector) {
 <select onchange="openSuite(this)">
   <option value="header">Suites:</option>
   <option value="/empty_suite">Empty suite</option>
+  <option value="/partials">Partials</option>
   <option value="/suite_one">Suite one</option>
   <option value="/suite_two">Suite two</option>
   <option value="/suite_one/subsuite">Suite one.Subsuite</option>
@@ -84,6 +85,7 @@ function openSuite(selector) {
   <tr><td><a href="/selenium/tests/rhtml.rhtml">Rhtml</a></td></tr>
   <tr><td><a href="/selenium/tests/rselenese.rsel">Rselenese</a></td></tr>
   <tr><td><a href="/selenium/tests/selenese.sel">Selenese</a></td></tr>
+  <tr><td><a href="/selenium/tests/partials/all_partials.rsel">Partials.All partials</a></td></tr>
   <tr><td><a href="/selenium/tests/suite_one/suite_one_testcase1.sel">Suite one.Suite one testcase1</a></td></tr>
   <tr><td><a href="/selenium/tests/suite_one/suite_one_testcase2.sel">Suite one.Suite one testcase2</a></td></tr>
   <tr><td><a href="/selenium/tests/suite_one/subsuite/suite_one_subsuite_testcase.sel">Suite one.Subsuite.Suite one subsuite testcase</a></td></tr>

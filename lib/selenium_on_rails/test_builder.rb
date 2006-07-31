@@ -9,16 +9,30 @@ module SeleniumOnRails::TestBuilderActions
   #   setup :keep_session, :fixtures => [:foo, :bar]
   def setup options = {}
     options = {options => nil} unless options.is_a? Hash
-    
+
     opts = {:controller => 'selenium', :action => 'setup'}
     opts[:keep_session] = true if options.has_key? :keep_session
-    
+
     if (f = options[:fixtures])
       f = [f] unless f.is_a? Array
       opts[:fixtures] = f.join ','
     end
 
     open opts
+  end
+
+  # Includes a partial.
+  # The path is relative to the Selenium tests root. The starting _ and the file
+  # extension doesn't have to be specified.
+  #   #include test/selenium/_partial.*
+  #   include_partial 'partial'
+  #   #include test/selenium/suite/_partial.*
+  #   include_partial 'suite/partial'
+  #   #include test/selenium/suite/_partial.* and provide local assigns
+  #   include_partial 'suite/partial', :foo => bar
+  def include_partial path, local_assigns = {}
+    partial = @view.render :partial => path, :locals => local_assigns
+    @output << partial
   end
 
   # Open the page specified by +url+ and wait.  The +url+ may either by a
@@ -118,8 +132,8 @@ end
 
 # The checks available for SeleniumOnRails::TestBuilder tests.
 #
-# For each check there exist an +assert+ and a +verify+ version. 
-# <code>assert</code>s stop the execution of the test, whereas 
+# For each check there exist an +assert+ and a +verify+ version.
+# <code>assert</code>s stop the execution of the test, whereas
 # <code>verify</code>s don't.
 module SeleniumOnRails::TestBuilderChecks
   # Assert that the browser is at the specified location.
@@ -182,12 +196,12 @@ module SeleniumOnRails::TestBuilderChecks
     command 'verifyText', element_locator, text_pattern
   end
 
-  # Assert that an attribute contains the specified text.  
+  # Assert that an attribute contains the specified text.
   def assert_attribute element_locator, attribute_name, value_pattern
     command('assertAttribute', "#{element_locator}@#{attribute_name}",
             value_pattern)
   end
-  # Verify that an attribute contains the specified text.  
+  # Verify that an attribute contains the specified text.
   def verify_attribute element_locator, attribute_name, value_pattern
     command('verifyAttribute', "#{element_locator}@#{attribute_name}",
             value_pattern)
@@ -313,7 +327,7 @@ end
 # Builds Selenium test table using a high-level Ruby interface. Normally
 # invoked through SeleniumOnRails::RSelenese.
 #
-# See SeleniumOnRails::TestBuilderActions for the available actions and 
+# See SeleniumOnRails::TestBuilderActions for the available actions and
 # SeleniumOnRails::TestBuilderChecks for the available checks.
 #
 # For more information on the commands supported by TestBuilder, see the
@@ -322,7 +336,7 @@ end
 class SeleniumOnRails::TestBuilder
   include SeleniumOnRails::TestBuilderActions
   include SeleniumOnRails::TestBuilderChecks
-  
+
   # Convert _str_ to a Selenium command name.
   def self.selenize(str)
     str.camelize.gsub(/^[A-Z]/) {|s| s.downcase }
@@ -331,7 +345,8 @@ class SeleniumOnRails::TestBuilder
   # Create a new TestBuilder for _view_.
   def initialize view
     @view = view
-    @xml = Builder::XmlMarkup.new(:indent => 2)
+    @output = ''
+    @xml = Builder::XmlMarkup.new :indent => 2, :target => @output
   end
 
   # Add a new table of tests, and return the HTML.
@@ -365,7 +380,7 @@ class SeleniumOnRails::TestBuilder
   end
 
   private
-  
+
   # Output a single TD element.
   def _tdata value
     if value

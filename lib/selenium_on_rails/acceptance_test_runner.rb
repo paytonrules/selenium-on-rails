@@ -8,7 +8,7 @@ def c_b(var, default = nil) SeleniumOnRailsConfig.get(var, default) { yield } en
 
 BROWSERS =              c :browsers, {}
 REUSE_EXISTING_SERVER = c :reuse_existing_server, true
-START_SERVER =          c :start_server, false  #TODO can't get it to work reliably, perhaps it's just on my computer, but I leave it off by default for now
+START_SERVER =          c :start_server, false  #TODO can't get it to work reliably on Windows, perhaps it's just on my computer, but I leave it off by default for now
 PORTS =                 c(:port_start, 3000)..c(:port_end, 3005)
 TEST_RUNNER_URL =       c :test_runner_url, '/selenium/TestRunner.html'
 MAX_BROWSER_DURATION =  c :max_browser_duration, 2*60
@@ -17,7 +17,9 @@ SERVER_COMMAND =      c_b :server_command do
   if RUBY_PLATFORM =~ /mswin/
     "ruby #{server_path} -p %d -e test > NUL 2>&1"
   else
-    "#{server_path} -p %d -e test > /dev/nul 2>&1"
+    # don't use redirects to /dev/nul since it makes the fork return wrong pid
+    # see UnixSubProcess
+    "#{server_path} -p %d -e test"
   end
 end
 
@@ -64,7 +66,7 @@ module SeleniumOnRails
       
       def do_start_server
         puts 'Starting server'
-        @server_pid = start_subprocess(format(SERVER_COMMAND, @port))
+        @server = start_subprocess(format(SERVER_COMMAND, @port))
         while true
           print '.'
           r = server_check
@@ -88,10 +90,9 @@ module SeleniumOnRails
       end
     
       def stop_server
-        return unless defined? @server_pid
+        return unless defined? @server
         puts
-        puts "Stopping server... (pid=#{@server_pid})"
-        Process.kill 9, @server_pid
+        @server.stop 'server'
       end
     
       def start_browser browser, path
@@ -99,18 +100,24 @@ module SeleniumOnRails
         puts "Starting #{browser}"
         log = log_file browser
         command = "\"#{path}\" \"http://localhost:#{@port}#{TEST_RUNNER_URL}?auto=true&resultsUrl=postResults/#{log}\""
-        @browser_pid = start_subprocess command    
+        @browser = start_subprocess command    
         log_path log
       end
-    
+      
       def stop_browser
-        begin
-          puts "Stopping browser (pid=#{@browser_pid}) ..."
-          Process.kill 9, @browser_pid
-        rescue Errno::EPERM #such as the process is already closed (tabbed browser)
+        @browser.stop 'browser'
+      end
+      
+      def start_subprocess command
+        if RUBY_PLATFORM =~ /mswin/
+          SeleniumOnRails::AcceptanceTestRunner::Win32SubProcess.new command
+        elsif RUBY_PLATFORM =~ /darwin/i && command =~ /safari/i
+          SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess.new command
+        else
+          SeleniumOnRails::AcceptanceTestRunner::UnixSubProcess.new command
         end
       end
-    
+      
       def log_file browser
         (0..100).each do |i|
           name = browser + (i==0 ? '' : "(#{i})") + '.yml'
@@ -137,35 +144,62 @@ module SeleniumOnRails
         puts
         puts "#{result['numTestPasses']} tests passed, #{result['numTestFailures']} tests failed"
       end
-    
-      def start_subprocess command
-        puts command
-        input, output, error, pid = Open4.popen4 command, 't', true
-        return pid
-      end
-    
+        
   end
 end
 
-if RUBY_PLATFORM =~ /mswin/
-  
-  require 'win32/open3' #win32-open3 http://raa.ruby-lang.org/project/win32-open3/
-  
-  class SeleniumOnRails::AcceptanceTestRunner
-    def start_subprocess command
-      puts command
-      input, output, error, pid = Open4.popen4 command, 't', true
-      return pid
+class SeleniumOnRails::AcceptanceTestRunner::SubProcess
+  def stop what
+    begin
+      puts "Stopping #{what} (pid=#{@pid}) ..."
+      Process.kill 9, @pid
+    rescue Errno::EPERM #such as the process is already closed (tabbed browser)
     end
   end
-  
-else
-  
-  class SeleniumOnRails::AcceptanceTestRunner
-    def start_subprocess(command)
-      puts command
-      fork { exec command }
-    end
-  end
-  
 end
+
+class SeleniumOnRails::AcceptanceTestRunner::Win32SubProcess < SeleniumOnRails::AcceptanceTestRunner::SubProcess
+  def initialize command
+    require 'win32/open3' #win32-open3 http://raa.ruby-lang.org/project/win32-open3/
+
+    puts command
+    input, output, error, @pid = Open4.popen4 command, 't', true
+  end
+end
+
+class SeleniumOnRails::AcceptanceTestRunner::UnixSubProcess < SeleniumOnRails::AcceptanceTestRunner::SubProcess
+  def initialize command
+    puts command
+    @pid = fork do
+      # Since we can't use shell redirects without screwing 
+      # up the pid, we'll reopen stdin and stdout instead
+      # to get the same effect.
+      [STDOUT,STDERR].each {|f| f.reopen '/dev/null', 'w' }
+      exec command
+    end
+  end
+end
+
+  # A separate sub process for Safari since it cannot open an URL passed to it
+# as command-line argument. 'open' is the way to open URLs on Mac OS X. The 
+# drawback is that it doesn't provide the process id so it's not easy to close
+# the process.
+class SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess
+  def initialize command
+    command = "open -a #{command}"
+    puts command
+    exec command
+  end
+  
+  def stop what
+    close_safari = c_b :close_safari do
+      puts "Set 'close_safari' to true in config.yml if you want Safari (with all its tabs!) to be closed automatically."
+      false
+    end
+    if close_safari
+      puts 'Stopping Safari'
+      exec 'killall Safari'
+    end
+  end
+end
+  

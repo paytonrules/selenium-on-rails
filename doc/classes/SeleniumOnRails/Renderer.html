@@ -80,7 +80,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000064">render_test_case</a>&nbsp;&nbsp;
+      <a href="#M000065">render_test_case</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -110,31 +110,32 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000064" class="method-detail">
-        <a name="M000064"></a>
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
 
         <div class="method-heading">
-          <a href="#M000064" class="method-signature">
+          <a href="#M000065" class="method-signature">
           <span class="method-name">render_test_case</span><span class="method-args">(filename)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000064-source">
+            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000065-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/selenium_on_rails/renderer.rb, line 5</span>
  5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render_test_case</span> <span class="ruby-identifier">filename</span>
- 6:     <span class="ruby-ivar">@page_title</span> = <span class="ruby-identifier">test_case_name</span> <span class="ruby-identifier">filename</span>
- 7:     <span class="ruby-identifier">output</span> = <span class="ruby-identifier">render_to_string</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">filename</span>
- 8:     <span class="ruby-identifier">layout</span> = (<span class="ruby-identifier">output</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/&lt;html&gt;/i</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">layout_path</span>)
- 9:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">output</span>, <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout</span>
-10: 
-11:     <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Cache-control'</span>] = <span class="ruby-value str">'no-cache'</span>
-12:     <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Pragma'</span>] = <span class="ruby-value str">'no-cache'</span>
-13:     <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Expires'</span>] = <span class="ruby-value str">'-1'</span>
-14:   <span class="ruby-keyword kw">end</span>
+ 6:     <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">SeleniumOnRails</span><span class="ruby-operator">::</span><span class="ruby-constant">PartialsSupport</span>
+ 7:     <span class="ruby-ivar">@page_title</span> = <span class="ruby-identifier">test_case_name</span> <span class="ruby-identifier">filename</span>
+ 8:     <span class="ruby-identifier">output</span> = <span class="ruby-identifier">render_to_string</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">filename</span>
+ 9:     <span class="ruby-identifier">layout</span> = (<span class="ruby-identifier">output</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/&lt;html&gt;/i</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">layout_path</span>)
+10:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">output</span>, <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout</span>
+11: 
+12:     <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Cache-control'</span>] = <span class="ruby-value str">'no-cache'</span>
+13:     <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Pragma'</span>] = <span class="ruby-value str">'no-cache'</span>
+14:     <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Expires'</span>] = <span class="ruby-value str">'-1'</span>
+15:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

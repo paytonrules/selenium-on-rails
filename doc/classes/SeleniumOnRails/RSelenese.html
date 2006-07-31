@@ -104,8 +104,8 @@ of available commands.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000079">new</a>&nbsp;&nbsp;
-      <a href="#M000080">render</a>&nbsp;&nbsp;
+      <a href="#M000082">new</a>&nbsp;&nbsp;
+      <a href="#M000083">render</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -140,11 +140,11 @@ of available commands.
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000079" class="method-detail">
-        <a name="M000079"></a>
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
 
         <div class="method-heading">
-          <a href="#M000079" class="method-signature">
+          <a href="#M000082" class="method-signature">
           <span class="method-name">new</span><span class="method-args">(view)</span>
           </a>
         </div>
@@ -155,14 +155,14 @@ Create a new <a href="RSelenese.html">RSelenese</a> renderer bound to
 <em>view</em>.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000079-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000079-source">
+            onclick="toggleCode('M000082-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000082-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/rselenese.rb, line 12</span>
-12:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">view</span>
-13:     <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">view</span>
-14:     <span class="ruby-ivar">@view</span> = <span class="ruby-identifier">view</span>
-15:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/rselenese.rb, line 17</span>
+17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">view</span>
+18:     <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">view</span>
+19:     <span class="ruby-ivar">@view</span> = <span class="ruby-identifier">view</span>
+20:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -170,11 +170,11 @@ Create a new <a href="RSelenese.html">RSelenese</a> renderer bound to
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000080" class="method-detail">
-        <a name="M000080"></a>
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
 
         <div class="method-heading">
-          <a href="#M000080" class="method-signature">
+          <a href="#M000083" class="method-signature">
           <span class="method-name">render</span><span class="method-args">(template, local_assigns)</span>
           </a>
         </div>
@@ -184,17 +184,21 @@ Create a new <a href="RSelenese.html">RSelenese</a> renderer bound to
 Render <em>template</em> using <em>local_assigns</em>.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000080-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000080-source">
+            onclick="toggleCode('M000083-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000083-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/rselenese.rb, line 18</span>
-18:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span> <span class="ruby-identifier">template</span>, <span class="ruby-identifier">local_assigns</span>
-19:     <span class="ruby-identifier">title</span> = (<span class="ruby-ivar">@view</span>.<span class="ruby-identifier">assigns</span>[<span class="ruby-value str">'page_title'</span>] <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">local_assigns</span>[<span class="ruby-value str">'page_title'</span>])
-20:     <span class="ruby-identifier">table</span>(<span class="ruby-identifier">title</span>) <span class="ruby-keyword kw">do</span>
-21:       <span class="ruby-identifier">test</span> = <span class="ruby-keyword kw">self</span> <span class="ruby-comment cmt">#to enable test.command</span>
-22:       <span class="ruby-identifier">eval</span> <span class="ruby-identifier">template</span>
-23:     <span class="ruby-keyword kw">end</span>
-24:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/rselenese.rb, line 23</span>
+23:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span> <span class="ruby-identifier">template</span>, <span class="ruby-identifier">local_assigns</span>
+24:     <span class="ruby-identifier">title</span> = (<span class="ruby-ivar">@view</span>.<span class="ruby-identifier">assigns</span>[<span class="ruby-value str">'page_title'</span>] <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">local_assigns</span>[<span class="ruby-value str">'page_title'</span>])
+25:     <span class="ruby-identifier">table</span>(<span class="ruby-identifier">title</span>) <span class="ruby-keyword kw">do</span>
+26:       <span class="ruby-identifier">test</span> = <span class="ruby-keyword kw">self</span> <span class="ruby-comment cmt">#to enable test.command</span>
+27:       
+28:       <span class="ruby-identifier">assign_locals_code</span> = <span class="ruby-value str">''</span>
+29:       <span class="ruby-identifier">local_assigns</span>.<span class="ruby-identifier">each_key</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assign_locals_code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{key} = local_assigns[#{key.inspect}];&quot;</span>}
+30:       
+31:       <span class="ruby-identifier">eval</span> <span class="ruby-identifier">assign_locals_code</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">template</span>
+32:     <span class="ruby-keyword kw">end</span>
+33:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

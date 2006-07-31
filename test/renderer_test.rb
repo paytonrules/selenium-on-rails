@@ -44,6 +44,7 @@ END
   <tr><td>open</td><td>/fi</td><td>&nbsp;</td></tr>
   <tr><td>open</td><td>/fo</td><td>&nbsp;</td></tr>
   <tr><td>open</td><td>/fum</td><td>&nbsp;</td></tr>
+  <tr><td>assertTitle</td><td>Partial from RHTML</td><td>&nbsp;</td></tr>
 </table>
 </body></html>
 END
@@ -60,6 +61,7 @@ END
 <tr><th colspan="3">Selenese</th></tr>
 <tr><td>open</td><td>/selenium/setup</td><td>&nbsp;</td></tr>
 <tr><td>goBack</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>assertTitle</td><td>Partial from Selenese</td><td>&nbsp;</td></tr>
 </table>
 <p>works.</p>
 
@@ -80,14 +82,33 @@ END
   <tr><td>open</td><td>/selenium/setup?fixtures=all</td><td>&nbsp;</td></tr>
   <tr><td>open</td><td>/selenium/setup?fixtures=foo%2Cbar</td><td>&nbsp;</td></tr>
   <tr><td>assertTitle</td><td>selenium</td><td>&nbsp;</td></tr>
+  <tr><td>assertTitle</td><td>Partial from RSelenese</td><td>&nbsp;</td></tr>
 </table>
-
+</body></html>
+END
+    assert_text_equal expected, @response.body
+  end
+  
+  def test_partial_support
+    get :test_file, :testname => 'partials/all_partials.rsel'
+    assert_headers
+    expected = <<END
+<html><head><title>test layout</title></head><body>
+<table>
+  <tr><th colspan="3">All partials</th></tr>
+  <tr><td>assertTitle</td><td>Partial from All partials</td><td>&nbsp;</td></tr>
+  <tr><td>type</td><td>partial</td><td>HTML partial</td></tr>
+  <tr><td>type</td><td>world</td><td>RHTML partial</td></tr>
+  <tr><td>type</td><td>partial</td><td>Selenese partial</td></tr>
+  <tr><td>type</td><td>world</td><td>RSelenese partial</td></tr>
+  <tr><td>type</td><td>nesting</td><td>Nesting partial</td></tr>
+  <tr><td>type</td><td>dlrow</td><td>RSelenese partial</td></tr>
+</table>
 </body></html>
 END
     assert_text_equal expected, @response.body
   end
 
-  
   def test_own_layout
     get :test_file, :testname => 'own_layout.html'
     assert_headers

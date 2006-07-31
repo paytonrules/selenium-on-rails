@@ -40,8 +40,6 @@ class SeleniumOnRails::Selenese
       end
       if defined? RedCloth
         comments = RedCloth.new(comments).to_html
-      else
-        comments = simple_format comments
       end
       comments += "\n" unless comments.empty?
       comments
@@ -52,6 +50,10 @@ class SeleniumOnRails::Selenese
       while (line = next_line lines, :command)
         line = line[1..-2] #remove starting and ending |
         cells = line.split '|'
+        if cells.first == 'includePartial'
+          html << include_partial(cells[1..-1])
+          next
+        end
         raise 'There might only be a maximum of three cells!' if cells.length > 3
         html << '<tr>'
         (1..3).each do
@@ -62,6 +64,18 @@ class SeleniumOnRails::Selenese
         html << "</tr>\n"
       end
       html << "</table>\n"
+    end
+
+    def include_partial params
+      partial = params.shift
+      locals = {}
+      params.each do |assignment|
+        next if assignment.empty?
+        _, var, value = assignment.split(/^([a-z_][a-zA-Z0-9_]*)\s*=\s*(.*)$/)
+        raise "Invalid format '#{assignment}'. Should be '|includePartial|partial|var1=value|var2=value|." unless var
+        locals[var.to_sym] = value or ''
+      end
+      @view.render :partial => partial, :locals => locals
     end
 
 end

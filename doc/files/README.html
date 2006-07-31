@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Thu Feb 23 21:49:11 W. Europe Standard Time 2006</td>
+      <td>Tue May 02 18:38:09 W. Europe Daylight Time 2006</td>
     </tr>
     </table>
   </div>
@@ -98,8 +98,7 @@ formats (see <tt>Formats</tt>).
 <h2>Installation</h2>
 <ol>
 <li>Selenium needs to be available. It could either be installed as a gem
-(<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt> (at the
-time of this writing the gem is quite old).
+(<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
 
 </li>
 <li>Install Selenium on Rails: <tt>script/plugin install <a
@@ -210,6 +209,41 @@ for available commands.
 You can write your tests in HTML/RHTML but that&#8217;s mostly useful if
 you have existing tests you want to reuse.
 </p>
+<h3>Partial test cases</h3>
+<p>
+If you have some common actions you want to do in several test cases you
+can put them in a separate partial test case and include them in your other
+test cases.
+</p>
+<p>
+A partial test case is just like a normal test case besides that its
+filename has to start with _:
+</p>
+<pre>
+ #_login.rsel
+ open '/login'
+ type 'name', name
+ type 'password', password
+ click 'submit', :wait=&gt;true
+</pre>
+<p>
+To include a partial test case you write like this in a Selenese test case:
+</p>
+<pre>
+ |includePartial|login|name=John Doe|password=eoD nhoJ|
+</pre>
+<p>
+in a RSelenese test case:
+</p>
+<pre>
+ include_partial 'login', :name =&gt; 'Jane Doe', :password =&gt; 'Jane Doe'.reverse
+</pre>
+<p>
+and in a RHTML test case:
+</p>
+<pre>
+ &lt;%= render :partial =&gt; 'login', :locals =&gt; {:name = 'Joe Schmo', :password =&gt; 'Joe Schmo'.reverse} %&gt;
+</pre>
 <h2>Configuration</h2>
 <p>
 There are a number of settings available. You make them by renaming
@@ -260,18 +294,14 @@ Now it should work, otherwise let me know!
 <h2>Todo</h2>
 <h3>Standalone mode</h3>
 <p>
-More work is needed on <tt>test_acceptance</tt> to be able to start the
-server when needed.
+More work is needed on <tt>test_acceptance</tt> on Windows to be able to
+start the server when needed.
 </p>
 <h3>user_extension.js</h3>
 <p>
 Selenium has support for <tt>user_extension.js</tt> which is a way to
 extend the functionality of Selenium. However there is currently no easy
 way to add such a file in Selenium on Rails.
-</p>
-<h3>Partials</h3>
-<p>
-It would be nice if common parts of test cases could be stored in partials.
 </p>
 <h3>More setup/teardown support?</h3>
 <p>

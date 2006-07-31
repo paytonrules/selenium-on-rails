@@ -1,14 +1,17 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class SeleneseTest < Test::Unit::TestCase
-  def selenese name, input
-    @@view ||= ActionView::Base.new
-    @@view.assigns['page_title'] = name
-    @@view.render_template 'sel', input
+
+  def selenese name, input, partial = nil, type = nil
+    view = TestView.new
+    view.override_partial partial, type do
+      view.assigns['page_title'] = name
+      view.render_template 'sel', input
+    end
   end
   
-  def assert_selenese expected, name, input
-    assert_text_equal expected, selenese(name, input)
+  def assert_selenese expected, name, input, partial = nil, type = nil
+    assert_text_equal expected, selenese(name, input, partial, type)
   end
   
   def test_empty
@@ -162,6 +165,42 @@ END
     input = '|type|nameField|<>&|'
     assert_selenese expected, 'HTML escaping', input
   end
+  
+  def test_partial_support
+    expected = <<END
+<table>
+<tr><th colspan="3">Partial support</th></tr>
+<tr><td>type</td><td>partial</td><td>Selenese partial</td></tr>
+</table>
+END
+    input = '|includePartial|override|'
+    partial = '|type|partial|Selenese partial|'
+    assert_selenese expected, 'Partial support', input, partial, 'sel'
+  end
+  
+  def test_partial_support_with_local_assigns
+    expected = <<END_EXPECTED
+<table>
+<tr><th colspan="3">Partial support with local assigns</th></tr>
+<tr><td>type</td><td>assigns</td><td>a=hello,b=world!,c_123ABC=</td></tr>
+<tr><td>type</td><td>assigns</td><td>a=a b c d,b=,c_123ABC=hello</td></tr>
+</table>
+END_EXPECTED
+    input = <<END_INPUT
+|includePartial|override|a=hello|b=world!|
+|includePartial|override|a = a b c d|b=|c_123ABC= hello  |
+END_INPUT
+    partial = <<END_PARTIAL
+<table><tr><th>whatever</th></tr>
+<tr><td>type</td><td>assigns</td><td>
+a=<%= a if defined? a%>,
+b=<%= b if defined? b%>,
+c_123ABC=<%= c_123ABC if defined? c_123ABC%>
+</td></tr>
+</table>
+END_PARTIAL
+    assert_selenese expected, 'Partial support with local assigns', input, partial, 'rhtml'
+  end
     
   def test_raised_when_more_than_three_columns
     assert_raise RuntimeError, 'There might only be a maximum of three cells!' do
@@ -178,6 +217,12 @@ comment
 |command|
 END
       selenese 'name', input
+    end
+  end
+  
+  def test_raised_when_incorrect_partial_format
+    assert_raise RuntimeError, "Invalid format 'invalid'. Should be '|includePartial|partial|var1=value|var2=value|." do
+      selenese 'name', '|includePartial|partial|a=valid|invalid|'
     end
   end
 

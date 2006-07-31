@@ -47,3 +47,24 @@ class Test::Unit::TestCase
   end
   
 end
+
+class TestView < ActionView::Base
+  include SeleniumOnRails::PartialsSupport
+  
+  alias_method :render_partial_without_override, :render_partial
+  def render_partial partial_path = default_template_name, object = nil, local_assigns = nil, status = nil
+    if @override
+      partial = render :inline => @override, :type => @override_type, :locals => local_assigns
+      extract_commands_from_partial partial
+    else
+      render_partial_without_override partial_path, object, local_assigns, status
+    end
+  end
+  
+  def override_partial partial, type
+    @override, @override_type = partial, type
+    result = yield
+    @override, @override_type = nil, nil
+    result
+  end
+end
