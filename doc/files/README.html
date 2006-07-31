@@ -134,7 +134,7 @@ the north frame contains your test case.
 <p>
 <a href="http://raa.ruby-lang.org/project/win32-open3/">win32-open3</a> is
 needed if you&#8217;re on Windows and want to run your tests as a Rake task
-(see <tt>test_acceptance</tt>), i.e. you don&#8217;t have to install it but
+(see <tt>test:acceptance</tt>), i.e. you don&#8217;t have to install it but
 it&#8217;s recommended.
 </p>
 <p>
@@ -261,7 +261,7 @@ change this by setting <tt>environments</tt>, such as:
    - test
    - development
 </pre>
-<h2><tt>test_acceptance</tt></h2>
+<h2><tt>test:acceptance</tt></h2>
 <p>
 You can run all your Selenium tests as a Rake task.
 </p>
@@ -286,7 +286,7 @@ Now you&#8217;re all set. First start a server:
 Then run the tests:
 </p>
 <pre>
- rake test_acceptance
+ rake test:acceptance
 </pre>
 <p>
 Now it should work, otherwise let me know!
@@ -294,7 +294,7 @@ Now it should work, otherwise let me know!
 <h2>Todo</h2>
 <h3>Standalone mode</h3>
 <p>
-More work is needed on <tt>test_acceptance</tt> on Windows to be able to
+More work is needed on <tt>test:acceptance</tt> on Windows to be able to
 start the server when needed.
 </p>
 <h3>user_extension.js</h3>

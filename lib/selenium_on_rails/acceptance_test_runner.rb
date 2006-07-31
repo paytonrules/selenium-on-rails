@@ -103,7 +103,7 @@ module SeleniumOnRails
         puts
         puts "Starting #{browser}"
         log = log_file browser
-        command = "\"#{path}\" \"http://localhost:#{@port}#{TEST_RUNNER_URL}?auto=true&resultsUrl=postResults/#{log}\""
+        command = "\"#{path}\" \"http://localhost:#{@port}#{TEST_RUNNER_URL}?test=tests&auto=true&resultsUrl=postResults/#{log}\""
         @browser = start_subprocess command    
         log_path log
       end

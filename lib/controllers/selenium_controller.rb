@@ -30,7 +30,7 @@ class SeleniumController < ActionController::Base
 
   def support_file
     if params[:filename].empty?
-      redirect_to :filename => 'TestRunner.html'
+      redirect_to :filename => 'TestRunner.html', :test => 'tests'
       return
     end
 

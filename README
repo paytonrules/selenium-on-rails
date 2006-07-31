@@ -26,7 +26,7 @@ This plugin does four things:
 
 win32-open3[http://raa.ruby-lang.org/project/win32-open3/] is needed if you're
 on Windows and want to run your tests as a Rake task 
-(see <tt>test_acceptance</tt>), i.e. you don't have to install it but it's 
+(see <tt>test:acceptance</tt>), i.e. you don't have to install it but it's 
 recommended.
 
 You can build it from source or install the binary:
@@ -117,7 +117,7 @@ this by setting <tt>environments</tt>, such as:
    - test
    - development
 
-== <tt>test_acceptance</tt>
+== <tt>test:acceptance</tt>
 
 You can run all your Selenium tests as a Rake task.
 
@@ -135,7 +135,7 @@ Now you're all set. First start a server:
 
 Then run the tests:
 
- rake test_acceptance
+ rake test:acceptance
 
 Now it should work, otherwise let me know!
 
@@ -143,7 +143,7 @@ Now it should work, otherwise let me know!
 
 === Standalone mode
 
-More work is needed on <tt>test_acceptance</tt> on Windows to be able to start 
+More work is needed on <tt>test:acceptance</tt> on Windows to be able to start 
 the server when needed.
 
 === user_extension.js

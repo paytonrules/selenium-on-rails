@@ -34,7 +34,7 @@ module SeleniumOnRails
       def find_selenium_path
         # with checked out selenium
         selenium_path = SeleniumOnRailsConfig.get :selenium_path, File.expand_path(File.join(RAILS_ROOT, 'vendor/selenium'))
-        ['', 'selenium', 'javascript'].each do |subdir|
+        ['', 'core', 'selenium', 'javascript'].each do |subdir|
           vendor_selenium = File.join selenium_path, subdir
           return vendor_selenium if File.exist?(File.join(vendor_selenium, 'TestRunner.html'))
         end

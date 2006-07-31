@@ -21,7 +21,7 @@ class SeleniumSupportTest < Test::Unit::TestCase
   
   def test_default_file
     get :support_file, :filename => ''
-    assert_redirected_to :filename => 'TestRunner.html'
+    assert_redirected_to :filename => 'TestRunner.html', :test => 'tests'
   end
     
   def test_missing_file
