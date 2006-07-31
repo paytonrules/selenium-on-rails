@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sat Feb 18 23:25:14 W. Europe Standard Time 2006</td>
+      <td>Sun Feb 19 14:00:21 W. Europe Standard Time 2006</td>
     </tr>
     </table>
   </div>
@@ -87,8 +87,8 @@ stay in the Selenium gem or in <tt>/vendor/selenium/javascript</tt>.
 suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 
 </li>
-<li>Instead of writing the test cases in HTML you can use ERb/RHTML or Selenese
-(a template provided by this plugin).
+<li>Instead of writing the test cases in HTML you can use a number of better
+formats (see <tt>Formats</tt>).
 
 </li>
 <li>Loading of fixtures and wiping of session (<tt>/selenium/setup</tt>).
@@ -155,7 +155,8 @@ include Config; puts CONFIG[&#8216;sitearchdir&#8217;]</tt>
 c:\ruby\lib\ruby\site_ruby\1.8\i386-msvcrt
 
 </li>
-<li>Rename the .so file to <tt>open3.so</tt> and put it in the <tt>win32</tt> directory.
+<li>Rename the .so file to <tt>open3.so</tt> and put it in the <tt>win32</tt>
+directory.
 
 </li>
 <li>Profit! (unless you get an error when doing <tt>require
@@ -163,6 +164,52 @@ c:\ruby\lib\ruby\site_ruby\1.8\i386-msvcrt
 
 </li>
 </ol>
+<h2>Formats</h2>
+<p>
+The test cases can be written in a number of formats. Which one you choose
+is a matter of taste. You can generate your test files by running
+<tt>script/generate selenium</tt> or by creating them manually in your
+<tt>/test/selenium</tt> directory.
+</p>
+<h3>Selenese, .sel</h3>
+<p>
+Selenese is the dumbest format (in a good way). You just write your
+commands delimited by | characters.
+</p>
+<pre>
+ |open|/selenium/setup|
+ |open|/|
+ |goBack|
+</pre>
+<p>
+If you don&#8217;t want to write Selenese tests by hand you can use <a
+href="http://www.openqa.org/selenium-ide/">SeleniumIDE</a> which has <a
+href="http://wiki.openqa.org/display/SIDE/SeleniumOnRails">support</a> for
+Selenese.
+</p>
+<p>
+SeleniumIDE makes it super easy to record test and edit them.
+</p>
+<h3>RSelenese, .rsel</h3>
+<p>
+RSelenese enable you to write your tests in Ruby.
+</p>
+<pre>
+ setup :fixtures =&gt; :all
+ open '/'
+ assert_title 'Home'
+ ('a'..'z').each {|c| open :controller =&gt; 'user', :action =&gt; 'create', :name =&gt; c }
+</pre>
+<p>
+See <a
+href="../classes/SeleniumOnRails/TestBuilder.html">SeleniumOnRails::TestBuilder</a>
+for available commands.
+</p>
+<h3>HTML/RHTML</h3>
+<p>
+You can write your tests in HTML/RHTML but that&#8217;s mostly useful if
+you have existing tests you want to reuse.
+</p>
 <h2>Configuration</h2>
 <p>
 There are a number of settings available. You make them by renaming
@@ -245,8 +292,13 @@ the Selenese format.
 </p>
 <h2>Credits</h2>
 <ul>
-<li>Jon Tirsen &#8212; initial <a
+<li>Jon Tirsen, <a href="http://www.tirsen.com">www.tirsen.com</a> &#8212;
+initial <a
 href="http://wiki.rubyonrails.com/rails/pages/SeleniumIntegration">inspiration</a>
+
+</li>
+<li>Eric Kidd, <a href="http://www.randomhacks.net">www.randomhacks.net</a>
+&#8212; contribution of RSelenese
 
 </li>
 </ul>

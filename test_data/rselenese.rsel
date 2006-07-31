@@ -1,0 +1,5 @@
+setup
+setup :keep_session
+test.setup :fixtures => :all
+setup :fixtures => [:foo, 'bar']
+assert_title view.controller.controller_name #make sure we can access the view easily

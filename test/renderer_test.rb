@@ -68,6 +68,26 @@ END
     assert_text_equal expected, @response.body
   end
   
+  def test_rselenese
+    get :test_file, :testname => 'rselenese.rsel'
+    assert_headers
+    expected = <<END
+<html><head><title>test layout</title></head><body>
+<table>
+  <tr><th colspan="3">Rselenese</th></tr>
+  <tr><td>open</td><td>/selenium/setup</td><td>&nbsp;</td></tr>
+  <tr><td>open</td><td>/selenium/setup?keep_session=true</td><td>&nbsp;</td></tr>
+  <tr><td>open</td><td>/selenium/setup?fixtures=all</td><td>&nbsp;</td></tr>
+  <tr><td>open</td><td>/selenium/setup?fixtures=foo%2Cbar</td><td>&nbsp;</td></tr>
+  <tr><td>assertTitle</td><td>selenium</td><td>&nbsp;</td></tr>
+</table>
+
+</body></html>
+END
+    assert_text_equal expected, @response.body
+  end
+
+  
   def test_own_layout
     get :test_file, :testname => 'own_layout.html'
     assert_headers

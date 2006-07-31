@@ -14,14 +14,19 @@ class SeleniumGenerator < Rails::Generator::Base
       path = File.join(path, suite_path) unless suite_path.empty?
       m.directory path
 
-      template = (File.extname(filename) == '.rhtml' ? 'rhtml.rhtml' : 'selenese.rhtml')
+      template = case File.extname(filename)
+                   when '.rhtml' then 'rhtml.rhtml'
+                   when '.rsel' then 'rselenese.rhtml'
+                   else 'selenese.rhtml'
+                 end
       m.template template, File.join(path, filename)
     end
   end
 
   def filename
     name = File.basename args[0]
-    name =  "#{name}.sel" unless ['.sel', '.rhtml'].include? File.extname(name)
+    extensions = ['.sel', '.rhtml', '.rsel']
+    name =  "#{name}.sel" unless extensions.include? File.extname(name)
     name
   end
 

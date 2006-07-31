@@ -82,6 +82,7 @@ function openSuite(selector) {
   <tr><td><a href="/selenium/tests/html.html">Html</a></td></tr>
   <tr><td><a href="/selenium/tests/own_layout.html">Own layout</a></td></tr>
   <tr><td><a href="/selenium/tests/rhtml.rhtml">Rhtml</a></td></tr>
+  <tr><td><a href="/selenium/tests/rselenese.rsel">Rselenese</a></td></tr>
   <tr><td><a href="/selenium/tests/selenese.sel">Selenese</a></td></tr>
   <tr><td><a href="/selenium/tests/suite_one/suite_one_testcase1.sel">Suite one.Suite one testcase1</a></td></tr>
   <tr><td><a href="/selenium/tests/suite_one/suite_one_testcase2.sel">Suite one.Suite one testcase2</a></td></tr>

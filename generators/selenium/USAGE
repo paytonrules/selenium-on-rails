@@ -9,6 +9,10 @@ Examples:
     ./script/generate selenium user/create
     will create:
         /test/selenium/user/create.sel
+
+    ./script/generate selenium login.rsel
+    will create:
+        /test/selenium/login.rsel
         
     ./script/generate selenium logout.rhtml
     will create:

@@ -43,7 +43,7 @@ class Test::Unit::TestCase
   end
   
   def clean_text text
-    text.gsub("\t", '  ').gsub("\r", '').gsub("\n", '')
+    text.gsub("\t", '  ').gsub("\r", '').gsub("\n", '').gsub(/ *</, '<')
   end
   
 end
