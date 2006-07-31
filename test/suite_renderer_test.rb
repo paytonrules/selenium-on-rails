@@ -39,7 +39,7 @@ function openSuite(selector) {
 </table>
 </body></html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
 
   
@@ -90,7 +90,7 @@ function openSuite(selector) {
 </table>
 </body></html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
 
   def test_suite_one
@@ -124,7 +124,7 @@ function openSuite(selector) {
 </table>
 </body></html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
   
   def test_sub_suite
@@ -155,7 +155,7 @@ function openSuite(selector) {
 </table>
 </body></html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
   
   def test_missing_tests_directory

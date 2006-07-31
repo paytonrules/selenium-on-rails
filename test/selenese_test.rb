@@ -8,7 +8,7 @@ class SeleneseTest < Test::Unit::TestCase
   end
   
   def assert_selenese expected, name, input
-    assert_equal expected, selenese(name, input).gsub("\t", '  ')
+    assert_text_equal expected, selenese(name, input)
   end
   
   def test_empty
@@ -71,7 +71,7 @@ END
 
 END
     assert_selenese expected, 'Only commands', input
-    end
+  end
   
   def test_commands_and_comments
   	expected = <<END

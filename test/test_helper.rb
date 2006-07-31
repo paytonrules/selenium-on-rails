@@ -37,3 +37,13 @@ class SeleniumController
 
 end
 
+class Test::Unit::TestCase
+  def assert_text_equal expected, actual
+    assert_equal clean_text(expected), clean_text(actual)
+  end
+  
+  def clean_text text
+    text.gsub("\t", '  ').gsub("\r\n", "\n")
+  end
+  
+end

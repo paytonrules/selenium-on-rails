@@ -31,7 +31,7 @@ END
 <p>and it works...</p>
 </body></html>
 END
-    assert_equal expected, @response.body
+    assert_text_equal expected, @response.body
   end
     
   def test_rhtml
@@ -47,7 +47,7 @@ END
 </table>
 </body></html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
   
   def test_selenese
@@ -65,7 +65,7 @@ END
 
 </body></html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
   
   def test_own_layout
@@ -85,7 +85,7 @@ END
   </body>
 </html>
 END
-    assert_equal expected, @response.body.gsub("\t", '  ')
+    assert_text_equal expected, @response.body
   end
   
   def test_not_found

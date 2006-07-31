@@ -5,7 +5,7 @@
 Selenium on Rails provides an easy way to test Rails application with Selenium[http://www.openqa.org/selenium/].
 
 This plugin does four things:
-1. The Selenium files doesn't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium/javascript</tt>.
+1. The Selenium files don't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium/javascript</tt>.
 2. No need to create suite files, they are generated on the fly -- one suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 3. Instead of writing the test cases in HTML you can use ERb/RHTML or Selenese (a template provided by this plugin).
 4. Loading of fixtures and wiping of session (<tt>/selenium/setup</tt>).
@@ -17,10 +17,10 @@ Selenium on Rails is disabled for production environments.
 1. Selenium needs to be available. It could either be installed as a gem (<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
 2. Install Selenium on Rails: <tt>script/plugin install http://andthennothing.net/svn/public/selenium_on_rails/</tt>
 3. <i>If RedCloth is available the Selenese test cases can use it for better markup.</i>
-4. Run the Rake task in the plugin's directory to run the tests in order to see that everything works. (If RedCloth isn't installed a few tests will fail since they assume RedCloth is installed.)
+4. Run the Rakefile in the plugin's directory to run the tests in order to see that everything works. (If RedCloth isn't installed a few tests will fail since they assume RedCloth is installed.)
 5. Create a test case: <tt>script/generate selenium login</tt>
 6. Start the server: <tt>script/server</tt>
-7. Point your broser to http://localhost:3000/selenium
+7. Point your browser to <tt>http://localhost:3000/selenium</tt>
 8. If everything works as expected you should see the Selenium test runner. The north east frame contains all your test cases (just one for now), and the north frame contains your test case.
 
 == Todo
