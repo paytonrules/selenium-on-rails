@@ -1,4 +1,4 @@
-require 'YAML'
+require 'yaml'
 
 class SeleniumOnRailsConfig
   @@defaults = {:environments => ['test']}
@@ -9,7 +9,7 @@ class SeleniumOnRailsConfig
     value ||= yield if block_given?
     value
   end
-  
+
   private
     def self.configs
       unless defined? @@configs

@@ -94,7 +94,7 @@ this by setting <tt>environments</tt>, such as:
 
 You can run all your Selenium tests as a Rake task. This is however only 
 available on Windows for the time being (it should be quite easy to get working
-on *nix, or Mac OS X, I'll happily accept patches).
+on Linux, or Mac OS X, I'll happily accept patches).
 
 First you have to make sure win32-open3 is installed. Then you have to configure
 which browsers you want to run, like this:
@@ -147,7 +147,7 @@ the Selenese format.
 
 == Credits
 
-* Jon Tirsen, http://www.tirsen.com -- initial inspiration[http://wiki.rubyonrails.com/rails/pages/SeleniumIntegration]
+* Jon Tirsen, http://jutopia.tirsen.com -- initial inspiration[http://wiki.rubyonrails.com/rails/pages/SeleniumIntegration]
 * Eric Kidd, http://www.randomhacks.net -- contribution of RSelenese
 
 == Contact
