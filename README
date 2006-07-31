@@ -33,7 +33,7 @@ You can build it from source or install the binary:
 
 1. Download the latest version of win32-open3, open3-0.2.2.so[http://rubyforge.org/frs/download.php/8515/open3-0.2.2.so] at the time of this writing.
 2. Open up irb and run this snippet: <tt>require 'rbconfig'; include Config; puts CONFIG['sitearchdir']</tt>
-3. Create a <tt>win32</tt> directory under the directory you got, e.g. c:\ruby\lib\ruby\site_ruby\1.8\i386-msvcrt
+3. Create a <tt>win32</tt> directory under the directory you got, e.g. <tt>c:\ruby\lib\ruby\site_ruby\1.8\i386-msvcrt</tt>
 4. Rename the .so file to <tt>open3.so</tt> and put it in the <tt>win32</tt> directory.
 5. Profit! (unless you get an error when doing <tt>require 'win32/open3'</tt>)
 

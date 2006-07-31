@@ -180,15 +180,16 @@ class SeleniumOnRails::AcceptanceTestRunner::UnixSubProcess < SeleniumOnRails::A
   end
 end
 
-  # A separate sub process for Safari since it cannot open an URL passed to it
+# A separate sub process for Safari since it cannot open an URL passed to it
 # as command-line argument. 'open' is the way to open URLs on Mac OS X. The 
 # drawback is that it doesn't provide the process id so it's not easy to close
 # the process.
+# The path to Safari should look like this: /Applications/Safari.app
 class SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess
   def initialize command
     command = "open -a #{command}"
     puts command
-    exec command
+    fork { exec command }
   end
   
   def stop what
@@ -198,7 +199,7 @@ class SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess
     end
     if close_safari
       puts 'Stopping Safari'
-      exec 'killall Safari'
+      fork { exec 'killall Safari' }
     end
   end
 end
