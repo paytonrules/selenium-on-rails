@@ -1,0 +1,46 @@
+<% @page_title = 'Setup' -%>
+<% if defined?(@session_wiped) or @loaded_fixtures.any? -%>
+	<div id="notice">
+		<% if defined?(@session_wiped) -%>
+		<p>The session is wiped clean.</p>
+		<% end-%>
+		<% if @loaded_fixtures.any? -%>
+		<p>The following fixtures are loaded:</p>
+			<ul>
+				<% for fixture in @loaded_fixtures -%>
+				<li><%= fixture %></li>
+				<% end-%>
+			</div>
+		<% end -%>
+	</div>
+<% end -%>
+
+<div id="usagedescription">
+<p>This page can be used to setup your Selenium tests. The following options can be used:</p>
+<dl>
+	<dt><tt>keep_session</tt></dt>
+	<dd>
+		Per default the session is reset, so add <tt>keep_session</tt> in order to keep the current session.
+		<table>
+			<tr><td>open</td><td><%= url_for %>?keep_session</td><td>&nbsp;</td></tr>
+		</table>
+	</dd>
+	<dt><tt>fixtures</tt></dt>
+	<dd>
+		Loads one or many fixtures into the database. <strong>This will destroy the current data you have in your database!</strong> Use <tt>all</tt> as name in order to load all fixtures, or specify which fixtures that should be loaded (delimited by commas).
+		<table>
+			<tr><td>open</td><td><%= url_for :fixtures => 'all' %></td><td>&nbsp;</td></tr>
+			<tr><td>open</td><td><%= url_for :fixtures => 'fixture' %></td><td>&nbsp;</td></tr>
+			<tr><td>open</td><td><%= url_for :fixtures => 'fixture_one' %>,fixture_two</td><td>&nbsp;</td></tr>
+		</table>
+		Available fixtures:
+		<ul>
+			<li><tt>all</tt></li>
+		<% for fixture in available_fixtures -%>
+			<li><tt><%= fixture %></tt></li>
+		<% end -%>
+		</ul>
+	</dd>
+</dl>
+
+</div>

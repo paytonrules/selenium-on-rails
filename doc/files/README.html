@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Feb 05 23:31:17 W. Europe Standard Time 2006</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Selenium on Rails</h1>
+<h2>Overview</h2>
+<p>
+Selenium on Rails provides an easy way to test Rails application with <a
+href="http://www.openqa.org/selenium/">Selenium</a>.
+</p>
+<p>
+This plugin does four things:
+</p>
+<ol>
+<li>The Selenium files doesn&#8217;t have to pollute <tt>/public</tt>, they can
+stay in the Selenium gem or in <tt>/vendor/selenium/javascript</tt>.
+
+</li>
+<li>No need to create suite files, they are generated on the fly &#8212; one
+suite per directory in <tt>/test/selenium</tt> (suites can be nested).
+
+</li>
+<li>Instead of writing the test cases in HTML you can use ERb/RHTML or Selenese
+(a template provided by this plugin).
+
+</li>
+<li>Loading of fixtures and wiping of session (<tt>/selenium/setup</tt>).
+
+</li>
+</ol>
+<p>
+Selenium on Rails is disabled for production environments.
+</p>
+<h2>Installation</h2>
+<ol>
+<li>Selenium needs to be available. It could either be installed as a gem
+(<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
+
+</li>
+<li>Install Selenium on Rails: <tt>script/plugin install
+http://andthennothing.net/svn/public/selenium_on_rails/</tt>
+
+</li>
+<li><em>If RedCloth is available the Selenese test cases can use it for better
+markup.</em>
+
+</li>
+<li>Run the Rake task in the plugin&#8217;s directory to run the tests in order
+to see that everything works. (If RedCloth isn&#8217;t installed a few
+tests will fail since they assume RedCloth is installed.)
+
+</li>
+<li>Create a test case: <tt>script/generate selenium login</tt>
+
+</li>
+<li>Start the server: <tt>script/server</tt>
+
+</li>
+<li>Point your broser to <a
+href="http://localhost:3000/selenium">localhost:3000/selenium</a>
+
+</li>
+<li>If everything works as expected you should see the Selenium test runner.
+The north east frame contains all your test cases (just one for now), and
+the north frame contains your test case.
+
+</li>
+</ol>
+<h2>Todo</h2>
+<h3>user_extension.js</h3>
+<p>
+Selenium has support for <tt>user_extension.js</tt> which is a way to
+extend the functionality of Selenium. However there is currently no easy
+way to add such a file in Selenium on Rails.
+</p>
+<h3>Partials</h3>
+<p>
+It would be nice if common parts of test cases could be stored in partials.
+</p>
+<h3>More setup/teardown support?</h3>
+<p>
+Currently there is only support to load fixtures and to wipe the session in
+<tt>/selenium/setup</tt>. Is there a need for more kinds of setups or
+teardowns?
+</p>
+<h2>Credits</h2>
+<ul>
+<li>Jon Tirsen &#8212; initial <a
+href="http://wiki.rubyonrails.com/rails/pages/SeleniumIntegration">inspiration</a>
+
+</li>
+</ul>
+<h2>Contact</h2>
+<p>
+Jonas Bengtsson, jonas.b@home.se, <a
+href="http://andthennothing.net">andthennothing.net</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
