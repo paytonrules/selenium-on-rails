@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sun Feb 05 23:31:17 W. Europe Standard Time 2006</td>
+      <td>Sat Feb 18 23:25:14 W. Europe Standard Time 2006</td>
     </tr>
     </table>
   </div>
@@ -95,17 +95,15 @@ suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 
 </li>
 </ol>
-<p>
-Selenium on Rails is disabled for production environments.
-</p>
 <h2>Installation</h2>
 <ol>
 <li>Selenium needs to be available. It could either be installed as a gem
-(<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
+(<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt> (at the
+time of this writing the gem is quite old).
 
 </li>
-<li>Install Selenium on Rails: <tt>script/plugin install
-http://andthennothing.net/svn/public/selenium_on_rails/</tt>
+<li>Install Selenium on Rails: <tt>script/plugin install <a
+href="http://andthennothing.net/svn/public/selenium_on_rails">http://andthennothing.net/svn/public/selenium_on_rails</a>/</tt>
 
 </li>
 <li><em>If RedCloth is available the Selenese test cases can use it for better
@@ -120,11 +118,11 @@ tests will fail since they assume RedCloth is installed.)
 <li>Create a test case: <tt>script/generate selenium login</tt>
 
 </li>
-<li>Start the server: <tt>script/server</tt>
+<li>Start the server: <tt>script/server -e test</tt>
 
 </li>
-<li>Point your browser to <a
-href="http://localhost:3000/selenium">localhost:3000/selenium</a>
+<li>Point your browser to <tt><a
+href="http://localhost:3000/selenium">http://localhost:3000/selenium</a></tt>
 
 </li>
 <li>If everything works as expected you should see the Selenium test runner.
@@ -133,7 +131,92 @@ the north frame contains your test case.
 
 </li>
 </ol>
+<h3>win32-open3</h3>
+<p>
+<a href="http://raa.ruby-lang.org/project/win32-open3/">win32-open3</a> is
+needed if you want to run your tests as a Rake task (see
+<tt>test_acceptance</tt>), i.e. you don&#8217;t have to install it but
+it&#8217;s recommended.
+</p>
+<p>
+You can build it from source or install the binary:
+</p>
+<ol>
+<li>Download the latest version of win32-open3, <a
+href="http://rubyforge.org/frs/download.php/8515/open3-0.2.2.so">open3-0.2.2.so</a>
+at the time of this writing.
+
+</li>
+<li>Open up irb and run this snippet: <tt>require &#8216;rbconfig&#8217;;
+include Config; puts CONFIG[&#8216;sitearchdir&#8217;]</tt>
+
+</li>
+<li>Create a <tt>win32</tt> directory under the directory you got, e.g.
+c:\ruby\lib\ruby\site_ruby\1.8\i386-msvcrt
+
+</li>
+<li>Rename the .so file to <tt>open3.so</tt> and put it in the <tt>win32</tt> directory.
+
+</li>
+<li>Profit! (unless you get an error when doing <tt>require
+&#8216;win32/open3&#8216;</tt>)
+
+</li>
+</ol>
+<h2>Configuration</h2>
+<p>
+There are a number of settings available. You make them by renaming
+<tt>config.yml.example</tt> to <tt>config.yml</tt> and make your changes in
+that file.
+</p>
+<h3>Environments</h3>
+<p>
+Per default this plugin is only available in test environment. You can
+change this by setting <tt>environments</tt>, such as:
+</p>
+<pre>
+ #config.yml
+ environments:
+   - test
+   - development
+</pre>
+<h2><tt>test_acceptance</tt></h2>
+<p>
+You can run all your Selenium tests as a Rake task. This is however only
+available on Windows for the time being (it should be quite easy to get
+working on *nix, or Mac OS X, I&#8217;ll happily accept patches).
+</p>
+<p>
+First you have to make sure win32-open3 is installed. Then you have to
+configure which browsers you want to run, like this:
+</p>
+<pre>
+ #config.yml
+ browsers:
+   firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
+   ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
+</pre>
+<p>
+Now you&#8217;re all set. First start a server:
+</p>
+<pre>
+ script/server -e test
+</pre>
+<p>
+Then run the tests:
+</p>
+<pre>
+ rake test_acceptance
+</pre>
+<p>
+Now it should work, otherwise let me know!
+</p>
 <h2>Todo</h2>
+<h3>Standalone mode</h3>
+<p>
+More work is needed on <tt>test_acceptance</tt> to support more than
+Windows and to be able to start the server when needed.
+</p>
 <h3>user_extension.js</h3>
 <p>
 Selenium has support for <tt>user_extension.js</tt> which is a way to
@@ -149,6 +232,16 @@ It would be nice if common parts of test cases could be stored in partials.
 Currently there is only support to load fixtures and to wipe the session in
 <tt>/selenium/setup</tt>. Is there a need for more kinds of setups or
 teardowns?
+</p>
+<h2>Not todo</h2>
+<h3>Editor</h3>
+<p>
+Creating an editor for the test cases is currently considered out of scope
+for this plugin. <a
+href="http://www.openqa.org/selenium-ide/">SeleniumIDE</a> does such a good
+job and has <a
+href="http://wiki.openqa.org/display/SIDE/SeleniumOnRails">support</a> for
+the Selenese format.
 </p>
 <h2>Credits</h2>
 <ul>

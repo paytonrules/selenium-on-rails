@@ -1,10 +1,18 @@
-if ['development', 'test'].include? RAILS_ENV
-  $LOAD_PATH << File.expand_path(File.dirname(__FILE__) + "/lib/controllers")
+envs = SeleniumOnRailsConfig.get :environments
 
-  require File.join(File.dirname(__FILE__), 'routes.rb')
+if envs.include? RAILS_ENV
+  #initialize the plugin
+  $LOAD_PATH << File.dirname(__FILE__) + "/lib/controllers"
+
+  require File.dirname(__FILE__) + '/routes'
 
 else
   #erase all traces
   $LOAD_PATH.delete lib_path
+  
+  #but help user figure out what to do
+  unless RAILS_ENV == 'production' # don't pollute production
+    require File.dirname(__FILE__) + '/switch_environment/init'
+  end
 end
 

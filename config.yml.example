@@ -1,0 +1,21 @@
+# Rename this file to config.yml in order to configure the plugin
+
+#
+# General settings
+#
+
+environments:
+  - test
+#  - development # Uncomment this line to enable in development environment. N.B. your development database will likely be altered/destroyed/abducted
+
+
+#
+# Task settings
+#
+
+browsers:
+  firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
+  ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
+#port_start: 3000
+#port_end: 3005
+#max_browser_duration: 120

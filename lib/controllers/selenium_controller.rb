@@ -42,4 +42,13 @@ class SeleniumController < ActionController::Base
     end
   end
 
+  def record
+    @result = {}
+    for p in ['result', 'numTestFailures', 'numTestPasses', 'numCommandFailures', 'numCommandPasses', 'numCommandErrors', 'totalTime']
+      @result[p] = params[p]
+    end
+    File.open(log_path(params[:logFile] || 'default.yml'), 'w') {|f| YAML.dump(@result, f)}
+    
+    render :file => view_path('record.rhtml'), :layout => layout_path
+  end
 end

@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Module: SeleniumHelper</title>
+  <title>Class: SeleniumOnRailsConfig</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
   <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
@@ -49,19 +49,25 @@
     <div id="classHeader">
         <table class="header-table">
         <tr class="top-aligned-row">
-          <td><strong>Module</strong></td>
-          <td class="class-name-in-header">SeleniumHelper</td>
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">SeleniumOnRailsConfig</td>
         </tr>
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../files/lib/selenium_helper_rb.html">
-                lib/selenium_helper.rb
+                <a href="../files/lib/selenium_on_rails_config_rb.html">
+                lib/selenium_on_rails_config.rb
                 </a>
         <br />
             </td>
         </tr>
 
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
         </table>
     </div>
   <!-- banner header -->
@@ -80,7 +86,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000008">test_case_name</a>&nbsp;&nbsp;
+      <a href="#M000007">get</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -88,14 +94,6 @@
 
 
     <!-- if includes -->
-    <div id="includes">
-      <h3 class="section-bar">Included Modules</h3>
-
-      <div id="includes-list">
-        <span class="include-name"><a href="SeleniumOnRails/SuiteRenderer.html">SeleniumOnRails::SuiteRenderer</a></span>
-        <span class="include-name"><a href="SeleniumOnRails/FixtureLoader.html">SeleniumOnRails::FixtureLoader</a></span>
-      </div>
-    </div>
 
     <div id="section">
 
@@ -108,26 +106,30 @@
 
     <!-- if method_list -->
     <div id="methods">
-      <h3 class="section-bar">Public Instance methods</h3>
+      <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
-          <span class="method-name">test_case_name</span><span class="method-args">(filename)</span>
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">get</span><span class="method-args">(var, default = nil) {|if block_given?| ...}</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/selenium_helper.rb, line 5</span>
-5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_case_name</span> <span class="ruby-identifier">filename</span>
-6:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">/\..*/</span>,<span class="ruby-value str">''</span>).<span class="ruby-identifier">humanize</span>
-7:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails_config.rb, line 5</span>
+ 5:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span> <span class="ruby-identifier">var</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>
+ 6:     <span class="ruby-identifier">value</span> = <span class="ruby-identifier">configs</span>[<span class="ruby-identifier">var</span>.<span class="ruby-identifier">to_s</span>]
+ 7:     <span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@@defaults</span>[<span class="ruby-identifier">var</span>]
+ 8:     <span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default</span>
+ 9:     <span class="ruby-identifier">value</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+10:     <span class="ruby-identifier">value</span>
+11:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
