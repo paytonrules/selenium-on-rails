@@ -50,6 +50,6 @@ module SeleniumOnRails::SuiteRenderer
     end
     
     def skip_file? file
-      ['.','..','CVS'].include?(file) or file.starts_with?('.') or file.ends_with?('~') or file.starts_with?('_')
+      ['.','..','CVS'].include?(file.upcase) or file.starts_with?('.') or file.ends_with?('~') or file.starts_with?('_')
     end
 end
