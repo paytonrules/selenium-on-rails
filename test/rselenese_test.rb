@@ -57,6 +57,8 @@ END
   # Call _command_ with _args_ and make sure it produces a good table.
   # Specify _can_wait_ to test a version of the command with
   # <code>:wait</code>.
+  # If the command is an _assert_ command it is also checked to make sure that
+  # the corresponding _verify_ command works.
   def assert_command_works command, can_wait, *args
     values = args.map {|a| ARG_VALUE_MAP[a] }
     name = SeleniumOnRails::TestBuilder.selenize(command.to_s)
@@ -64,6 +66,9 @@ END
     if can_wait
       assert_generates_command(["#{name}AndWait"]+values,
                                command, *(values+[{:wait => true}]))
+    end
+    if command.to_s.starts_with? 'assert'
+      assert_command_works command.to_s.sub('assert', 'verify'), can_wait, *args
     end
   end
 
