@@ -6,7 +6,7 @@ Selenium on Rails provides an easy way to test Rails application with
 Selenium[http://www.openqa.org/selenium/].
 
 This plugin does four things:
-1. The Selenium files don't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium/javascript</tt>.
+1. The Selenium files don't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
 2. No need to create suite files, they are generated on the fly -- one suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 3. Instead of writing the test cases in HTML you can use a number of better formats (see <tt>Formats</tt>).
 4. Loading of fixtures and wiping of session (<tt>/selenium/setup</tt>).
@@ -24,9 +24,10 @@ This plugin does four things:
 
 === win32-open3
 
-win32-open3[http://raa.ruby-lang.org/project/win32-open3/] is needed if you want
-to run your tests as a Rake task (see <tt>test_acceptance</tt>), i.e. you don't
-have to install it but it's recommended.
+win32-open3[http://raa.ruby-lang.org/project/win32-open3/] is needed if you're
+on Windows and want to run your tests as a Rake task 
+(see <tt>test_acceptance</tt>), i.e. you don't have to install it but it's 
+recommended.
 
 You can build it from source or install the binary:
 
@@ -92,12 +93,10 @@ this by setting <tt>environments</tt>, such as:
 
 == <tt>test_acceptance</tt>
 
-You can run all your Selenium tests as a Rake task. This is however only 
-available on Windows for the time being (it should be quite easy to get working
-on Linux, or Mac OS X, I'll happily accept patches).
+You can run all your Selenium tests as a Rake task.
 
-First you have to make sure win32-open3 is installed. Then you have to configure
-which browsers you want to run, like this:
+First, if you're on Windows, you have to make sure win32-open3 is installed. 
+Then you have to configure which browsers you want to run, like this:
  
  #config.yml
  browsers:
@@ -118,8 +117,8 @@ Now it should work, otherwise let me know!
 
 === Standalone mode
 
-More work is needed on <tt>test_acceptance</tt> to support more than Windows
-and to be able to start the server when needed.
+More work is needed on <tt>test_acceptance</tt> to be able to start the server 
+when needed.
 
 === user_extension.js
 

@@ -8,6 +8,7 @@ environments:
   - test
 #  - development # Uncomment this line to enable in development environment. N.B. your development database will likely be altered/destroyed/abducted
 
+#selenium_path: 'c:\selenium' #path to selenium installation. only needed when selenium isn't installed in /vendor/selenium or as a gem
 
 #
 # Task settings

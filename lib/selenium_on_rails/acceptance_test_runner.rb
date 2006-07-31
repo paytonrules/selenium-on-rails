@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/paths'
 require File.dirname(__FILE__) + '/../selenium_on_rails_config'
 require 'net/http'
-require 'win32/open3' #win32-open3 http://raa.ruby-lang.org/project/win32-open3/
 
 
 def c(var, default = nil) SeleniumOnRailsConfig.get var, default end
@@ -91,22 +90,22 @@ module SeleniumOnRails
       def stop_server
         return unless defined? @server_pid
         puts
-        puts 'Stopping server...'
+        puts "Stopping server... (pid=#{@server_pid})"
         Process.kill 9, @server_pid
       end
     
       def start_browser browser, path
         puts
         puts "Starting #{browser}"
-        command = "\"#{path}\" http://localhost:#{@port}#{TEST_RUNNER_URL}?auto=true"
         log = log_file browser
-        command = "#{command}&resultsUrl=postResults/#{log}"
+        command = "\"#{path}\" \"http://localhost:#{@port}#{TEST_RUNNER_URL}?auto=true&resultsUrl=postResults/#{log}\""
         @browser_pid = start_subprocess command    
         log_path log
       end
     
       def stop_browser
         begin
+          puts "Stopping browser (pid=#{@browser_pid}) ..."
           Process.kill 9, @browser_pid
         rescue Errno::EPERM #such as the process is already closed (tabbed browser)
         end
@@ -146,4 +145,27 @@ module SeleniumOnRails
       end
     
   end
+end
+
+if RUBY_PLATFORM =~ /mswin/
+  
+  require 'win32/open3' #win32-open3 http://raa.ruby-lang.org/project/win32-open3/
+  
+  class SeleniumOnRails::AcceptanceTestRunner
+    def start_subprocess command
+      puts command
+      input, output, error, pid = Open4.popen4 command, 't', true
+      return pid
+    end
+  end
+  
+else
+  
+  class SeleniumOnRails::AcceptanceTestRunner
+    def start_subprocess(command)
+      puts command
+      fork { exec command }
+    end
+  end
+  
 end

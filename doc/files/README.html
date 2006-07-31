@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sun Feb 19 14:00:21 W. Europe Standard Time 2006</td>
+      <td>Thu Feb 23 21:49:11 W. Europe Standard Time 2006</td>
     </tr>
     </table>
   </div>
@@ -80,7 +80,7 @@ This plugin does four things:
 </p>
 <ol>
 <li>The Selenium files don&#8217;t have to pollute <tt>/public</tt>, they can
-stay in the Selenium gem or in <tt>/vendor/selenium/javascript</tt>.
+stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
 
 </li>
 <li>No need to create suite files, they are generated on the fly &#8212; one
@@ -134,8 +134,8 @@ the north frame contains your test case.
 <h3>win32-open3</h3>
 <p>
 <a href="http://raa.ruby-lang.org/project/win32-open3/">win32-open3</a> is
-needed if you want to run your tests as a Rake task (see
-<tt>test_acceptance</tt>), i.e. you don&#8217;t have to install it but
+needed if you&#8217;re on Windows and want to run your tests as a Rake task
+(see <tt>test_acceptance</tt>), i.e. you don&#8217;t have to install it but
 it&#8217;s recommended.
 </p>
 <p>
@@ -229,13 +229,12 @@ change this by setting <tt>environments</tt>, such as:
 </pre>
 <h2><tt>test_acceptance</tt></h2>
 <p>
-You can run all your Selenium tests as a Rake task. This is however only
-available on Windows for the time being (it should be quite easy to get
-working on Linux, or Mac OS X, I&#8217;ll happily accept patches).
+You can run all your Selenium tests as a Rake task.
 </p>
 <p>
-First you have to make sure win32-open3 is installed. Then you have to
-configure which browsers you want to run, like this:
+First, if you&#8217;re on Windows, you have to make sure win32-open3 is
+installed. Then you have to configure which browsers you want to run, like
+this:
 </p>
 <pre>
  #config.yml
@@ -261,8 +260,8 @@ Now it should work, otherwise let me know!
 <h2>Todo</h2>
 <h3>Standalone mode</h3>
 <p>
-More work is needed on <tt>test_acceptance</tt> to support more than
-Windows and to be able to start the server when needed.
+More work is needed on <tt>test_acceptance</tt> to be able to start the
+server when needed.
 </p>
 <h3>user_extension.js</h3>
 <p>
@@ -292,8 +291,8 @@ the Selenese format.
 </p>
 <h2>Credits</h2>
 <ul>
-<li>Jon Tirsen, <a href="http://jutpoia.tirsen.com">jutopia.tirsen.com</a> &#8212;
-initial <a
+<li>Jon Tirsen, <a href="http://jutopia.tirsen.com">jutopia.tirsen.com</a>
+&#8212; initial <a
 href="http://wiki.rubyonrails.com/rails/pages/SeleniumIntegration">inspiration</a>
 
 </li>
