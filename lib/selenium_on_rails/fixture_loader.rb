@@ -4,8 +4,8 @@ module SeleniumOnRails::FixtureLoader
   include SeleniumOnRails::Paths
   
   def available_fixtures
-    files = Dir.entries(fixtures_path).reject {|f| not File.file?(File.join(fixtures_path, f))}
-    files.collect {|f| f.sub(/\.[^.]*$/, '')}
+    files = Dir["#{fixtures_path}/*.{yml,csv}"]
+    files.collect {|f| File.basename(f).sub(/\.[^.]*$/, '')}
   end
 
   def load_fixtures fixtures

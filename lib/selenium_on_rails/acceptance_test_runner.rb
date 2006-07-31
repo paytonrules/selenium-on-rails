@@ -30,12 +30,15 @@ module SeleniumOnRails
     def run
       raise 'no browser specified, edit/create config.yml' if BROWSERS.empty?
       start_server
+      has_error = false
       begin
         BROWSERS.each_pair do |browser, path|
           log_file = start_browser browser, path
           wait_for_completion log_file
           stop_browser
-          print_result log_file
+          result = YAML::load_file log_file
+          print_result result
+          has_error ||= result['numTestFailures'].to_i > 0
           File.delete log_file
         end
       rescue
@@ -43,6 +46,7 @@ module SeleniumOnRails
         raise
       end
       stop_server
+      raise 'Test failures' if has_error
     end
     
     private
@@ -138,8 +142,7 @@ module SeleniumOnRails
         puts
       end
     
-      def print_result log_file
-        result = YAML::load_file log_file
+      def print_result result
         puts "Finished in #{result['totalTime']} seconds."
         puts
         puts "#{result['numTestPasses']} tests passed, #{result['numTestFailures']} tests failed"
@@ -187,7 +190,7 @@ end
 # The path to Safari should look like this: /Applications/Safari.app
 class SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess
   def initialize command
-    command = "open -a #{command}"
+    command = "open -a Safari #{command.split[1]}"
     puts command
     fork { exec command }
   end

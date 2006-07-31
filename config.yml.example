@@ -18,8 +18,6 @@ browsers:
   firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
   ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
 
-# for Safari use /Applications/Safari.app or similar
-
 #port_start: 3000
 #port_end: 3005
 #max_browser_duration: 120
