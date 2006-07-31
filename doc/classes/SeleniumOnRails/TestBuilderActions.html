@@ -55,8 +55,8 @@
         <tr class="top-aligned-row">
             <td><strong>In:</strong></td>
             <td>
-                <a href="../../files/lib/selenium_on_rails/test_builder_rb.html">
-                lib/selenium_on_rails/test_builder.rb
+                <a href="../../files/lib/selenium_on_rails/test_builder_actions_rb.html">
+                lib/selenium_on_rails/test_builder_actions.rb
                 </a>
         <br />
             </td>
@@ -77,6 +77,10 @@
 The actions available for <a
 href="TestBuilder.html">SeleniumOnRails::TestBuilder</a> tests.
 </p>
+<p>
+For each action <tt>foo</tt> there&#8217;s also an action
+<tt>foo_and_wait</tt>.
+</p>
 
     </div>
 
@@ -87,24 +91,34 @@ href="TestBuilder.html">SeleniumOnRails::TestBuilder</a> tests.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000064">answer_on_next_prompt</a>&nbsp;&nbsp;
-      <a href="#M000063">choose_cancel_on_next_confirmation</a>&nbsp;&nbsp;
-      <a href="#M000050">click</a>&nbsp;&nbsp;
-      <a href="#M000055">close</a>&nbsp;&nbsp;
-      <a href="#M000057">fire_event</a>&nbsp;&nbsp;
-      <a href="#M000054">go_back</a>&nbsp;&nbsp;
-      <a href="#M000048">include_partial</a>&nbsp;&nbsp;
-      <a href="#M000049">open</a>&nbsp;&nbsp;
-      <a href="#M000056">pause</a>&nbsp;&nbsp;
-      <a href="#M000052">select</a>&nbsp;&nbsp;
-      <a href="#M000053">select_window</a>&nbsp;&nbsp;
-      <a href="#M000047">setup</a>&nbsp;&nbsp;
-      <a href="#M000059">store</a>&nbsp;&nbsp;
-      <a href="#M000062">store_attribute</a>&nbsp;&nbsp;
-      <a href="#M000061">store_text</a>&nbsp;&nbsp;
-      <a href="#M000060">store_value</a>&nbsp;&nbsp;
-      <a href="#M000051">type</a>&nbsp;&nbsp;
-      <a href="#M000058">wait_for_value</a>&nbsp;&nbsp;
+      <a href="#M000022">add_selection</a>&nbsp;&nbsp;
+      <a href="#M000029">answer_on_next_prompt</a>&nbsp;&nbsp;
+      <a href="#M000019">check</a>&nbsp;&nbsp;
+      <a href="#M000028">choose_cancel_on_next_confirmation</a>&nbsp;&nbsp;
+      <a href="#M000011">click</a>&nbsp;&nbsp;
+      <a href="#M000032">close</a>&nbsp;&nbsp;
+      <a href="#M000012">fire_event</a>&nbsp;&nbsp;
+      <a href="#M000030">go_back</a>&nbsp;&nbsp;
+      <a href="#M000010">include_partial</a>&nbsp;&nbsp;
+      <a href="#M000014">key_down</a>&nbsp;&nbsp;
+      <a href="#M000013">key_press</a>&nbsp;&nbsp;
+      <a href="#M000015">key_up</a>&nbsp;&nbsp;
+      <a href="#M000017">mouse_down</a>&nbsp;&nbsp;
+      <a href="#M000016">mouse_over</a>&nbsp;&nbsp;
+      <a href="#M000025">open</a>&nbsp;&nbsp;
+      <a href="#M000031">refresh</a>&nbsp;&nbsp;
+      <a href="#M000023">remove_selection</a>&nbsp;&nbsp;
+      <a href="#M000021">select</a>&nbsp;&nbsp;
+      <a href="#M000026">select_window</a>&nbsp;&nbsp;
+      <a href="#M000033">set_context</a>&nbsp;&nbsp;
+      <a href="#M000035">set_timeout</a>&nbsp;&nbsp;
+      <a href="#M000009">setup</a>&nbsp;&nbsp;
+      <a href="#M000024">submit</a>&nbsp;&nbsp;
+      <a href="#M000018">type</a>&nbsp;&nbsp;
+      <a href="#M000020">uncheck</a>&nbsp;&nbsp;
+      <a href="#M000034">wait_for_condition</a>&nbsp;&nbsp;
+      <a href="#M000036">wait_for_page_to_load</a>&nbsp;&nbsp;
+      <a href="#M000027">wait_for_popup</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -126,172 +140,233 @@ href="TestBuilder.html">SeleniumOnRails::TestBuilder</a> tests.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000064" class="method-detail">
-        <a name="M000064"></a>
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
 
         <div class="method-heading">
-          <a href="#M000064" class="method-signature">
-          <span class="method-name">answer_on_next_prompt</span><span class="method-args">(answer_string)</span>
+          <a href="#M000022" class="method-signature">
+          <span class="method-name">add_selection</span><span class="method-args">(locator, option_locator)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Tell Selenium how to answer the next JavaScript prompt.
+Add a selection to the set of selected options in a multi-select element
+using an option locator.
+</p>
+<p>
+See the <tt><a href="TestBuilderActions.html#M000021">select</a></tt>
+command for more information about option locators.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000064-source">
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 126</span>
-126:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">answer_on_next_prompt</span> <span class="ruby-identifier">answer_string</span>
-127:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'answerOnNextPrompt'</span>, <span class="ruby-identifier">answer_string</span>
-128:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 139</span>
+139:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_selection</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">option_locator</span>
+140:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'addSelection'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">option_locator</span>
+141:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000063" class="method-detail">
-        <a name="M000063"></a>
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
 
         <div class="method-heading">
-          <a href="#M000063" class="method-signature">
+          <a href="#M000029" class="method-signature">
+          <span class="method-name">answer_on_next_prompt</span><span class="method-args">(answer)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Instructs Selenium to return the specified answer string in response to the
+next JavaScript prompt (<tt>window.prompt()</tt>).
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000029-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 190</span>
+190:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">answer_on_next_prompt</span> <span class="ruby-identifier">answer</span>
+191:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'answerOnNextPrompt'</span>, <span class="ruby-identifier">answer</span>
+192:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="#M000019" class="method-signature">
+          <span class="method-name">check</span><span class="method-args">(locator)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Check a toggle-button (checkbox/radio).
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 99</span>
+ 99:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check</span> <span class="ruby-identifier">locator</span>
+100:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'check'</span>, <span class="ruby-identifier">locator</span>
+101:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="#M000028" class="method-signature">
           <span class="method-name">choose_cancel_on_next_confirmation</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Tell Selenium to select &quot;Cancel&quot; the next time a confirmation
-dialog appears.
+By default, Selenium&#8217;s overridden <tt>window.confirm()</tt> function
+will return <tt>true</tt>, as if the user had manually clicked OK. After
+running this command, the next call to <tt>confirm()</tt> will return
+<tt>false</tt>, as if the user had clicked Cancel.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000063-source">
+            onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000028-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 121</span>
-121:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">choose_cancel_on_next_confirmation</span>
-122:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'chooseCancelOnNextConfirmation'</span>
-123:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 184</span>
+184:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">choose_cancel_on_next_confirmation</span>
+185:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'chooseCancelOnNextConfirmation'</span>
+186:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000050" class="method-detail">
-        <a name="M000050"></a>
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
 
         <div class="method-heading">
-          <a href="#M000050" class="method-signature">
-          <span class="method-name">click</span><span class="method-args">(element_locator, options={})</span>
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">click</span><span class="method-args">(locator)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Click on the specified element. Supports a <tt>:wait =&gt; true</tt>
-option.
+Clicks on a link, button, checkbox or radio button. If the click action
+causes a new page to load (like a link usually does), call <tt><a
+href="TestBuilderActions.html#M000036">wait_for_page_to_load</a></tt>.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000050-source">
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 48</span>
-48:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">click</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">options</span>={}
-49:     <span class="ruby-identifier">command</span> <span class="ruby-identifier">name_with_optional_wait</span>(<span class="ruby-value str">'click'</span>, <span class="ruby-identifier">options</span>), <span class="ruby-identifier">element_locator</span>
-50:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">click</span> <span class="ruby-identifier">locator</span>
+45:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'click'</span>, <span class="ruby-identifier">locator</span>
+46:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000055" class="method-detail">
-        <a name="M000055"></a>
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
 
         <div class="method-heading">
-          <a href="#M000055" class="method-signature">
+          <a href="#M000032" class="method-signature">
           <span class="method-name">close</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Close the current window.
+Simulates the user clicking the &quot;close&quot; button in the titlebar of
+a popup window or tab.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000055-source">
+            onclick="toggleCode('M000032-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000032-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 78</span>
-78:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
-79:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'close'</span>
-80:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 206</span>
+206:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+207:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'close'</span>
+208:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000057" class="method-detail">
-        <a name="M000057"></a>
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
 
         <div class="method-heading">
-          <a href="#M000057" class="method-signature">
-          <span class="method-name">fire_event</span><span class="method-args">(element_locator, event_name)</span>
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">fire_event</span><span class="method-args">(locator, event_name)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Send an event to an element.
+Explicitly simulate an event (e.g. <tt>&quot;focus&quot;</tt>,
+<tt>&quot;blur&quot;</tt>), to trigger the corresponding
+<tt>&quot;on_event_&quot;</tt> handler.
 </p>
-<pre>
-  fire_event 'password', 'focus'
-</pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000057-source">
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 89</span>
-89:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fire_event</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">event_name</span>
-90:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'fireEvent'</span>, <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">event_name</span>
-91:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 50</span>
+50:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fire_event</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">event_name</span>
+51:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'fireEvent'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">event_name</span>
+52:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000054" class="method-detail">
-        <a name="M000054"></a>
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
 
         <div class="method-heading">
-          <a href="#M000054" class="method-signature">
+          <a href="#M000030" class="method-signature">
           <span class="method-name">go_back</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Simulate selecting the &quot;Back&quot; button.
+Simulates the user clicking the &quot;back&quot; button on their browser.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000054-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000054-source">
+            onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000030-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 73</span>
-73:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">go_back</span>
-74:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'goBack'</span>
-75:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 195</span>
+195:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">go_back</span>
+196:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'goBack'</span>
+197:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000048" class="method-detail">
-        <a name="M000048"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000048" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">include_partial</span><span class="method-args">(path, local_assigns = {})</span>
           </a>
         </div>
@@ -299,7 +374,7 @@ Simulate selecting the &quot;Back&quot; button.
         <div class="method-description">
           <p>
 Includes a partial. The path is relative to the Selenium tests root. The
-starting _ and the file extension doesn&#8217;t have to be specified.
+starting _ and the file extension don&#8217;t have to be specified.
 </p>
 <pre>
   #include test/selenium/_partial.*
@@ -310,137 +385,422 @@ starting _ and the file extension doesn&#8217;t have to be specified.
   include_partial 'suite/partial', :foo =&gt; bar
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000048-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 33</span>
-33:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include_partial</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">local_assigns</span> = {}
-34:     <span class="ruby-identifier">partial</span> = <span class="ruby-ivar">@view</span>.<span class="ruby-identifier">render</span> <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">:locals</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">local_assigns</span>
-35:     <span class="ruby-ivar">@output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">partial</span>
-36:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include_partial</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">local_assigns</span> = {}
+37:     <span class="ruby-identifier">partial</span> = <span class="ruby-ivar">@view</span>.<span class="ruby-identifier">render</span> <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">:locals</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">local_assigns</span>
+38:     <span class="ruby-ivar">@output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">partial</span>
+39:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000049" class="method-detail">
-        <a name="M000049"></a>
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
 
         <div class="method-heading">
-          <a href="#M000049" class="method-signature">
+          <a href="#M000014" class="method-signature">
+          <span class="method-name">key_down</span><span class="method-args">(locator, keycode)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Simulates a user pressing a key (without releasing it yet).
+</p>
+<p>
+<tt>keycode</tt> is the numeric keycode of the key to be pressed, normally
+the ASCII value of that key.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_down</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">keycode</span>
+67:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'keyDown'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">keycode</span>
+68:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">key_press</span><span class="method-args">(locator, keycode)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Simulates a user pressing and releasing a key.
+</p>
+<p>
+<tt>keycode</tt> is the numeric keycode of the key to be pressed, normally
+the ASCII value of that key.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 58</span>
+58:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_press</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">keycode</span>
+59:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'keyPress'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">keycode</span>
+60:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="#M000015" class="method-signature">
+          <span class="method-name">key_up</span><span class="method-args">(locator, keycode)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Simulates a user releasing a key.
+</p>
+<p>
+<tt>keycode</tt> is the numeric keycode of the key to be released, normally
+the ASCII value of that key.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 74</span>
+74:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_up</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">keycode</span>
+75:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'keyUp'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">keycode</span>
+76:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">mouse_down</span><span class="method-args">(locator)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Simulates a user pressing the mouse button (without releasing it yet) on
+the specified element.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 85</span>
+85:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mouse_down</span> <span class="ruby-identifier">locator</span>
+86:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'mouseDown'</span>, <span class="ruby-identifier">locator</span>
+87:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">mouse_over</span><span class="method-args">(locator)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Simulates a user hovering a mouse over the specified element.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 79</span>
+79:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mouse_over</span> <span class="ruby-identifier">locator</span>
+80:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'mouseOver'</span>, <span class="ruby-identifier">locator</span>
+81:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="#M000025" class="method-signature">
           <span class="method-name">open</span><span class="method-args">(url)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Open the page specified by <tt>url</tt> and wait. The <tt>url</tt> may
-either by a string, or arguments suitable for
-<tt>ActionView::UrlHelper#url_for</tt>.
+Opens an URL in the test frame. This accepts both relative and absolute
+URLs. The <tt>open</tt> command waits for the page to load before
+proceeding, i.e. you don&#8217;t have to call <tt><a
+href="TestBuilderActions.html#M000036">wait_for_page_to_load</a></tt>.
 </p>
-<pre>
-  open '/'
-  open :controller =&gt; 'customer', :action =&gt; 'list'
-</pre>
+<p>
+Note: The URL must be on the same domain as the runner HTML due to security
+restrictions in the browser (Same Origin Policy).
+</p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000049-source">
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 42</span>
-42:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span> <span class="ruby-identifier">url</span>
-43:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'open'</span>, <span class="ruby-identifier">url_arg</span>(<span class="ruby-identifier">url</span>)
-44:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 163</span>
+163:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span> <span class="ruby-identifier">url</span>
+164:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'open'</span>, <span class="ruby-identifier">url_arg</span>(<span class="ruby-identifier">url</span>)
+165:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000056" class="method-detail">
-        <a name="M000056"></a>
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
 
         <div class="method-heading">
-          <a href="#M000056" class="method-signature">
-          <span class="method-name">pause</span><span class="method-args">(milliseconds)</span>
+          <a href="#M000031" class="method-signature">
+          <span class="method-name">refresh</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Wait for <tt>milliseconds</tt>.
+Simulates the user clicking the &quot;Refresh&quot; button on their
+browser.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000056-source">
+            onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000031-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 83</span>
-83:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pause</span> <span class="ruby-identifier">milliseconds</span>
-84:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'pause'</span>, <span class="ruby-identifier">milliseconds</span>
-85:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 200</span>
+200:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">refresh</span>
+201:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'refresh'</span>
+202:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000052" class="method-detail">
-        <a name="M000052"></a>
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
 
         <div class="method-heading">
-          <a href="#M000052" class="method-signature">
-          <span class="method-name">select</span><span class="method-args">(drop_down_locator, option_specifier, options={})</span>
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">remove_selection</span><span class="method-args">(locator, option_locator)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Select an option from a <tt>select</tt> menu. Supports a <tt>:wait =&gt;
-true</tt> option.
+Remove a selection from the set of selected options in a multi-select
+element using an option locator.
+</p>
+<p>
+See the <tt>select</tt> command for more information about option locators.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000052-source">
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 61</span>
-61:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span> <span class="ruby-identifier">drop_down_locator</span>, <span class="ruby-identifier">option_specifier</span>, <span class="ruby-identifier">options</span>={}
-62:     <span class="ruby-identifier">command</span>(<span class="ruby-identifier">name_with_optional_wait</span>(<span class="ruby-value str">'select'</span>, <span class="ruby-identifier">options</span>), <span class="ruby-identifier">drop_down_locator</span>,
-63:             <span class="ruby-identifier">option_specifier</span>)
-64:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 147</span>
+147:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_selection</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">option_locator</span>
+148:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'removeSelection'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">option_locator</span>
+149:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000053" class="method-detail">
-        <a name="M000053"></a>
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
 
         <div class="method-heading">
-          <a href="#M000053" class="method-signature">
+          <a href="#M000021" class="method-signature">
+          <span class="method-name">select</span><span class="method-args">(locator, option_locator)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Select an option from a drop-down using an option locator.
+</p>
+<p>
+Option locators provide different ways of specifying options of an HTML
+Select element (e.g. for selecting a specific option, or for asserting that
+the selected option satisfies a specification). There are several forms of
+Select Option Locator.
+</p>
+<ul>
+<li>label=labelPattern matches options based on their labels, i.e. the visible
+text. (This is the default.)
+
+<pre>
+  label=regexp:^[Oo]ther
+</pre>
+</li>
+<li>value=valuePattern matches options based on their values.
+
+<pre>
+  value=other
+</pre>
+</li>
+<li>id=id matches options based on their ids.
+
+<pre>
+  id=option1
+</pre>
+</li>
+<li>index=index matches an option based on its index (offset from zero).
+
+<pre>
+  index=2
+</pre>
+</li>
+</ul>
+<p>
+If no option locator prefix is provided, the default behaviour is to match
+on label.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 131</span>
+131:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">option_locator</span>
+132:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'select'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">option_locator</span>
+133:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="#M000026" class="method-signature">
           <span class="method-name">select_window</span><span class="method-args">(window_id)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Select a popup window by name, and send further commands to it. If
-<tt>window_id</tt> is <tt>nil</tt>, select the main window.
+Selects a popup window; once a popup window has been selected, all commands
+go to that window. To select the main window again, use <tt>nil</tt> as the
+target.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000053-source">
+            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000026-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 68</span>
-68:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_window</span> <span class="ruby-identifier">window_id</span>
-69:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'selectWindow'</span>, <span class="ruby-identifier">window_id</span><span class="ruby-operator">||</span><span class="ruby-value str">'null'</span>
-70:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 169</span>
+169:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select_window</span> <span class="ruby-identifier">window_id</span>
+170:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'selectWindow'</span>, <span class="ruby-identifier">window_id</span><span class="ruby-operator">||</span><span class="ruby-value str">'null'</span>
+171:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000047" class="method-detail">
-        <a name="M000047"></a>
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
 
         <div class="method-heading">
-          <a href="#M000047" class="method-signature">
+          <a href="#M000033" class="method-signature">
+          <span class="method-name">set_context</span><span class="method-args">(context, log_level_threshold = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Writes a message to the status bar and adds a note to the browser-side log.
+</p>
+<p>
+<tt>context</tt> is the message sent to the browser.
+</p>
+<p>
+<tt>log_level_threshold</tt> can be <tt>nil</tt>, <tt>:debug</tt>,
+<tt>:info</tt>, <tt>:warn</tt> or <tt>:error</tt>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000033-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 216</span>
+216:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_context</span> <span class="ruby-identifier">context</span>, <span class="ruby-identifier">log_level_threshold</span> = <span class="ruby-keyword kw">nil</span>
+217:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">log_level_threshold</span>
+218:       <span class="ruby-identifier">command</span> <span class="ruby-value str">'setContext'</span>, <span class="ruby-identifier">context</span>, <span class="ruby-identifier">log_level_threshold</span>.<span class="ruby-identifier">to_s</span>
+219:     <span class="ruby-keyword kw">else</span>
+220:       <span class="ruby-identifier">command</span> <span class="ruby-value str">'setContext'</span>, <span class="ruby-identifier">context</span>
+221:     <span class="ruby-keyword kw">end</span>
+222:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="#M000035" class="method-signature">
+          <span class="method-name">set_timeout</span><span class="method-args">(timeout)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Specifies the amount of time that Selenium will wait for actions to
+complete.
+</p>
+<p>
+Actions that require waiting include <tt>open</tt> and the
+<tt>wait_for*</tt> actions.
+</p>
+<p>
+The default timeout is 30 seconds.
+</p>
+<p>
+<tt>timeout</tt> is specified in milliseconds.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000035-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 248</span>
+248:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_timeout</span> <span class="ruby-identifier">timeout</span>
+249:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'setTimeout'</span>, <span class="ruby-identifier">timeout</span>
+250:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
           <span class="method-name">setup</span><span class="method-args">(options = {})</span>
           </a>
         </div>
@@ -458,182 +818,215 @@ CALL THIS AGAINST NON-TEST DATABASES. The supported <tt>options</tt> are
   setup :keep_session, :fixtures =&gt; [:foo, :bar]
 </pre>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000047-source">
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 10</span>
-10:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span> <span class="ruby-identifier">options</span> = {}
-11:     <span class="ruby-identifier">options</span> = {<span class="ruby-identifier">options</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
-12:     
-13:     <span class="ruby-identifier">opts</span> = {<span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'selenium'</span>, <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'setup'</span>}
-14:     <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:keep_session</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">:keep_session</span>
-15:     
-16:     <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">f</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:fixtures</span>])
-17:       <span class="ruby-identifier">f</span> = [<span class="ruby-identifier">f</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
-18:       <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:fixtures</span>] = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">join</span> <span class="ruby-value str">','</span>
-19:     <span class="ruby-keyword kw">end</span>
-20: 
-21:     <span class="ruby-identifier">open</span> <span class="ruby-identifier">opts</span>
-22:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 13</span>
+13:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span> <span class="ruby-identifier">options</span> = {}
+14:     <span class="ruby-identifier">options</span> = {<span class="ruby-identifier">options</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+15: 
+16:     <span class="ruby-identifier">opts</span> = {<span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'selenium'</span>, <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'setup'</span>}
+17:     <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:keep_session</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">:keep_session</span>
+18: 
+19:     <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">f</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:fixtures</span>])
+20:       <span class="ruby-identifier">f</span> = [<span class="ruby-identifier">f</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
+21:       <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:fixtures</span>] = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">join</span> <span class="ruby-value str">','</span>
+22:     <span class="ruby-keyword kw">end</span>
+23: 
+24:     <span class="ruby-identifier">open</span> <span class="ruby-identifier">opts</span>
+25:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000059" class="method-detail">
-        <a name="M000059"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000059" class="method-signature">
-          <span class="method-name">store</span><span class="method-args">(value_to_store, variable_name)</span>
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">submit</span><span class="method-args">(locator)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Store a value into a Selenium value.
+Submit the specified form. This is particularly useful for forms without
+submit buttons, e.g. single-input &quot;Search&quot; forms.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000059-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 99</span>
- 99:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span> <span class="ruby-identifier">value_to_store</span>, <span class="ruby-identifier">variable_name</span>
-100:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'store'</span>, <span class="ruby-identifier">value_to_store</span>, <span class="ruby-identifier">variable_name</span>
-101:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 153</span>
+153:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">submit</span> <span class="ruby-identifier">locator</span>
+154:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'submit'</span>, <span class="ruby-identifier">locator</span>
+155:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000062" class="method-detail">
-        <a name="M000062"></a>
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
 
         <div class="method-heading">
-          <a href="#M000062" class="method-signature">
-          <span class="method-name">store_attribute</span><span class="method-args">(element_locator, attribute_name, variable_name)</span>
+          <a href="#M000018" class="method-signature">
+          <span class="method-name">type</span><span class="method-args">(locator, value)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Store the value of an attribute into a Selenium variable.
+Sets the value of an input field, as though you typed it in.
+</p>
+<p>
+Can also be used to set the value of combo boxes, check boxes, etc. In
+these cases, <tt>value</tt> should be the value of the option selected, not
+the visible text.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000062-source">
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 114</span>
-114:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_attribute</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">variable_name</span>
-115:     <span class="ruby-identifier">command</span>(<span class="ruby-value str">'storeAttribute'</span>, <span class="ruby-node">&quot;#{element_locator}@#{attribute_name}&quot;</span>,
-116:             <span class="ruby-identifier">variable_name</span>)
-117:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 94</span>
+94:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">type</span> <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">value</span>
+95:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'type'</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">value</span>
+96:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000061" class="method-detail">
-        <a name="M000061"></a>
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
 
         <div class="method-heading">
-          <a href="#M000061" class="method-signature">
-          <span class="method-name">store_text</span><span class="method-args">(element_locator, variable_name)</span>
+          <a href="#M000020" class="method-signature">
+          <span class="method-name">uncheck</span><span class="method-args">(locator)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Store the text of an element into a Selenium variable.
+Uncheck a toggle-button (checkbox/radio).
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000061-source">
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 109</span>
-109:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_text</span> <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">variable_name</span>
-110:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'storeText'</span>, <span class="ruby-identifier">element_locator</span>, <span class="ruby-identifier">variable_name</span>
-111:   <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000060" class="method-detail">
-        <a name="M000060"></a>
-
-        <div class="method-heading">
-          <a href="#M000060" class="method-signature">
-          <span class="method-name">store_value</span><span class="method-args">(input_locator, variable_name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-Store the value of an input field into a Selenium variable.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000060-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 104</span>
-104:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_value</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">variable_name</span>
-105:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'storeValue'</span>, <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">variable_name</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 104</span>
+104:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uncheck</span> <span class="ruby-identifier">locator</span>
+105:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'uncheck'</span>, <span class="ruby-identifier">locator</span>
 106:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000051" class="method-detail">
-        <a name="M000051"></a>
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
 
         <div class="method-heading">
-          <a href="#M000051" class="method-signature">
-          <span class="method-name">type</span><span class="method-args">(input_locator, value, options={})</span>
+          <a href="#M000034" class="method-signature">
+          <span class="method-name">wait_for_condition</span><span class="method-args">(script, timeout)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Type <tt>value</tt> into the specified element. Supports a <tt>:wait =&gt;
-true</tt> option, which is useful if typing into the field causes another
-page to be loaded.
+Runs the specified JavaScript snippet repeatedly until it evaluates to
+<tt>true</tt>. The snippet may have multiple lines, but only the result of
+the last line will be considered.
+</p>
+<p>
+Note that, by default, the snippet will be run in the runner&#8217;s test
+window, not in the window of your application. To get the window of your
+application, you can use the JavaScript snippet
+<tt>selenium.browserbot.getCurrentWindow()</tt>, and then run your
+JavaScript in there.
+</p>
+<p>
+<tt>timeout</tt> is specified in milliseconds.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000051-source">
+            onclick="toggleCode('M000034-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000034-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 55</span>
-55:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">type</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">options</span>={}
-56:     <span class="ruby-identifier">command</span> <span class="ruby-identifier">name_with_optional_wait</span>(<span class="ruby-value str">'type'</span>, <span class="ruby-identifier">options</span>), <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value</span>
-57:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 235</span>
+235:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_condition</span> <span class="ruby-identifier">script</span>, <span class="ruby-identifier">timeout</span>
+236:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'waitForCondition'</span>, <span class="ruby-identifier">script</span>, <span class="ruby-identifier">timeout</span>
+237:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000058" class="method-detail">
-        <a name="M000058"></a>
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
 
         <div class="method-heading">
-          <a href="#M000058" class="method-signature">
-          <span class="method-name">wait_for_value</span><span class="method-args">(input_locator, value)</span>
+          <a href="#M000036" class="method-signature">
+          <span class="method-name">wait_for_page_to_load</span><span class="method-args">(timeout)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Wait for an input field to have the specified value.
+Waits for a new page to load.
+</p>
+<p>
+You can use this command instead of the <tt>and_wait</tt> suffixes,
+<tt>click_and_wait</tt>, <tt>select_and_wait</tt>, <tt>type_and_wait</tt>
+etc. (which are only available in the JS API).
+</p>
+<p>
+Selenium constantly keeps track of new pages loading, and sets a
+<tt>newPageLoaded</tt> flag when it first notices a page load. Running any
+other Selenium command after turns the flag to <tt>false</tt>. Hence, if
+you want to wait for a page to load, you must wait immediately after a
+Selenium command that caused a page-load.
+</p>
+<p>
+<tt>timeout</tt> is specified in milliseconds.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000058-source">
+            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000036-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 94</span>
-94:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_value</span> <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value</span>
-95:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'waitForValue'</span>, <span class="ruby-identifier">input_locator</span>, <span class="ruby-identifier">value</span>
-96:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 265</span>
+265:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_page_to_load</span> <span class="ruby-identifier">timeout</span>
+266:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'waitForPageToLoad'</span>, <span class="ruby-identifier">timeout</span>
+267:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="#M000027" class="method-signature">
+          <span class="method-name">wait_for_popup</span><span class="method-args">(window_id, timeout)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Waits for a popup window to appear and load up.
+</p>
+<p>
+The <tt>timeout</tt> is specified in milliseconds.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder_actions.rb, line 176</span>
+176:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait_for_popup</span> <span class="ruby-identifier">window_id</span>, <span class="ruby-identifier">timeout</span>
+177:     <span class="ruby-identifier">command</span> <span class="ruby-value str">'waitForPopUp'</span>, <span class="ruby-identifier">window_id</span><span class="ruby-operator">||</span><span class="ruby-value str">'null'</span>, <span class="ruby-identifier">timeout</span>
+178:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

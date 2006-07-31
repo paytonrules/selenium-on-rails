@@ -33,15 +33,17 @@ module SeleniumOnRails
     private
       def find_selenium_path
         # with checked out selenium
-        selenium_path = SeleniumOnRailsConfig.get :selenium_path, File.expand_path(File.join(RAILS_ROOT, 'vendor/selenium'))
-        ['', 'core', 'selenium', 'javascript'].each do |subdir|
-          vendor_selenium = File.join selenium_path, subdir
-          return vendor_selenium if File.exist?(File.join(vendor_selenium, 'TestRunner.html'))
+        ['selenium', 'selenium-core'].each do |seleniumdir|
+          selenium_path = SeleniumOnRailsConfig.get :selenium_path, File.expand_path(File.join(RAILS_ROOT, "vendor/#{seleniumdir}"))
+          ['', 'core', 'selenium', 'javascript'].each do |subdir|
+            vendor_selenium = File.join selenium_path, subdir
+            return vendor_selenium if File.exist?(File.join(vendor_selenium, 'TestRunner.html'))
+          end
         end
         
         # installed selenium gem	
         gems = Gem.source_index.find_name 'selenium', nil
-        raise 'could not find selenium installation' if gems.empty?
+        raise 'Could not find Selenium Core installation' if gems.empty?
         File.join gems[0].full_gem_path, 'javascript'
       end
        

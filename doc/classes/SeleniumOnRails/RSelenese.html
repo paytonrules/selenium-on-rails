@@ -192,10 +192,10 @@ Render <em>template</em> using <em>local_assigns</em>.
 24:     <span class="ruby-identifier">title</span> = (<span class="ruby-ivar">@view</span>.<span class="ruby-identifier">assigns</span>[<span class="ruby-value str">'page_title'</span>] <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">local_assigns</span>[<span class="ruby-value str">'page_title'</span>])
 25:     <span class="ruby-identifier">table</span>(<span class="ruby-identifier">title</span>) <span class="ruby-keyword kw">do</span>
 26:       <span class="ruby-identifier">test</span> = <span class="ruby-keyword kw">self</span> <span class="ruby-comment cmt">#to enable test.command</span>
-27:       
+27: 
 28:       <span class="ruby-identifier">assign_locals_code</span> = <span class="ruby-value str">''</span>
 29:       <span class="ruby-identifier">local_assigns</span>.<span class="ruby-identifier">each_key</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assign_locals_code</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{key} = local_assigns[#{key.inspect}];&quot;</span>}
-30:       
+30: 
 31:       <span class="ruby-identifier">eval</span> <span class="ruby-identifier">assign_locals_code</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">template</span>
 32:     <span class="ruby-keyword kw">end</span>
 33:   <span class="ruby-keyword kw">end</span>

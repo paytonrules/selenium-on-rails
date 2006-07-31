@@ -87,14 +87,14 @@ invoked through <a href="RSelenese.html">SeleniumOnRails::RSelenese</a>.
 See <a
 href="TestBuilderActions.html">SeleniumOnRails::TestBuilderActions</a> for
 the available actions and <a
-href="TestBuilderChecks.html">SeleniumOnRails::TestBuilderChecks</a> for
-the available checks.
+href="TestBuilderAccessors.html">SeleniumOnRails::TestBuilderAccessors</a>
+for the available checks.
 </p>
 <p>
 For more information on the commands supported by <a
 href="TestBuilder.html">TestBuilder</a>, see the Selenium Commands
 Documentation at <a
-href="http://www.openqa.org/selenium/seleniumReference.html">www.openqa.org/selenium/seleniumReference.html</a>.
+href="http://release.openqa.org/selenium-core/nightly/reference.html">release.openqa.org/selenium-core/nightly/reference.html</a>.
 </p>
 
     </div>
@@ -106,10 +106,14 @@ href="http://www.openqa.org/selenium/seleniumReference.html">www.openqa.org/sele
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000087">command</a>&nbsp;&nbsp;
-      <a href="#M000085">new</a>&nbsp;&nbsp;
+      <a href="#M000088">command</a>&nbsp;&nbsp;
+      <a href="#M000090">command_and_wait</a>&nbsp;&nbsp;
+      <a href="#M000089">command_verbatim</a>&nbsp;&nbsp;
+      <a href="#M000085">exactize</a>&nbsp;&nbsp;
+      <a href="#M000091">make_command_waiting</a>&nbsp;&nbsp;
+      <a href="#M000086">new</a>&nbsp;&nbsp;
       <a href="#M000084">selenize</a>&nbsp;&nbsp;
-      <a href="#M000086">table</a>&nbsp;&nbsp;
+      <a href="#M000087">table</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -122,7 +126,7 @@ href="http://www.openqa.org/selenium/seleniumReference.html">www.openqa.org/sele
 
       <div id="includes-list">
         <span class="include-name"><a href="TestBuilderActions.html">SeleniumOnRails::TestBuilderActions</a></span>
-        <span class="include-name"><a href="TestBuilderChecks.html">SeleniumOnRails::TestBuilderChecks</a></span>
+        <span class="include-name"><a href="TestBuilderAccessors.html">SeleniumOnRails::TestBuilderAccessors</a></span>
       </div>
     </div>
 
@@ -139,11 +143,11 @@ href="http://www.openqa.org/selenium/seleniumReference.html">www.openqa.org/sele
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000085" class="method-detail">
-        <a name="M000085"></a>
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
 
         <div class="method-heading">
-          <a href="#M000085" class="method-signature">
+          <a href="#M000086" class="method-signature">
           <span class="method-name">new</span><span class="method-args">(view)</span>
           </a>
         </div>
@@ -153,15 +157,15 @@ href="http://www.openqa.org/selenium/seleniumReference.html">www.openqa.org/sele
 Create a new <a href="TestBuilder.html">TestBuilder</a> for <em>view</em>.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000085-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000085-source">
+            onclick="toggleCode('M000086-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000086-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 346</span>
-346:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">view</span>
-347:     <span class="ruby-ivar">@view</span> = <span class="ruby-identifier">view</span>
-348:     <span class="ruby-ivar">@output</span> = <span class="ruby-value str">''</span>
-349:     <span class="ruby-ivar">@xml</span> = <span class="ruby-constant">Builder</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMarkup</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">:indent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">:target</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@output</span>
-350:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 26</span>
+26:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">view</span>
+27:     <span class="ruby-ivar">@view</span> = <span class="ruby-identifier">view</span>
+28:     <span class="ruby-ivar">@output</span> = <span class="ruby-value str">''</span>
+29:     <span class="ruby-ivar">@xml</span> = <span class="ruby-constant">Builder</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMarkup</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">:indent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">:target</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@output</span>
+30:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -184,10 +188,10 @@ Convert <em>str</em> to a Selenium command name.
             onclick="toggleCode('M000084-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000084-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 341</span>
-341:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">selenize</span>(<span class="ruby-identifier">str</span>)
-342:     <span class="ruby-identifier">str</span>.<span class="ruby-identifier">camelize</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^[A-Z]/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">downcase</span> }
-343:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 15</span>
+15:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">selenize</span> <span class="ruby-identifier">str</span>
+16:     <span class="ruby-identifier">str</span>.<span class="ruby-identifier">camelize</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^[A-Z]/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">downcase</span> }
+17:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -195,11 +199,11 @@ Convert <em>str</em> to a Selenium command name.
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000087" class="method-detail">
-        <a name="M000087"></a>
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
 
         <div class="method-heading">
-          <a href="#M000087" class="method-signature">
+          <a href="#M000088" class="method-signature">
           <span class="method-name">command</span><span class="method-args">(cmd, target=nil, value=nil)</span>
           </a>
         </div>
@@ -210,27 +214,125 @@ Add a new test command using <em>cmd</em>, <em>target</em> and
 <em>value</em>.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000087-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000087-source">
+            onclick="toggleCode('M000088-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000088-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 361</span>
-361:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">command</span> <span class="ruby-identifier">cmd</span>, <span class="ruby-identifier">target</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword kw">nil</span>
-362:     <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">tr</span> <span class="ruby-keyword kw">do</span>
-363:       <span class="ruby-identifier">_tdata</span> <span class="ruby-identifier">cmd</span>
-364:       <span class="ruby-identifier">_tdata</span> <span class="ruby-identifier">target</span>
-365:       <span class="ruby-identifier">_tdata</span> <span class="ruby-identifier">value</span>
-366:     <span class="ruby-keyword kw">end</span>
-367:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">command</span> <span class="ruby-identifier">cmd</span>, <span class="ruby-identifier">target</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword kw">nil</span>
+42:     <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">tr</span> <span class="ruby-keyword kw">do</span>
+43:       <span class="ruby-identifier">_tdata</span> <span class="ruby-identifier">cmd</span>
+44:       <span class="ruby-identifier">_tdata</span> <span class="ruby-identifier">target</span>
+45:       <span class="ruby-identifier">_tdata</span> <span class="ruby-identifier">value</span>
+46:     <span class="ruby-keyword kw">end</span>
+47:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000086" class="method-detail">
-        <a name="M000086"></a>
+      <div id="method-M000090" class="method-detail">
+        <a name="M000090"></a>
 
         <div class="method-heading">
-          <a href="#M000086" class="method-signature">
+          <a href="#M000090" class="method-signature">
+          <span class="method-name">command_and_wait</span><span class="method-args">(cmd, target=nil, value=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Same as <em>command</em> but add <em>AndWait</em> to the name of
+<em>cmd</em>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000090-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000090-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 52</span>
+52:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">command_and_wait</span> <span class="ruby-identifier">cmd</span>, <span class="ruby-identifier">target</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword kw">nil</span>
+53:     <span class="ruby-identifier">command_verbatim</span> <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'AndWait'</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">value</span>
+54:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+          <span class="method-name">command_verbatim</span><span class="method-args">(cmd, target=nil, value=nil)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="TestBuilder.html#M000088">command</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000085" class="method-detail">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+          <a href="#M000085" class="method-signature">
+          <span class="method-name">exactize</span><span class="method-args">(pattern)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Prepends <em>pattern</em> with &#8216;exact:&#8217; if it would be
+considered containing string-match pattern otherwise.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000085-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000085-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exactize</span> <span class="ruby-identifier">pattern</span>
+22:     <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">':'</span>) <span class="ruby-operator">?</span> <span class="ruby-node">&quot;exact:#{pattern}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">pattern</span>
+23:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000091" class="method-detail">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
+          <a href="#M000091" class="method-signature">
+          <span class="method-name">make_command_waiting</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Re routes commands in the provided block to <a
+href="TestBuilder.html#M000090">command_and_wait</a> instead of <a
+href="TestBuilder.html#M000088">command</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000091-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000091-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 58</span>
+58:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_command_waiting</span>
+59:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">:alias_method</span>, <span class="ruby-identifier">:command</span>, <span class="ruby-identifier">:command_and_wait</span>
+60:     <span class="ruby-keyword kw">yield</span>
+61:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">:alias_method</span>, <span class="ruby-identifier">:command</span>, <span class="ruby-identifier">:command_verbatim</span> 
+62:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="#M000087" class="method-signature">
           <span class="method-name">table</span><span class="method-args">(title) {|self| ...}</span>
           </a>
         </div>
@@ -240,16 +342,16 @@ Add a new test command using <em>cmd</em>, <em>target</em> and
 Add a new table of tests, and return the HTML.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000086-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000086-source">
+            onclick="toggleCode('M000087-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000087-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 353</span>
-353:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table</span> <span class="ruby-identifier">title</span>
-354:     <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">table</span> <span class="ruby-keyword kw">do</span>
-355:       <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">tr</span> <span class="ruby-keyword kw">do</span> <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">th</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">:colspan</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>) <span class="ruby-keyword kw">end</span>
-356:       <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>
-357:     <span class="ruby-keyword kw">end</span>
-358:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/test_builder.rb, line 33</span>
+33:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table</span> <span class="ruby-identifier">title</span>
+34:     <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">table</span> <span class="ruby-keyword kw">do</span>
+35:       <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">tr</span> <span class="ruby-keyword kw">do</span> <span class="ruby-ivar">@xml</span>.<span class="ruby-identifier">th</span>(<span class="ruby-identifier">title</span>, <span class="ruby-identifier">:colspan</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>) <span class="ruby-keyword kw">end</span>
+36:       <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>
+37:     <span class="ruby-keyword kw">end</span>
+38:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

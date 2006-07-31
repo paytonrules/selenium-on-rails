@@ -193,7 +193,7 @@
     <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 31</span>
 31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">support_file</span>
 32:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:filename</span>].<span class="ruby-identifier">empty?</span>
-33:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:filename</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'TestRunner.html'</span>
+33:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:filename</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'TestRunner.html'</span>, <span class="ruby-identifier">:test</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'tests'</span>
 34:       <span class="ruby-keyword kw">return</span>
 35:     <span class="ruby-keyword kw">end</span>
 36: 

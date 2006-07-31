@@ -17,3 +17,11 @@ task :rdoc do
   rm_rf 'doc'
   RDoc::RDoc.new.document(%w(--line-numbers --inline-source --title SeleniumOnRails README lib))
 end
+
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |t|
+    t.test_files = FileList['test/*_test.rb']
+  end
+rescue LoadError #if rcov isn't available, ignore
+end

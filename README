@@ -3,17 +3,17 @@
 == Overview
 
 Selenium on Rails provides an easy way to test Rails application with 
-Selenium[http://www.openqa.org/selenium/].
+SeleniumCore[http://www.openqa.org/selenium-core/].
 
 This plugin does four things:
-1. The Selenium files don't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
+1. The Selenium Core files don't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
 2. No need to create suite files, they are generated on the fly -- one suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 3. Instead of writing the test cases in HTML you can use a number of better formats (see <tt>Formats</tt>).
 4. Loading of fixtures and wiping of session (<tt>/selenium/setup</tt>).
 
 == Installation
 
-1. Selenium needs to be available. It could either be installed as a gem (<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
+1. Selenium Core needs to be available. It could either be installed as a gem (<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
 2. Install Selenium on Rails: <tt>script/plugin install http://andthennothing.net/svn/public/selenium_on_rails/</tt>
 3. <i>If RedCloth is available the Selenese test cases can use it for better markup.</i>
 4. Run the Rakefile in the plugin's directory to run the tests in order to see that everything works. (If RedCloth isn't installed a few tests will fail since they assume RedCloth is installed.)
@@ -149,8 +149,8 @@ the server when needed.
 === user_extension.js
 
 Selenium has support for <tt>user_extension.js</tt> which is a way to extend the 
-functionality of Selenium. However there is currently no easy way to add such a
-file in Selenium on Rails.
+functionality of Selenium Core. However there is currently no easy way to add
+such a file in Selenium on Rails.
 
 === More setup/teardown support?
 

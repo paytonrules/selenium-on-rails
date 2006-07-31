@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Wed May 03 00:11:21 W. Europe Daylight Time 2006</td>
+      <td>Mon Jun 05 23:59:28 W. Europe Daylight Time 2006</td>
     </tr>
     </table>
   </div>
@@ -73,14 +73,14 @@
 <h2>Overview</h2>
 <p>
 Selenium on Rails provides an easy way to test Rails application with <a
-href="http://www.openqa.org/selenium/">Selenium</a>.
+href="http://www.openqa.org/selenium-core/">Selenium Core</a>.
 </p>
 <p>
 This plugin does four things:
 </p>
 <ol>
-<li>The Selenium files don&#8217;t have to pollute <tt>/public</tt>, they can
-stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
+<li>The Selenium Core files don&#8217;t have to pollute <tt>/public</tt>, they
+can stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
 
 </li>
 <li>No need to create suite files, they are generated on the fly &#8212; one
@@ -97,7 +97,7 @@ formats (see <tt>Formats</tt>).
 </ol>
 <h2>Installation</h2>
 <ol>
-<li>Selenium needs to be available. It could either be installed as a gem
+<li>Selenium Core needs to be available. It could either be installed as a gem
 (<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
 
 </li>
@@ -300,8 +300,8 @@ start the server when needed.
 <h3>user_extension.js</h3>
 <p>
 Selenium has support for <tt>user_extension.js</tt> which is a way to
-extend the functionality of Selenium. However there is currently no easy
-way to add such a file in Selenium on Rails.
+extend the functionality of Selenium Core. However there is currently no
+easy way to add such a file in Selenium on Rails.
 </p>
 <h3>More setup/teardown support?</h3>
 <p>
