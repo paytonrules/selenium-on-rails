@@ -36,7 +36,7 @@ module SeleniumOnRails
           ds = [File.expand_path(File.join(RAILS_ROOT, 'vendor/selenium')),
                 File.expand_path(File.join(RAILS_ROOT, 'vendor/selenium-core'))]
           gems = Gem.source_index.find_name 'selenium', nil
-          ds << gems[0].full_gem_path unless gems.empty?
+          ds << gems.last.full_gem_path unless gems.empty?
           ds
         end
 
