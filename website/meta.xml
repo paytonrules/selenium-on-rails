@@ -1,0 +1,107 @@
+<project>
+    <name>Selenium on Rails</name>
+    <jiraId>10121</jiraId>
+    <jiraName>SOR</jiraName>
+    <confluenceName>SOR</confluenceName>
+
+    <forums>
+        <usersId>26</usersId>
+        <devId>27</devId>
+        <jiraId>28</jiraId>
+    </forums>
+
+<!--
+    <evaluating>
+        <item>
+            <name>Release Notes</name>
+            <url>release-notes.html</url>
+        </item>
+    </evaluating>
+-->
+
+    <docs>
+        <url>index.html</url>
+<!--
+        <items>
+            <item>
+                <name>Tutorial</name>
+                <url>tutorial.html</url>
+            </item>
+            <item>
+                <name>Troubleshooting/FAQ</name>
+                <url>troubleshooting.html</url>
+            </item>
+            <item>
+                <name>- Java</name>
+                <url>java.html</url>
+            </item>
+            <item>
+                <name>- .NET</name>
+                <url>dotnet.html</url>
+            </item>
+            <item>
+                <name>- Perl</name>
+                <url>perl.html</url>
+            </item>
+            <item>
+                <name>- Python</name>
+                <url>python.html</url>
+            </item>
+            <item>
+                <name>- Ruby</name>
+                <url>ruby.html</url>
+            </item>
+            <item>
+            	<name>- Selenese</name>
+            	<url>selenese.html</url>
+            </item>
+            <item>
+            	<name>Server Command Line Options</name>
+            	<url>options.html</url>
+            </item>
+            <item>
+                <name>Developer's Guide</name>
+                <url>building.html</url>
+            </item>
+            <item>
+                <name>Wiki</name>
+                <url>http://wiki.openqa.org/display/SRC/Home</url>
+            </item>
+        </items>
+-->
+    </docs>
+
+    <owners>
+        <person>
+            <name>Jonas Bengtsson</name>
+            <email>jonas.b at gmail dot com</email>
+        </person>
+    </owners>
+
+<!--
+    <developers>
+        <person>
+            <name>Pat Lightbody</name>
+            <email>plightbo at gmail.com</email>
+        </person>
+    </developers>
+-->
+
+<!--
+    <releases>
+        <release>
+            <version>0.8.1</version>
+
+            <date>06/05/2006</date>
+            <jiraId>10254</jiraId>
+            <downloads>
+                <download>
+                    <url>http://release.openqa.org/selenium-remote-control/0.8.1/selenium-remote-control-0.8.1.zip</url>
+                    <name>Major release</name>
+                </download>
+                
+            </downloads>
+        </release>
+    </releases>
+-->
+</project>
