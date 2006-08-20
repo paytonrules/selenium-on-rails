@@ -29,6 +29,13 @@ module SeleniumOnRails
     def log_path log_file
       File.expand_path(File.dirname(__FILE__) + '/../../log/' + log_file)
     end
+
+    def skip_file? file
+      file.split('/').each do |f|
+        return true if f.upcase == 'CVS' or f.starts_with?('.') or f.ends_with?('~') or f.starts_with?('_')
+      end
+      false
+    end
     
     private
       def find_selenium_path

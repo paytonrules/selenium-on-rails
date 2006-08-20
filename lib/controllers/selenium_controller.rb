@@ -7,6 +7,7 @@ class SeleniumController < ActionController::Base
       reset_session
       @session_wiped = true
     end
+    @cleared_tables = clear_tables params[:clear_tables].to_s
     @loaded_fixtures = load_fixtures params[:fixtures].to_s
     render :file => view_path('setup.rhtml'), :layout => layout_path
   end

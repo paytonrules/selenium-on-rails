@@ -36,7 +36,7 @@ module SeleniumOnRails::SuiteRenderer
     def visit_all_tests path, suite_name, suite_consumer, test_consumer
       dirs = [] #add dirs to an array in order for files to be processed before dirs
       Dir.entries(path).sort.each do |e|
-        next if skip_file? e
+        next if skip_file?(e) or ['.','..'].include?(e)
         filename = File.join path, e
         if File.directory? filename
           dirs << [filename, "#{suite_name}#{e.humanize}."]
@@ -47,9 +47,5 @@ module SeleniumOnRails::SuiteRenderer
       end
       #recurse through dirs
       dirs.each {|p, n| visit_all_tests p, n, suite_consumer, test_consumer }
-    end
-    
-    def skip_file? file
-      ['.','..','CVS'].include?(file.upcase) or file.starts_with?('.') or file.ends_with?('~') or file.starts_with?('_')
     end
 end
