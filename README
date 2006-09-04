@@ -14,7 +14,7 @@ This plugin does four things:
 == Installation
 
 1. Selenium Core needs to be available. It could either be installed as a gem (<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
-2. Install Selenium on Rails: <tt>script/plugin install https://svn.openqa.org/svn/selenium-on-rails/trunk</tt>
+2. Install Selenium on Rails: <tt>script/plugin install http://svn.openqa.org/svn/selenium-on-rails/selenium-on-rails</tt>
 3. <i>If RedCloth is available the Selenese test cases can use it for better markup.</i>
 4. Run the Rakefile in the plugin's directory to run the tests in order to see that everything works. (If RedCloth isn't installed a few tests will fail since they assume RedCloth is installed.)
 5. Create a test case: <tt>script/generate selenium login</tt>
