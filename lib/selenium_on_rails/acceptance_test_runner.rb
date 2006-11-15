@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/paths'
 require File.dirname(__FILE__) + '/../selenium_on_rails_config'
 require 'net/http'
+require 'tempfile'
 
 
 def c(var, default = nil) SeleniumOnRailsConfig.get var, default end
@@ -183,27 +184,24 @@ class SeleniumOnRails::AcceptanceTestRunner::UnixSubProcess < SeleniumOnRails::A
   end
 end
 
-# A separate sub process for Safari since it cannot open an URL passed to it
-# as command-line argument. 'open' is the way to open URLs on Mac OS X. The 
-# drawback is that it doesn't provide the process id so it's not easy to close
-# the process.
-# The path to Safari should look like this: /Applications/Safari.app
-class SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess
+# The path to Safari should look like this: /Applications/Safari.app/Contents/MacOS/Safari
+class SeleniumOnRails::AcceptanceTestRunner::SafariSubProcess < SeleniumOnRails::AcceptanceTestRunner::UnixSubProcess
   def initialize command
-    command = "open -a Safari #{command.split[1]}"
-    puts command
-    fork { exec command }
-  end
+    f = File.open(Tempfile.new('selenium-on-rails').path, 'w')
+    f.puts <<-HTML
+      <html>
+        <head>
+          <script type="text/javascript" charset="utf-8">
+            window.location.href = #{command.split.last};
+          </script>
+        </head>
+        <body></body>
+      </html>
+    HTML
+    f.close
+    
+    super "#{command.split.first} #{f.path}"
+   end
   
-  def stop what
-    close_safari = c_b :close_safari do
-      puts "Set 'close_safari' to true in config.yml if you want Safari (with all its tabs!) to be closed automatically."
-      false
-    end
-    if close_safari
-      puts 'Stopping Safari'
-      fork { exec 'killall Safari' }
-    end
-  end
 end
   

@@ -1,9 +1,10 @@
+require 'selenium_on_rails_config'
 envs = SeleniumOnRailsConfig.get :environments
 
 if envs.include? RAILS_ENV
   #initialize the plugin
   $LOAD_PATH << File.dirname(__FILE__) + "/lib/controllers"
-
+  require 'selenium_controller'
   require File.dirname(__FILE__) + '/routes'
 
 else

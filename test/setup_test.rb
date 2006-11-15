@@ -10,7 +10,7 @@ class SetupTest < Test::Unit::TestCase
   def test_session_reset
     @request.session['key'] = 'value'
     get :setup
-    assert !session.has_key?('key')
+    assert_nil session['key']
     assert_response :success
     assert_tag :content => 'The session is wiped clean.'
   end
