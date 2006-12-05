@@ -157,6 +157,9 @@ such a file in Selenium on Rails.
 Currently there is only support to load fixtures and to wipe the session in
 <tt>/selenium/setup</tt>. Is there a need for more kinds of setups or teardowns?
 
+=== More documentation
+
+
 == Not todo
 
 === Editor
