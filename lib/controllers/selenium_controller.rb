@@ -1,3 +1,5 @@
+require 'webrick/httputils'
+
 class SeleniumController < ActionController::Base
   include SeleniumOnRails::FixtureLoader
   include SeleniumOnRails::Renderer
@@ -37,7 +39,9 @@ class SeleniumController < ActionController::Base
 
     filename = File.join selenium_path, params[:filename]
     if File.file? filename
-      send_file filename, :type => 'text/html', :disposition => 'inline', :stream => false
+      type = WEBrick::HTTPUtils::DefaultMimeTypes[$1.downcase] if filename =~ /\.(\w+)$/
+      type ||= 'text/html'
+      send_file filename, :type => type, :disposition => 'inline', :stream => false
     else
       render :text => 'Not found', :status => 404
     end
