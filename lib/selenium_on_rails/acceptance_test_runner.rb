@@ -147,6 +147,7 @@ module SeleniumOnRails
         puts "Finished in #{result['totalTime']} seconds."
         puts
         puts "#{result['numTestPasses']} tests passed, #{result['numTestFailures']} tests failed"
+        puts "(Results stored in '#{result['resultDir']}')" if result['resultDir']
       end
         
   end

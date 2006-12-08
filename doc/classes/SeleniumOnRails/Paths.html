@@ -85,6 +85,7 @@
       <a href="#M000043">log_path</a>&nbsp;&nbsp;
       <a href="#M000038">selenium_path</a>&nbsp;&nbsp;
       <a href="#M000039">selenium_tests_path</a>&nbsp;&nbsp;
+      <a href="#M000044">skip_file?</a>&nbsp;&nbsp;
       <a href="#M000040">view_path</a>&nbsp;&nbsp;
       </div>
     </div>
@@ -225,6 +226,32 @@ paths to layout templates.
  8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">selenium_tests_path</span>
  9:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">RAILS_ROOT</span>, <span class="ruby-value str">'test/selenium'</span>))
 10:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="#M000044" class="method-signature">
+          <span class="method-name">skip_file?</span><span class="method-args">(file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000044-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/selenium_on_rails/paths.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">skip_file?</span> <span class="ruby-identifier">file</span>
+34:       <span class="ruby-identifier">file</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+35:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">upcase</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'CVS'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">starts_with?</span>(<span class="ruby-value str">'.'</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">ends_with?</span>(<span class="ruby-value str">'~'</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">starts_with?</span>(<span class="ruby-value str">'_'</span>)
+36:       <span class="ruby-keyword kw">end</span>
+37:       <span class="ruby-keyword kw">false</span>
+38:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

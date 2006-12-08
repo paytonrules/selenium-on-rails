@@ -11,7 +11,7 @@ environments:
 #selenium_path: 'c:\selenium' #path to selenium installation. only needed when selenium isn't installed in /vendor/selenium or as a gem
 
 #
-# Task settings
+# rake test:acceptance settings
 #
 
 browsers:
@@ -21,3 +21,5 @@ browsers:
 #port_start: 3000
 #port_end: 3005
 #max_browser_duration: 120
+  
+#result_dir: 'c:\result' # the directory where the results will be stored after a test:acceptance run

@@ -139,6 +139,19 @@ Then run the tests:
 
 Now it should work, otherwise let me know!
 
+=== Store results
+
+If you want to store the results from a <tt>test:acceptance</tt> you just need
+to set in which directory they should be stored:
+
+ #config.yml
+ result_dir: 'c:\result'
+
+So when you run <tt>rake test:acceptance</tt> the tables with the results will
+be stored as <tt>.html</tt> files in that directory.
+
+This can be useful especially for continous integration.
+
 == Todo
 
 === Standalone mode

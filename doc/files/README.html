@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Mon Jun 05 23:59:28 W. Europe Daylight Time 2006</td>
+      <td>Fri Dec 08 00:50:30 GMT Standard Time 2006</td>
     </tr>
     </table>
   </div>
@@ -291,6 +291,22 @@ Then run the tests:
 <p>
 Now it should work, otherwise let me know!
 </p>
+<h3>Store results</h3>
+<p>
+If you want to store the results from a <tt>test:acceptance</tt> you just
+need to set in which directory they should be stored:
+</p>
+<pre>
+ #config.yml
+ result_dir: 'c:\result'
+</pre>
+<p>
+So when you run <tt>rake test:acceptance</tt> the tables with the results
+will be stored as <tt>.html</tt> files in that directory.
+</p>
+<p>
+This can be useful especially for continous integration.
+</p>
 <h2>Todo</h2>
 <h3>Standalone mode</h3>
 <p>
@@ -309,6 +325,7 @@ Currently there is only support to load fixtures and to wipe the session in
 <tt>/selenium/setup</tt>. Is there a need for more kinds of setups or
 teardowns?
 </p>
+<h3>More documentation</h3>
 <h2>Not todo</h2>
 <h3>Editor</h3>
 <p>

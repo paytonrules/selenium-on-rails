@@ -133,16 +133,18 @@
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 45</span>
-45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">record</span>
-46:     <span class="ruby-ivar">@result</span> = {}
-47:     <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> [<span class="ruby-value str">'result'</span>, <span class="ruby-value str">'numTestFailures'</span>, <span class="ruby-value str">'numTestPasses'</span>, <span class="ruby-value str">'numCommandFailures'</span>, <span class="ruby-value str">'numCommandPasses'</span>, <span class="ruby-value str">'numCommandErrors'</span>, <span class="ruby-value str">'totalTime'</span>]
-48:       <span class="ruby-ivar">@result</span>[<span class="ruby-identifier">p</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">p</span>]
-49:     <span class="ruby-keyword kw">end</span>
-50:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">log_path</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:logFile</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'default.yml'</span>), <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@result</span>, <span class="ruby-identifier">f</span>)}
-51:     
-52:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">view_path</span>(<span class="ruby-value str">'record.rhtml'</span>), <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout_path</span>
-53:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 50</span>
+50:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">record</span>
+51:     <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">record_table</span>
+52: 
+53:     <span class="ruby-ivar">@result</span> = {<span class="ruby-value str">'resultDir'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dir</span>}
+54:     <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">p</span> <span class="ruby-keyword kw">in</span> [<span class="ruby-value str">'result'</span>, <span class="ruby-value str">'numTestFailures'</span>, <span class="ruby-value str">'numTestPasses'</span>, <span class="ruby-value str">'numCommandFailures'</span>, <span class="ruby-value str">'numCommandPasses'</span>, <span class="ruby-value str">'numCommandErrors'</span>, <span class="ruby-value str">'totalTime'</span>]
+55:       <span class="ruby-ivar">@result</span>[<span class="ruby-identifier">p</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">p</span>]
+56:     <span class="ruby-keyword kw">end</span>
+57:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">log_path</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:logFile</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">'default.yml'</span>), <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@result</span>, <span class="ruby-identifier">f</span>)}
+58:     
+59:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">view_path</span>(<span class="ruby-value str">'record.rhtml'</span>), <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout_path</span>
+60:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -162,15 +164,16 @@
             onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000003-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 5</span>
- 5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
- 6:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">:keep_session</span>
- 7:       <span class="ruby-identifier">reset_session</span>
- 8:       <span class="ruby-ivar">@session_wiped</span> = <span class="ruby-keyword kw">true</span>
- 9:     <span class="ruby-keyword kw">end</span>
-10:     <span class="ruby-ivar">@loaded_fixtures</span> = <span class="ruby-identifier">load_fixtures</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:fixtures</span>].<span class="ruby-identifier">to_s</span>
-11:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">view_path</span>(<span class="ruby-value str">'setup.rhtml'</span>), <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout_path</span>
-12:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 7</span>
+ 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
+ 8:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">:keep_session</span>
+ 9:       <span class="ruby-identifier">reset_session</span>
+10:       <span class="ruby-ivar">@session_wiped</span> = <span class="ruby-keyword kw">true</span>
+11:     <span class="ruby-keyword kw">end</span>
+12:     <span class="ruby-ivar">@cleared_tables</span> = <span class="ruby-identifier">clear_tables</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:clear_tables</span>].<span class="ruby-identifier">to_s</span>
+13:     <span class="ruby-ivar">@loaded_fixtures</span> = <span class="ruby-identifier">load_fixtures</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:fixtures</span>].<span class="ruby-identifier">to_s</span>
+14:     <span class="ruby-identifier">render</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">view_path</span>(<span class="ruby-value str">'setup.rhtml'</span>), <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout_path</span>
+15:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -190,20 +193,22 @@
             onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000005-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 31</span>
-31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">support_file</span>
-32:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:filename</span>].<span class="ruby-identifier">empty?</span>
-33:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:filename</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'TestRunner.html'</span>, <span class="ruby-identifier">:test</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'tests'</span>
-34:       <span class="ruby-keyword kw">return</span>
-35:     <span class="ruby-keyword kw">end</span>
-36: 
-37:     <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">selenium_path</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:filename</span>]
-38:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span> <span class="ruby-identifier">filename</span>
-39:       <span class="ruby-identifier">send_file</span> <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'text/html'</span>, <span class="ruby-identifier">:disposition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'inline'</span>, <span class="ruby-identifier">:stream</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>
-40:     <span class="ruby-keyword kw">else</span>
-41:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Not found'</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">404</span>
-42:     <span class="ruby-keyword kw">end</span>
-43:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 34</span>
+34:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">support_file</span>
+35:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:filename</span>].<span class="ruby-identifier">empty?</span>
+36:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">:filename</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'TestRunner.html'</span>, <span class="ruby-identifier">:test</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'tests'</span>
+37:       <span class="ruby-keyword kw">return</span>
+38:     <span class="ruby-keyword kw">end</span>
+39: 
+40:     <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">selenium_path</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:filename</span>]
+41:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span> <span class="ruby-identifier">filename</span>
+42:       <span class="ruby-identifier">type</span> = <span class="ruby-constant">WEBrick</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPUtils</span><span class="ruby-operator">::</span><span class="ruby-constant">DefaultMimeTypes</span>[<span class="ruby-identifier">$1</span>.<span class="ruby-identifier">downcase</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\.(\w+)$/</span>
+43:       <span class="ruby-identifier">type</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'text/html'</span>
+44:       <span class="ruby-identifier">send_file</span> <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">:disposition</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'inline'</span>, <span class="ruby-identifier">:stream</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>
+45:     <span class="ruby-keyword kw">else</span>
+46:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Not found'</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">404</span>
+47:     <span class="ruby-keyword kw">end</span>
+48:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -223,23 +228,23 @@
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 14</span>
-14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_file</span>
-15:     <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:testname</span>] = <span class="ruby-value str">''</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:testname</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'TestSuite.html'</span>
-16:     <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">selenium_tests_path</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:testname</span>]
-17:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-identifier">filename</span>
-18:       <span class="ruby-ivar">@suite_path</span> = <span class="ruby-identifier">filename</span>
-19:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">view_path</span>(<span class="ruby-value str">'test_suite.rhtml'</span>), <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout_path</span>
-20:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span> <span class="ruby-identifier">filename</span>
-21:       <span class="ruby-identifier">render_test_case</span> <span class="ruby-identifier">filename</span>
-22:     <span class="ruby-keyword kw">else</span>
-23:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-identifier">selenium_tests_path</span>
-24:         <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Not found'</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">404</span>
-25:       <span class="ruby-keyword kw">else</span>
-26:         <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Did not find the Selenium tests path (#{selenium_tests_path}). Run script/generate selenium&quot;</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">404</span>
-27:       <span class="ruby-keyword kw">end</span>
-28:     <span class="ruby-keyword kw">end</span>
-29:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/controllers/selenium_controller.rb, line 17</span>
+17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_file</span>
+18:     <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:testname</span>] = <span class="ruby-value str">''</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:testname</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'TestSuite.html'</span>
+19:     <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">selenium_tests_path</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:testname</span>]
+20:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-identifier">filename</span>
+21:       <span class="ruby-ivar">@suite_path</span> = <span class="ruby-identifier">filename</span>
+22:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">view_path</span>(<span class="ruby-value str">'test_suite.rhtml'</span>), <span class="ruby-identifier">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">layout_path</span>
+23:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span> <span class="ruby-identifier">filename</span>
+24:       <span class="ruby-identifier">render_test_case</span> <span class="ruby-identifier">filename</span>
+25:     <span class="ruby-keyword kw">else</span>
+26:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-identifier">selenium_tests_path</span>
+27:         <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Not found'</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">404</span>
+28:       <span class="ruby-keyword kw">else</span>
+29:         <span class="ruby-identifier">render</span> <span class="ruby-identifier">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Did not find the Selenium tests path (#{selenium_tests_path}). Run script/generate selenium&quot;</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">404</span>
+30:       <span class="ruby-keyword kw">end</span>
+31:     <span class="ruby-keyword kw">end</span>
+32:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
