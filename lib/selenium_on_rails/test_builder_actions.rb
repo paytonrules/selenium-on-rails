@@ -4,21 +4,24 @@
 module SeleniumOnRails::TestBuilderActions
   # Tell Selenium on Rails to clear the session and load any fixtures.  DO
   # NOT CALL THIS AGAINST NON-TEST DATABASES.
-  # The supported +options+ are <code>:keep_session</code> and 
-  # <code>:fixtures</code>
+  # The supported +options+ are <code>:keep_session</code>, 
+  # <code>:fixtures</code> and <code>:clear_tables</code>
   #   setup
   #   setup :keep_session
   #   setup :fixtures => :all
   #   setup :keep_session, :fixtures => [:foo, :bar]
+  #   setup :clear_tables => [:foo, :bar]
   def setup options = {}
     options = {options => nil} unless options.is_a? Hash
 
     opts = {:controller => 'selenium', :action => 'setup'}
     opts[:keep_session] = true if options.has_key? :keep_session
 
-    if (f = options[:fixtures])
-      f = [f] unless f.is_a? Array
-      opts[:fixtures] = f.join ','
+    [:fixtures, :clear_tables].each do |key|
+      if (f = options[key])
+        f = [f] unless f.is_a? Array
+        opts[key] = f.join ','
+      end
     end
 
     open opts

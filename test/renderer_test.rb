@@ -81,6 +81,7 @@ END
   <tr><td>open</td><td>/selenium/setup?keep_session=true</td><td>&nbsp;</td></tr>
   <tr><td>open</td><td>/selenium/setup?fixtures=all</td><td>&nbsp;</td></tr>
   <tr><td>open</td><td>/selenium/setup?fixtures=foo%2Cbar</td><td>&nbsp;</td></tr>
+  <tr><td>open</td><td>/selenium/setup?fixtures=all&amp;amp;clear_tables=foo%2Cbar</td><td>&nbsp;</td></tr>
   <tr><td>assertAbsoluteLocation</td><td>exact:http://test.host/selenium/setup</td><td>&nbsp;</td></tr>
   <tr><td>assertTitle</td><td>selenium</td><td>&nbsp;</td></tr>
   <tr><td>assertTitle</td><td>Partial from RSelenese</td><td>&nbsp;</td></tr>
