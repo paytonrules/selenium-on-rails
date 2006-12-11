@@ -11,7 +11,7 @@ module ActionController
           map.connect 'selenium/postResults',
             :controller => 'selenium', :action => 'record'
           map.connect 'selenium/postResults/:logFile',
-            :controller => 'selenium', :action => 'record'
+            :controller => 'selenium', :action => 'record', :requirements => { :logFile => /.*/ }
           map.connect 'selenium/*filename',
             :controller => 'selenium', :action => 'support_file'
           

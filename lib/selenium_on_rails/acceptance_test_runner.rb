@@ -10,9 +10,11 @@ def c_b(var, default = nil) SeleniumOnRailsConfig.get(var, default) { yield } en
 BROWSERS =              c :browsers, {}
 REUSE_EXISTING_SERVER = c :reuse_existing_server, true
 START_SERVER =          c :start_server, false  #TODO can't get it to work reliably on Windows, perhaps it's just on my computer, but I leave it off by default for now
+HOST =                  c :host, 'localhost'
 PORTS =                 c(:port_start, 3000)..c(:port_end, 3005)
 TEST_RUNNER_URL =       c :test_runner_url, '/selenium/TestRunner.html'
 MAX_BROWSER_DURATION =  c :max_browser_duration, 2*60
+MULTI_WINDOW =          c :multi_window, false
 SERVER_COMMAND =      c_b :server_command do
   server_path = File.expand_path(File.dirname(__FILE__) + '/../../../../../script/server')
   if RUBY_PLATFORM =~ /mswin/
@@ -40,7 +42,7 @@ module SeleniumOnRails
           result = YAML::load_file log_file
           print_result result
           has_error ||= result['numTestFailures'].to_i > 0
-          File.delete log_file
+          File.delete log_file unless has_error
         end
       rescue
         stop_server
@@ -86,7 +88,7 @@ module SeleniumOnRails
     
       def server_check
         begin
-          res = Net::HTTP.get_response 'localhost', TEST_RUNNER_URL, @port
+          res = Net::HTTP.get_response HOST, TEST_RUNNER_URL, @port
           return :success if (200..399).include? res.code.to_i
           return res.code.to_i
         rescue Errno::ECONNREFUSED
@@ -104,7 +106,7 @@ module SeleniumOnRails
         puts
         puts "Starting #{browser}"
         log = log_file browser
-        command = "\"#{path}\" \"http://localhost:#{@port}#{TEST_RUNNER_URL}?test=tests&auto=true&resultsUrl=postResults/#{log}\""
+        command = "\"#{path}\" \"http://#{HOST}:#{@port}#{TEST_RUNNER_URL}?test=tests&auto=true&resultsUrl=postResults/#{log}&multiWindow=#{MULTI_WINDOW}\""
         @browser = start_subprocess command    
         log_path log
       end

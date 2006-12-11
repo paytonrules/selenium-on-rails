@@ -27,7 +27,7 @@ module SeleniumOnRails
     end
     
     def log_path log_file
-      File.expand_path(File.dirname(__FILE__) + '/../../log/' + log_file)
+      File.expand_path(File.dirname(__FILE__) + '/../../log/' + File.basename(log_file))
     end
 
     def skip_file? file

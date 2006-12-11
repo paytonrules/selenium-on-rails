@@ -1,5 +1,6 @@
 #make sure the controller is accessible
 $LOAD_PATH << File.dirname(__FILE__)
+require 'switch_environment_controller'
 
 #hijack /selenium
 module ActionController
