@@ -1,3 +1,4 @@
+require 'test/unit'
 require 'active_record/fixtures'
 
 module SeleniumOnRails::FixtureLoader
