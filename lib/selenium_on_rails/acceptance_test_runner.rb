@@ -12,17 +12,18 @@ REUSE_EXISTING_SERVER = c :reuse_existing_server, true
 START_SERVER =          c :start_server, false  #TODO can't get it to work reliably on Windows, perhaps it's just on my computer, but I leave it off by default for now
 HOST =                  c :host, 'localhost'
 PORTS =                 c(:port_start, 3000)..c(:port_end, 3005)
+BASE_URL_PATH =         c :base_url_path, '/'
 TEST_RUNNER_URL =       c :test_runner_url, '/selenium/TestRunner.html'
 MAX_BROWSER_DURATION =  c :max_browser_duration, 2*60
 MULTI_WINDOW =          c :multi_window, false
 SERVER_COMMAND =      c_b :server_command do
   server_path = File.expand_path(File.dirname(__FILE__) + '/../../../../../script/server')
   if RUBY_PLATFORM =~ /mswin/
-    "ruby #{server_path} -p %d -e test > NUL 2>&1"
+    "ruby #{server_path} webrick -p %d -e test > NUL 2>&1"
   else
     # don't use redirects to /dev/nul since it makes the fork return wrong pid
     # see UnixSubProcess
-    "#{server_path} -p %d -e test"
+    "#{server_path} webrick -p %d -e test"
   end
 end
 
@@ -105,8 +106,9 @@ module SeleniumOnRails
       def start_browser browser, path
         puts
         puts "Starting #{browser}"
+        base_url = "http://#{HOST}:#{@port}#{BASE_URL_PATH}"
         log = log_file browser
-        command = "\"#{path}\" \"http://#{HOST}:#{@port}#{TEST_RUNNER_URL}?test=tests&auto=true&resultsUrl=postResults/#{log}&multiWindow=#{MULTI_WINDOW}\""
+        command = "\"#{path}\" \"http://#{HOST}:#{@port}#{TEST_RUNNER_URL}?test=tests&auto=true&baseUrl=#{base_url}&resultsUrl=postResults/#{log}&multiWindow=#{MULTI_WINDOW}\""
         @browser = start_subprocess command    
         log_path log
       end
