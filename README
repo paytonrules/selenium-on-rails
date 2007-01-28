@@ -6,36 +6,21 @@ Selenium on Rails provides an easy way to test Rails application with
 SeleniumCore[http://www.openqa.org/selenium-core/].
 
 This plugin does four things:
-1. The Selenium Core files don't have to pollute <tt>/public</tt>, they can stay in the Selenium gem or in <tt>/vendor/selenium</tt>.
+1. The Selenium Core files don't have to pollute <tt>/public</tt>.
 2. No need to create suite files, they are generated on the fly -- one suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 3. Instead of writing the test cases in HTML you can use a number of better formats (see <tt>Formats</tt>).
 4. Loading of fixtures and wiping of session (<tt>/selenium/setup</tt>).
 
 == Installation
 
-1. Selenium Core needs to be available. It could either be installed as a gem (<tt>gem install selenium</tt>) or in <tt>/vendor/selenium/</tt>.
-2. Install Selenium on Rails: <tt>script/plugin install http://svn.openqa.org/svn/selenium-on-rails/selenium-on-rails</tt>
-3. <i>If RedCloth is available the Selenese test cases can use it for better markup.</i>
+1. Install Selenium on Rails: <tt>script/plugin install http://svn.openqa.org/svn/selenium-on-rails/selenium-on-rails</tt>
+2. If you're on Windows, <tt>gem install win32-open3</tt>
+3. <i>If the RedCloth gem is available the Selenese test cases can use it for better markup.</i>
 4. Run the Rakefile in the plugin's directory to run the tests in order to see that everything works. (If RedCloth isn't installed a few tests will fail since they assume RedCloth is installed.)
 5. Create a test case: <tt>script/generate selenium login</tt>
 6. Start the server: <tt>script/server -e test</tt>
 7. Point your browser to <tt>http://localhost:3000/selenium</tt>
 8. If everything works as expected you should see the Selenium test runner. The north east frame contains all your test cases (just one for now), and the north frame contains your test case.
-
-=== win32-open3
-
-win32-open3[http://raa.ruby-lang.org/project/win32-open3/] is needed if you're
-on Windows and want to run your tests as a Rake task 
-(see <tt>test:acceptance</tt>), i.e. you don't have to install it but it's 
-recommended.
-
-You can build it from source or install the binary:
-
-1. Download the latest version of win32-open3, open3-0.2.2.so[http://rubyforge.org/frs/download.php/8515/open3-0.2.2.so] at the time of this writing.
-2. Open up irb and run this snippet: <tt>require 'rbconfig'; include Config; puts CONFIG['sitearchdir']</tt>
-3. Create a <tt>win32</tt> directory under the directory you got, e.g. <tt>c:\ruby\lib\ruby\site_ruby\1.8\i386-msvcrt</tt>
-4. Rename the .so file to <tt>open3.so</tt> and put it in the <tt>win32</tt> directory.
-5. Profit! (unless you get an error when doing <tt>require 'win32/open3'</tt>)
 
 == Formats
 
@@ -116,6 +101,14 @@ this by setting <tt>environments</tt>, such as:
  environments:
    - test
    - development
+
+=== Selenium Core path
+
+If you don't want to use the bundled Selenium Core version you can set 
+<tt>selenium_path</tt> to the directory where Selenium Core is stored.
+
+ #config.yml
+ selenium_path: 'c:\selenium'
 
 == <tt>test:acceptance</tt>
 

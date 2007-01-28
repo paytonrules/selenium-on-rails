@@ -1,8 +1,16 @@
-== REVISION 34
+== REVISION 35[http://svn.openqa.org/fisheye/changelog/selenium-on-rails/?cs=35]
+
+=== all changes made by Jonas
+
+* SOR-12[http://jira.openqa.org/browse/SOR-12] removed all support for selenium gem
+* Selenium Core 0.8.2 is now bundled with Selenium on Rails. If you want to use other version set the 'selenium_path' in config.yml
+* Updated installation instructions for Windows
+
+== REVISION 34[http://svn.openqa.org/fisheye/changelog/selenium-on-rails/?cs=34]
 
 === all changes made by Flanagan
 
-* [SOR-11] Fixed related assertions for store_checked to use only locator parameter
+* SOR-11[http://jira.openqa.org/browse/SOR-11] Fixed related assertions for store_checked to use only locator parameter
 
 Warning: Users must change tests that pass two parameters (locator, pattern) to +verify_checked+, +verify_not_checked+, +assert_checked+, +assert_not_checked+, +wait_for_checked+, or +wait_for_not_checked+.
 
@@ -10,8 +18,8 @@ Test scripts that continue to use two parameters will be broken, only one parame
 
 For example, <tt>|verify_checked|my_checkbox|true|</tt> will be interpreted as <tt>|verify_checked|my_checkboxtrue||</tt> so change the test to <tt>|verify_checked|my_checkbox||</tt>
 
-* [SOR-9] Added Mac OS X browsers to config.yml.example
-* [SOR-10] Added support for baseUrl to acceptance_test_runner.rb as added to selenium-core 0.8.2
+* SOR-9[http://jira.openqa.org/browse/SOR-9] Added Mac OS X browsers to config.yml.example
+* SOR-10[http://jira.openqa.org/browse/SOR-10] Added support for baseUrl to acceptance_test_runner.rb as added to selenium-core 0.8.2
 * Added 'webrick' to SERVER_COMMAND in acceptance_test_runner.rb as parameters do not work with lighttpd
 * Reversed expected query string in test/renderer_testrb to make tests pass
 

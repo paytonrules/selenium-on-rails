@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sun Jan 21 00:34:57 CET 2007</td>
+      <td>Sun Jan 28 21:02:29 +0000 2007</td>
     </tr>
     </table>
   </div>
@@ -69,11 +69,26 @@
   <div id="contextContent">
 
     <div id="description">
-      <h2>REVISION 34</h2>
+      <h2>REVISION <a href="http://svn.openqa.org/fisheye/changelog/selenium-on-rails/?cs=35">35</a></h2>
+<h3>all changes made by Jonas</h3>
+<ul>
+<li><a href="http://jira.openqa.org/browse/SOR-12">SOR-12</a> removed all
+support for selenium gem
+
+</li>
+<li>Selenium Core 0.8.2 is now bundled with Selenium on Rails. If you want to
+use other version set the &#8216;selenium_path&#8217; in config.yml
+
+</li>
+<li>Updated installation instructions for Windows
+
+</li>
+</ul>
+<h2>REVISION <a href="http://svn.openqa.org/fisheye/changelog/selenium-on-rails/?cs=34">34</a></h2>
 <h3>all changes made by Flanagan</h3>
 <ul>
-<li>[SOR-11] Fixed related assertions for store_checked to use only locator
-parameter
+<li><a href="http://jira.openqa.org/browse/SOR-11">SOR-11</a> Fixed related
+assertions for store_checked to use only locator parameter
 
 </li>
 </ul>
@@ -93,11 +108,12 @@ as <tt>|verify_checked|my_checkboxtrue||</tt> so change the test to
 <tt>|verify_checked|my_checkbox||</tt>
 </p>
 <ul>
-<li>[SOR-9] Added Mac OS X browsers to config.yml.example
+<li><a href="http://jira.openqa.org/browse/SOR-9">SOR-9</a> Added Mac OS X
+browsers to config.yml.example
 
 </li>
-<li>[SOR-10] Added support for baseUrl to acceptance_test_runner.rb as added to
-selenium-core 0.8.2
+<li><a href="http://jira.openqa.org/browse/SOR-10">SOR-10</a> Added support for
+baseUrl to acceptance_test_runner.rb as added to selenium-core 0.8.2
 
 </li>
 <li>Added &#8216;webrick&#8217; to SERVER_COMMAND in acceptance_test_runner.rb
@@ -130,7 +146,7 @@ Here are the newly supported actions:
 Useful for debugging:
 </p>
 <ul>
-<li><tt>brake</tt> (alias for selenium-core&#8217;s break, a reserved word in
+<li><tt>brake</tt> (alias for selenium-core&#8216;s break, a reserved word in
 Ruby)
 
 </li>

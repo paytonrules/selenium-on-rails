@@ -40,11 +40,7 @@ module SeleniumOnRails
     private
       def find_selenium_path
         sel_dirs = SeleniumOnRailsConfig.get :selenium_path do
-          ds = [File.expand_path(File.join(RAILS_ROOT, 'vendor/selenium')),
-                File.expand_path(File.join(RAILS_ROOT, 'vendor/selenium-core'))]
-          gems = Gem.source_index.find_name 'selenium', nil
-          ds << gems.last.full_gem_path unless gems.empty?
-          ds
+          File.expand_path(File.dirname(__FILE__) + '/../../selenium-core')
         end
 
         sel_dirs.to_a.each do |seleniumdir|
