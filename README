@@ -145,18 +145,26 @@ be stored as <tt>.html</tt> files in that directory.
 
 This can be useful especially for continous integration.
 
+=== user_extension.js
+
+Selenium has support for <tt>user_extension.js</tt> which is a way to extend the 
+functionality of Selenium Core. Selenium on Rails now provides the means for you
+to extend it's functionality to match.
+
+To get you started, we've included the example files 
+<tt>lib/test_builder_user_accessors.rb.example</tt> and 
+<tt>lib/test_builder_user_actions.rb.example</tt> that replicate the sample
+extensions in Selenium Core's <tt>user-extensions.js.sample</tt>
+
+To get these examples running, simply remove the .example and .sample extensions 
+from the files and restart your server.
+
 == Todo
 
 === Standalone mode
 
 More work is needed on <tt>test:acceptance</tt> on Windows to be able to start 
 the server when needed.
-
-=== user_extension.js
-
-Selenium has support for <tt>user_extension.js</tt> which is a way to extend the 
-functionality of Selenium Core. However there is currently no easy way to add
-such a file in Selenium on Rails.
 
 === More setup/teardown support?
 

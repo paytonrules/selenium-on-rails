@@ -1,3 +1,19 @@
+# Create test_builder_user_actions.rb to support actions included
+# in selenium-core's user-extensions.js
+#
+# See test_builder_user_actions.rb.example for examples matching
+# selenium-core's user-extensions.js.sample
+module SeleniumOnRails::TestBuilderUserActions
+end
+
+# Create test_builder_user_accessors.rb to support accessors
+# included in selenium-core's user-extensions.js
+#
+# See test_builder_user_accessors.rb.example for examples matching
+# selenium-core's user-extensions.js.sample
+module SeleniumOnRails::TestBuilderUserAccessors
+end
+
 # Builds Selenium test table using a high-level Ruby interface. Normally
 # invoked through SeleniumOnRails::RSelenese.
 #
@@ -10,6 +26,8 @@
 class SeleniumOnRails::TestBuilder
   include SeleniumOnRails::TestBuilderActions
   include SeleniumOnRails::TestBuilderAccessors
+  include SeleniumOnRails::TestBuilderUserActions
+  include SeleniumOnRails::TestBuilderUserAccessors
 
   # Convert _str_ to a Selenium command name.
   def self.selenize str

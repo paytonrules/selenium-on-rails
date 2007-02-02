@@ -1,3 +1,9 @@
+== REVISION 36[http://svn.openqa.org/fisheye/changelog/selenium-on-rails/?cs=36]
+
+=== change made by Flanagan
+
+* SOR-13[http://jira.openqa.org/browse/SOR-13] Added (experimental) support for user-extensions.js.
+
 == REVISION 35[http://svn.openqa.org/fisheye/changelog/selenium-on-rails/?cs=35]
 
 === all changes made by Jonas
