@@ -78,7 +78,7 @@ The actions available for <a
 href="TestBuilder.html">SeleniumOnRails::TestBuilder</a> tests.
 </p>
 <p>
-For each action <tt>foo</tt> there&#8217;s also an action
+For each action <tt>foo</tt> there&#8216;s also an action
 <tt>foo_and_wait</tt>.
 </p>
 
@@ -185,8 +185,9 @@ For each action <tt>foo</tt> there&#8217;s also an action
       
         <div class="method-description">
           <p>
-Add a selection to the set of selected options in a multi-select element
-using an option locator.
+Add a selection to the set of selected options in a multi-<a
+href="TestBuilderActions.html#M000022">select</a> element using an option
+locator.
 </p>
 <p>
 See the <tt><a href="TestBuilderActions.html#M000022">select</a></tt>
@@ -303,7 +304,8 @@ intervenes manually.
 </p>
 <p>
 NOTE: <tt>break</tt> is a reserved word in Ruby, so we have to simulate
-Selenium core&#8217;s <tt>break()</tt> with <tt>brake()</tt>
+Selenium core&#8216;s <tt>break()</tt> with <tt><a
+href="TestBuilderActions.html#M000036">brake</a>()</tt>
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
@@ -355,7 +357,7 @@ Check a toggle-button (checkbox/radio).
       
         <div class="method-description">
           <p>
-By default, Selenium&#8217;s overridden <tt>window.confirm()</tt> function
+By default, Selenium&#8216;s overridden <tt>window.confirm()</tt> function
 will return <tt>true</tt>, as if the user had manually clicked OK. After
 running this command, the next call to <tt>confirm()</tt> will return
 <tt>false</tt>, as if the user had clicked Cancel.
@@ -384,8 +386,9 @@ running this command, the next call to <tt>confirm()</tt> will return
       
         <div class="method-description">
           <p>
-Clicks on a link, button, checkbox or radio button. If the click action
-causes a new page to load (like a link usually does), call <tt><a
+Clicks on a link, button, checkbox or radio button. If the <a
+href="TestBuilderActions.html#M000011">click</a> action causes a new page
+to load (like a link usually does), call <tt><a
 href="TestBuilderActions.html#M000070">wait_for_page_to_load</a></tt>.
 </p>
           <p><a class="source-toggle" href="#"
@@ -412,8 +415,9 @@ href="TestBuilderActions.html#M000070">wait_for_page_to_load</a></tt>.
       
         <div class="method-description">
           <p>
-Clicks on a link, button, checkbox or radio button. If the click action
-causes a new page to load (like a link usually does), call <a
+Clicks on a link, button, checkbox or radio button. If the <a
+href="TestBuilderActions.html#M000011">click</a> action causes a new page
+to load (like a link usually does), call <a
 href="TestBuilderActions.html#M000070">wait_for_page_to_load</a>.
 </p>
           <p><a class="source-toggle" href="#"
@@ -440,8 +444,9 @@ href="TestBuilderActions.html#M000070">wait_for_page_to_load</a>.
       
         <div class="method-description">
           <p>
-Simulates the user clicking the &quot;close&quot; button in the titlebar of
-a popup window or tab.
+Simulates the user clicking the &quot;<a
+href="TestBuilderActions.html#M000033">close</a>&quot; button in the
+titlebar of a popup window or tab.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
@@ -533,7 +538,7 @@ Arguments:
 </li>
 <li><tt>options_string</tt> - options for the cookie. Currently supported
 options include &#8216;path&#8217; and &#8216;max_age&#8217;. The
-options_string&#8217;s format is <tt>&quot;path=/path/,
+options_string&#8216;s format is <tt>&quot;path=/path/,
 max_age=60&quot;</tt>. The order of options are irrelevant, the unit of the
 value of &#8216;max_age&#8217; is second.
 
@@ -589,9 +594,9 @@ Delete a named cookie with specified path.
       
         <div class="method-description">
           <p>
-Double clicks on a link, button, checkbox or radio button. If the double
-click action causes a new page to load (like a link usually does), call
-<tt><a
+Double clicks on a link, button, checkbox or radio button. If the double <a
+href="TestBuilderActions.html#M000011">click</a> action causes a new page
+to load (like a link usually does), call <tt><a
 href="TestBuilderActions.html#M000070">wait_for_page_to_load</a></tt>.
 </p>
           <p><a class="source-toggle" href="#"
@@ -807,7 +812,7 @@ for debugging.
         <div class="method-description">
           <p>
 Includes a partial. The path is relative to the Selenium tests root. The
-starting _ and the file extension don&#8217;t have to be specified.
+starting _ and the file extension don&#8216;t have to be specified.
 </p>
 <pre>
   #include test/selenium/_partial.*
@@ -1197,8 +1202,9 @@ the specified element.
         <div class="method-description">
           <p>
 Opens an URL in the test frame. This accepts both relative and absolute
-URLs. The <tt>open</tt> command waits for the page to load before
-proceeding, i.e. you don&#8217;t have to call <tt><a
+URLs. The <tt><a href="TestBuilderActions.html#M000026">open</a></tt>
+command waits for the page to load before proceeding, i.e. you don&#8216;t
+have to call <tt><a
 href="TestBuilderActions.html#M000070">wait_for_page_to_load</a></tt>.
 </p>
 <p>
@@ -1229,16 +1235,19 @@ restrictions in the browser (Same Origin Policy).
       
         <div class="method-description">
           <p>
-Opens a popup window (if a window with that ID isn&#8217;t already open).
-After opening the window, you&#8217;ll need to select it using the <tt><a
+Opens a popup window (if a window with that ID isn&#8216;t already <a
+href="TestBuilderActions.html#M000026">open</a>). After opening the window,
+you&#8216;ll need to <a href="TestBuilderActions.html#M000022">select</a>
+it using the <tt><a
 href="TestBuilderActions.html#M000027">select_window</a></tt> command.
 </p>
 <p>
 This command can also be a useful workaround for bug SEL-339. In some
 cases, Selenium will be unable to intercept a call to window.open (if the
 call occurs during or before the &quot;onLoad&quot; event, for example). In
-those cases, you can force Selenium to notice the open window&#8217;s name
-by using the Selenium openWindow command, using an empty (blank) url, like
+those cases, you can force Selenium to notice the <a
+href="TestBuilderActions.html#M000026">open</a> window&#8216;s name by
+using the Selenium openWindow command, using an empty (blank) url, like
 this: <tt><a
 href="TestBuilderActions.html#M000055">open_window</a>(&quot;&quot;,
 &quot;myFunnyWindow&quot;)</tt>.
@@ -1320,7 +1329,8 @@ browser.
       
         <div class="method-description">
           <p>
-Unselects all of the selected options in a multi-select element.
+Unselects all of the selected options in a multi-<a
+href="TestBuilderActions.html#M000022">select</a> element.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
@@ -1346,11 +1356,13 @@ Unselects all of the selected options in a multi-select element.
       
         <div class="method-description">
           <p>
-Remove a selection from the set of selected options in a multi-select
-element using an option locator.
+Remove a selection from the set of selected options in a multi-<a
+href="TestBuilderActions.html#M000022">select</a> element using an option
+locator.
 </p>
 <p>
-See the <tt>select</tt> command for more information about option locators.
+See the <tt><a href="TestBuilderActions.html#M000022">select</a></tt>
+command for more information about option locators.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
@@ -1440,8 +1452,10 @@ on label.
         <div class="method-description">
           <p>
 Selects a frame within the current window. (You may invoke this command
-multiple times to select nested frames.) To select the parent frame, use
-&quot;relative=parent&quot; as a locator; to select the top frame, use
+multiple times to <a href="TestBuilderActions.html#M000022">select</a>
+nested frames.) To <a href="TestBuilderActions.html#M000022">select</a> the
+parent frame, use &quot;relative=parent&quot; as a locator; to <a
+href="TestBuilderActions.html#M000022">select</a> the top frame, use
 &quot;relative=top&quot;.
 </p>
 <p>
@@ -1474,8 +1488,8 @@ href="http://"subframe"">dom=frames["main"].frames</a></tt>
         <div class="method-description">
           <p>
 Selects a popup window; once a popup window has been selected, all commands
-go to that window. To select the main window again, use <tt>nil</tt> as the
-target.
+go to that window. To <a href="TestBuilderActions.html#M000022">select</a>
+the main window again, use <tt>nil</tt> as the target.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
@@ -1539,7 +1553,7 @@ Writes a message to the status bar and adds a note to the browser-side log.
         <div class="method-description">
           <p>
 Moves the text cursor to the specified position in the given input element
-or textarea. This method will fail if the specified element isn&#8217;t an
+or textarea. This method will fail if the specified element isn&#8216;t an
 input element or textarea.
 </p>
           <p><a class="source-toggle" href="#"
@@ -1568,13 +1582,13 @@ input element or textarea.
           <p>
 Configure the number of pixels between &quot;mousemove&quot; events during
 dragAndDrop commands (default=10). Setting this value to 0 means that
-we&#8217;ll send a &quot;mousemove&quot; event to every single pixel in
+we&#8216;ll send a &quot;mousemove&quot; event to every single pixel in
 between the start location and the end location; that can be very slow, and
 may cause some browsers to force the JavaScript to timeout.
 </p>
 <p>
 If the mouse speed is greater than the distance between the two dragged
-objects, we&#8217;ll just send one &quot;mousemove&quot; at the start
+objects, we&#8216;ll just send one &quot;mousemove&quot; at the start
 location and then one final one at the end location.
 </p>
           <p><a class="source-toggle" href="#"
@@ -1605,7 +1619,8 @@ Specifies the amount of time that Selenium will wait for actions to
 complete.
 </p>
 <p>
-Actions that require waiting include <tt>open</tt> and the
+Actions that require waiting include <tt><a
+href="TestBuilderActions.html#M000026">open</a></tt> and the
 <tt>wait_for*</tt> actions.
 </p>
 <p>
@@ -1764,8 +1779,9 @@ This command is a synonym for <tt>store_expression</tt>.
       
         <div class="method-description">
           <p>
-Submit the specified form. This is particularly useful for forms without
-submit buttons, e.g. single-input &quot;Search&quot; forms.
+Submit the specified form. This is particularly useful for forms without <a
+href="TestBuilderActions.html#M000025">submit</a> buttons, e.g.
+single-input &quot;Search&quot; forms.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
@@ -1794,9 +1810,10 @@ submit buttons, e.g. single-input &quot;Search&quot; forms.
 Sets the value of an input field, as though you typed it in.
 </p>
 <p>
-Can also be used to set the value of combo boxes, check boxes, etc. In
-these cases, <tt>value</tt> should be the value of the option selected, not
-the visible text.
+Can also be used to set the value of combo boxes, <a
+href="TestBuilderActions.html#M000020">check</a> boxes, etc. In these
+cases, <tt>value</tt> should be the value of the option selected, not the
+visible text.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
@@ -1834,16 +1851,18 @@ character in the specified string; this is useful for dynamic UI widgets
 (like auto-completing combo boxes) that require explicit key events.
 </p>
 <p>
-Unlike the simple &quot;type&quot; command, which forces the specified
-value into the page directly, this command may or may not have any visible
-effect, even in cases where typing keys would normally have a visible
-effect. For example, if you use &quot;<tt><a
+Unlike the simple &quot;<a
+href="TestBuilderActions.html#M000019">type</a>&quot; command, which forces
+the specified value into the page directly, this command may or may not
+have any visible effect, even in cases where typing keys would normally
+have a visible effect. For example, if you use &quot;<tt><a
 href="TestBuilderActions.html#M000064">type_keys</a></tt>&quot; on a form
 element, you may or may not see the results of what you typed in the field.
 </p>
 <p>
-In some cases, you may need to use the simple &quot;type&quot; command to
-set the value of the field and then the &quot;<tt><a
+In some cases, you may need to use the simple &quot;<a
+href="TestBuilderActions.html#M000019">type</a>&quot; command to set the
+value of the field and then the &quot;<tt><a
 href="TestBuilderActions.html#M000064">type_keys</a></tt>&quot; command to
 send the keystroke events corresponding to what you just typed.
 </p>
@@ -1902,7 +1921,7 @@ Runs the specified JavaScript snippet repeatedly until it evaluates to
 the last line will be considered.
 </p>
 <p>
-Note that, by default, the snippet will be run in the runner&#8217;s test
+Note that, by default, the snippet will be run in the runner&#8216;s test
 window, not in the window of your application. To get the window of your
 application, you can use the JavaScript snippet
 <tt>selenium.browserbot.getCurrentWindow()</tt>, and then run your

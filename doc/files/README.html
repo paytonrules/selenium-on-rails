@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Fri Feb 02 10:53:50 CET 2007</td>
+      <td>Sat Feb 03 22:54:11 +0100 2007</td>
     </tr>
     </table>
   </div>
@@ -79,7 +79,7 @@ href="http://www.openqa.org/selenium-core/">SeleniumCore</a>.
 This plugin does four things:
 </p>
 <ol>
-<li>The Selenium Core files don&#8217;t have to pollute <tt>/public</tt>.
+<li>The Selenium Core files don&#8216;t have to pollute <tt>/public</tt>.
 
 </li>
 <li>No need to create suite files, they are generated on the fly &#8212; one
@@ -100,15 +100,15 @@ formats (see <tt>Formats</tt>).
 href="http://svn.openqa.org/svn/selenium-on-rails/selenium-on-rails">svn.openqa.org/svn/selenium-on-rails/selenium-on-rails</a></tt>
 
 </li>
-<li>If you&#8217;re on Windows, <tt>gem install win32-open3</tt>
+<li>If you&#8216;re on Windows, <tt>gem install win32-open3</tt>
 
 </li>
 <li><em>If the RedCloth gem is available the Selenese test cases can use it for
 better markup.</em>
 
 </li>
-<li>Run the Rakefile in the plugin&#8217;s directory to run the tests in order
-to see that everything works. (If RedCloth isn&#8217;t installed a few
+<li>Run the Rakefile in the plugin&#8216;s directory to run the tests in order
+to see that everything works. (If RedCloth isn&#8216;t installed a few
 tests will fail since they assume RedCloth is installed.)
 
 </li>
@@ -146,7 +146,7 @@ commands delimited by | characters.
  |goBack|
 </pre>
 <p>
-If you don&#8217;t want to write Selenese tests by hand you can use <a
+If you don&#8216;t want to write Selenese tests by hand you can use <a
 href="http://www.openqa.org/selenium-ide/">SeleniumIDE</a> which has <a
 href="http://wiki.openqa.org/display/SIDE/SeleniumOnRails">support</a> for
 Selenese.
@@ -171,7 +171,7 @@ for available commands.
 </p>
 <h3>HTML/RHTML</h3>
 <p>
-You can write your tests in HTML/RHTML but that&#8217;s mostly useful if
+You can write your tests in HTML/RHTML but that&#8216;s mostly useful if
 you have existing tests you want to reuse.
 </p>
 <h3>Partial test cases</h3>
@@ -228,7 +228,7 @@ change this by setting <tt>environments</tt>, such as:
 </pre>
 <h3>Selenium Core path</h3>
 <p>
-If you don&#8217;t want to use the bundled Selenium Core version you can
+If you don&#8216;t want to use the bundled Selenium Core version you can
 set <tt>selenium_path</tt> to the directory where Selenium Core is stored.
 </p>
 <pre>
@@ -240,7 +240,7 @@ set <tt>selenium_path</tt> to the directory where Selenium Core is stored.
 You can run all your Selenium tests as a Rake task.
 </p>
 <p>
-First, if you&#8217;re on Windows, you have to make sure win32-open3 is
+First, if you&#8216;re on Windows, you have to make sure win32-open3 is
 installed. Then you have to configure which browsers you want to run, like
 this:
 </p>
@@ -251,7 +251,7 @@ this:
    ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
 </pre>
 <p>
-Now you&#8217;re all set. First start a server:
+Now you&#8216;re all set. First start a server:
 </p>
 <pre>
  script/server -e test
@@ -285,13 +285,13 @@ This can be useful especially for continous integration.
 <p>
 Selenium has support for <tt>user_extension.js</tt> which is a way to
 extend the functionality of Selenium Core. Selenium on Rails now provides
-the means for you to extend it&#8217;s functionality to match.
+the means for you to extend it&#8216;s functionality to match.
 </p>
 <p>
-To get you started, we&#8217;ve included the example files
+To get you started, we&#8216;ve included the example files
 <tt>lib/test_builder_user_accessors.rb.example</tt> and
 <tt>lib/test_builder_user_actions.rb.example</tt> that replicate the sample
-extensions in Selenium Core&#8217;s <tt>user-extensions.js.sample</tt>
+extensions in Selenium Core&#8216;s <tt>user-extensions.js.sample</tt>
 </p>
 <p>
 To get these examples running, simply remove the .example and .sample

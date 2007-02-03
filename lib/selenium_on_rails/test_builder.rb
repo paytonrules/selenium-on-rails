@@ -5,6 +5,8 @@
 # selenium-core's user-extensions.js.sample
 module SeleniumOnRails::TestBuilderUserActions
 end
+require 'selenium_on_rails/test_builder_user_actions' if File.exist?(File.expand_path(File.join(File.dirname(__FILE__), 'test_builder_user_actions.rb')))
+
 
 # Create test_builder_user_accessors.rb to support accessors
 # included in selenium-core's user-extensions.js
@@ -13,6 +15,7 @@ end
 # selenium-core's user-extensions.js.sample
 module SeleniumOnRails::TestBuilderUserAccessors
 end
+require 'selenium_on_rails/test_builder_user_accessors' if File.exist?(File.expand_path(File.join(File.dirname(__FILE__), 'test_builder_user_accessors.rb')))
 
 # Builds Selenium test table using a high-level Ruby interface. Normally
 # invoked through SeleniumOnRails::RSelenese.
