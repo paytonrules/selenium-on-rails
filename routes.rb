@@ -14,7 +14,6 @@ module ActionController
             :controller => 'selenium', :action => 'record', :requirements => { :logFile => /.*/ }
           map.connect 'selenium/*filename',
             :controller => 'selenium', :action => 'support_file'
-          
           yield map
         end
       end

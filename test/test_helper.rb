@@ -3,6 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + "/../../../../config/environme
 require 'test_help'
 require 'controllers/selenium_controller'
 
+SeleniumController.append_view_path File.expand_path(File.dirname(__FILE__))
+
 module SeleniumOnRails::Paths
   def selenium_tests_path
     File.expand_path(File.dirname(__FILE__) + '/../test_data')
@@ -16,13 +18,13 @@ class SeleniumController
     raise e
   end
       
-  def render options = nil, deprecated_status = nil
+  def render options = nil
     if override_layout? options
       options[:layout] = false
-      super options, deprecated_status
+      super options
       return response.body = @layout_override.gsub('@content_for_layout', response.body)
     end
-    super options, deprecated_status
+    super options
   end
   
   private
@@ -67,4 +69,5 @@ class TestView < ActionView::Base
     @override, @override_type = nil, nil
     result
   end
+  
 end

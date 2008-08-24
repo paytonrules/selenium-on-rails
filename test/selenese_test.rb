@@ -1,12 +1,16 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class SeleneseTest < Test::Unit::TestCase
-
+  
   def selenese name, input, partial = nil, type = nil
-    view = TestView.new
+    view = TestView.new(File.dirname(__FILE__))
     view.override_partial partial, type do
       view.assigns['page_title'] = name
-      view.render_template 'sel', input
+      path = File.dirname(__FILE__) + "html.sel"
+      File.open(path, 'w+') do |index_file|
+        index_file << input
+      end
+      view.render_template ActionView::Template.new(view, path, false, locals = {})
     end
   end
   
@@ -203,13 +207,13 @@ END_PARTIAL
   end
     
   def test_raised_when_more_than_three_columns
-    assert_raise RuntimeError, 'There might only be a maximum of three cells!' do
+    assert_raise ActionView::TemplateError, 'There might only be a maximum of three cells!' do
       selenese 'name', '|col1|col2|col3|col4|'
     end
   end
 
   def test_raised_when_more_than_one_set_of_commands
-    assert_raise RuntimeError, 'You cannot have comments in the middle of commands!' do
+    assert_raise ActionView::TemplateError, 'You cannot have comments in the middle of commands!' do
       input = <<END
 comment
 |command|
@@ -221,7 +225,7 @@ END
   end
   
   def test_raised_when_incorrect_partial_format
-    assert_raise RuntimeError, "Invalid format 'invalid'. Should be '|includePartial|partial|var1=value|var2=value|." do
+    assert_raise ActionView::TemplateError, "Invalid format 'invalid'. Should be '|includePartial|partial|var1=value|var2=value|." do
       selenese 'name', '|includePartial|partial|a=valid|invalid|'
     end
   end
