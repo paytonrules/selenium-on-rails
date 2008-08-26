@@ -1,6 +1,9 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path(File.dirname(__FILE__) + "/../../../../config/environment")
-require 'test_help'
+$: << File.expand_path(File.dirname(__FILE__) + "/../lib")
+
+require 'rubygems'
+gem 'rails'
+require 'active_support'
 require 'controllers/selenium_controller'
 
 SeleniumController.append_view_path File.expand_path(File.dirname(__FILE__))
