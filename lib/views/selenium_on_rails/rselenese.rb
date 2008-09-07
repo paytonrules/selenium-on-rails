@@ -8,7 +8,7 @@
 # See SeleniumOnRails::TestBuilder for a list of available commands.
 class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
 end
-ActionView::Template.register_template_handler 'rsel', SeleniumOnRails::RSelenese
+ActionView::Base.register_template_handler 'rsel', SeleniumOnRails::RSelenese
 
 class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
   attr_accessor :view

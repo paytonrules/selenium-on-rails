@@ -1,6 +1,5 @@
 module SeleniumOnRails::Renderer
   include SeleniumOnRails::Paths
-  include SeleniumHelper
   
   def render_test_case filename
     @template.extend SeleniumOnRails::PartialsSupport
@@ -12,6 +11,10 @@ module SeleniumOnRails::Renderer
     headers['Cache-control'] = 'no-cache'
     headers['Pragma'] = 'no-cache'
     headers['Expires'] = '-1'
+  end
+  
+  def test_case_name filename
+    File.basename(filename).sub(/\..*/,'').humanize
   end
 
 end

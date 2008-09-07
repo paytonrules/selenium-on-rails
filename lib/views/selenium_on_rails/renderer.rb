@@ -1,6 +1,6 @@
 module SeleniumOnRails::Renderer
   include SeleniumOnRails::Paths
-  include SeleniumHelper
+  # include SeleniumHelper
   
   def render_test_case filename
     @template.extend SeleniumOnRails::PartialsSupport

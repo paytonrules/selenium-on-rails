@@ -1,10 +1,12 @@
 require File.dirname(__FILE__) + '/test_helper'
-require "selenium_controller"
+require 'mocha'
 
 class SeleniumControllerTest < Test::Unit::TestCase
 
   def setup
     @controller = SeleniumController.new
+    ActionController::Routing::Routes.draw
+    SeleniumController.any_instance.stubs(:layout_path).returns(false)
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @result_dir = File.join(File.dirname(__FILE__), "..", "test_result")
