@@ -17,34 +17,16 @@ END
     get :test_file, :testname => 'empty_suite'
     
     assert_response :success
-    expected =<<END
-<html><head><title>test layout</title></head><body>
-<script type="text/javascript">
-<!--
-function openSuite(selector) {
-  var suite = selector.options[selector.selectedIndex].value;
-  if(suite == "header") return;
-  if(top.location.href != location.href) //inside a frame
-    top.location =  "/selenium/TestRunner.html?test=tests" + suite
-  else
-    window.location = "/selenium/tests" + suite
-}
-//-->
-</script>
-<select onchange="openSuite(this)">
-  <option value="header">Suites:</option>
-  <option value="">..</option>
-</select>
-
-<table>
-  <tr><th>Empty suite</th></tr>
-</table>
-</body></html>
-END
-    assert_text_equal expected, @response.body
+    assert_tag :tag => "title", :content => "test layout"
+    assert_tag :tag => "script", :attributes => {:type => "text/javascript"}
+    assert_tag :tag => "select", :attributes => {:onchange => "openSuite(this)"}, 
+               :descendant => {:tag => "option", :attributes => {:value => "header"}, :content => "Suites:"},
+               :descendant => {:tag => "option", :attributes => {:value => ""}, :content => ".."}
+               
+    assert_tag :tag => "table",
+              :descendant => {:tag => "th", :content => "Empty suite"}
   end
 
-  
   def test_root_suite
     _test_root_suite ''
   end
@@ -83,81 +65,35 @@ END
 
   def test_suite_one
     get :test_file, :testname => 'suite_one'
-    assert_response :success
-    expected =<<END
-<html><head><title>test layout</title></head><body>
-
-<script type="text/javascript">
-<!--
-function openSuite(selector) {
-  var suite = selector.options[selector.selectedIndex].value;
-  if(suite == "header") return;
-  if(top.location.href != location.href) //inside a frame
-    top.location =  "/selenium/TestRunner.html?test=tests" + suite
-  else
-    window.location = "/selenium/tests" + suite
-}
-//-->
-</script>
-<select onchange="openSuite(this)">
-  <option value="header">Suites:</option>
-  
-  <option value="">..</option>
-  
-  <option value="/suite_one/subsuite">Subsuite</option>
-  
-</select>
-
-<table>
-  <tr><th>Suite one</th></tr>
-  
-  <tr><td><a href="/selenium/tests/suite_one/suite_one_testcase1.sel">Suite one testcase1</a></td></tr>
-  
-  <tr><td><a href="/selenium/tests/suite_one/suite_one_testcase2.sel">Suite one testcase2</a></td></tr>
-  
-  <tr><td><a href="/selenium/tests/suite_one/subsuite/suite_one_subsuite_testcase.sel">Subsuite.Suite one subsuite testcase</a></td></tr>
-  
-</table>
-</body></html>
-END
-    assert_text_equal expected, @response.body
+    
+    assert_response :success   
+    assert_tag :tag => "title", :content => "test layout"
+    assert_tag :tag => "script", :attributes => {:type => "text/javascript"}
+    assert_tag :tag => "select", :attributes => {:onchange => "openSuite(this)"}, 
+               :descendant => {:tag => "option", :attributes => {:value => "header"}, :content => "Suites:"},
+               :descendant => {:tag => "option", :attributes => {:value => ""}, :content => ".."},
+               :descendant => {:tag => "option", :attributes => {:value => "/suite_one/subsuite"}, :content => "Subsuite"}
+               
+    assert_tag :tag => "table",
+              :descendant => {:tag => "th", :content => "Suite one"},
+              :descendant => {:tag => "td", :content => "Suite one testcase1"},
+              :descendant => {:tag => "td", :content => "Suite one testcase2"},
+              :descendant => {:tag => "td", :content => "Subsuite.Suite one subsuite testcase"}
   end
   
   def test_sub_suite
     get :test_file, :testname => 'suite_one/subsuite'
+    
     assert_response :success
-    expected =<<END
-<html><head><title>test layout</title></head><body>
-
-<script type="text/javascript">
-<!--
-function openSuite(selector) {
-  var suite = selector.options[selector.selectedIndex].value;
-  if(suite == "header") return;
-  if(top.location.href != location.href) //inside a frame
-    top.location =  "/selenium/TestRunner.html?test=tests" + suite
-  else
-    window.location = "/selenium/tests" + suite
-}
-//-->
-</script>
-<select onchange="openSuite(this)">
-  <option value="header">Suites:</option>
-  
-  <option value="/suite_one">..</option>
-  
-</select>
-
-<table>
-  <tr><th>Subsuite</th></tr>
-  
-  <tr><td><a href="/selenium/tests/suite_one/subsuite/suite_one_subsuite_testcase.sel">Suite one subsuite testcase</a></td></tr>
-  
-</table>
-</body></html>
-END
-
-    assert_text_equal expected, @response.body
+    assert_tag :tag => "title", :content => "test layout"
+    assert_tag :tag => "script", :attributes => {:type => "text/javascript"}
+    assert_tag :tag => "select", :attributes => {:onchange => "openSuite(this)"}, 
+               :descendant => {:tag => "option", :attributes => {:value => "header"}, :content => "Suites:"},
+               :descendant => {:tag => "option", :attributes => {:value => "/suite_one"}, :content => ".."}
+               
+    assert_tag :tag => "table",
+              :descendant => {:tag => "th", :content => "Subsuite"},
+              :descendant => {:tag => "td", :content => "Suite one subsuite testcase"}
   end
   
   def test_missing_tests_directory

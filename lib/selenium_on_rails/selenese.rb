@@ -1,6 +1,6 @@
 class SeleniumOnRails::Selenese
 end
-ActionView::Base.register_template_handler 'sel', SeleniumOnRails::Selenese
+ActionView::Template.register_template_handler 'sel', SeleniumOnRails::Selenese
 
 
 class SeleniumOnRails::Selenese
@@ -8,10 +8,10 @@ class SeleniumOnRails::Selenese
     @view = view
   end
 
-  def render template, locals
-    local_assigns = locals
+  def render template
+    local_assigns = template.locals
     name = (@view.assigns['page_title'] or local_assigns['page_title'])
-    lines = template.strip.split "\n"
+    lines = template.source.strip.split "\n"
     html = ''
     html << extract_comments(lines)
     html << extract_commands(lines, name)
