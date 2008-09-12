@@ -4,10 +4,14 @@ class RSeleneseTest < Test::Unit::TestCase
   include ERB::Util
   
   def rselenese name, input, partial = nil, type = nil
-    view = TestView.new
+    view = TestView.new(File.dirname(__FILE__))
     view.override_partial partial, type do
       view.assigns['page_title'] = name
-      view.render_template 'rsel', input
+      path = File.dirname(__FILE__) + "html.rsel"
+      File.open(path, 'w+') do |index_file|
+        index_file << input
+      end
+      view.render_template ActionView::Template.new(view, path, false, locals = {})
     end
   end
 
@@ -39,7 +43,7 @@ END
     input = "#{name}(#{args_str})"
     assert_rselenese expected_html, 'Selenese Commands', input
   end
-
+ 
   def test_element_locators
     assert_generates_command %w{click aCheckbox}, :click, 'aCheckbox'
     assert_generates_command %w{click document.foo}, :click, 'document.foo'
@@ -304,7 +308,7 @@ END
     assert_command_works :wait_for_table, :table_locator, :pattern
     assert_command_works :wait_for_not_table, :table_locator, :pattern
     
-    assert_raise RuntimeError do
+    assert_raise ActionView::TemplateError do
       assert_command_works :store_selected, :locator, :option_locator, :variable
     end
     assert_command_works :assert_selected, :locator, :option_locator
@@ -410,7 +414,7 @@ END
     assert_command_works :wait_for_attribute, :locator_and_attribute_name, :pattern
     assert_command_works :wait_for_not_attribute, :locator_and_attribute_name, :pattern
     
-    assert_raise RuntimeError do
+    assert_raise ActionView::TemplateError do
       assert_command_works :store_ordered, :locator, :locator, :variable
     end
     assert_command_works :assert_ordered, :locator, :locator
@@ -444,7 +448,7 @@ END
     assert_command_works :wait_for_visible, :locator
     assert_command_works :wait_for_not_visible, :locator
     
-    assert_raise RuntimeError do
+    assert_raise ActionView::TemplateError do
       assert_command_works :store_error_on_next, :string
     end
     assert_command_works :assert_error_on_next, :string
@@ -454,7 +458,7 @@ END
     assert_command_works :wait_for_error_on_next, :string
     assert_command_works :wait_for_not_error_on_next, :string    
     
-    assert_raise RuntimeError do
+    assert_raise ActionView::TemplateError do
       assert_command_works :store_failure_on_next, :string
     end
     assert_command_works :assert_failure_on_next, :string
@@ -616,7 +620,7 @@ END
     assert_command_works :wait_for_expression, :script, :pattern
     assert_command_works :wait_for_not_expression, :script, :pattern
     
-    assert_raise RuntimeError do
+    assert_raise ActionView::TemplateError do
       assert_command_works :store_whether_this_frame_match_frame_expression, :string, :string, :variable
     end
     assert_command_works :assert_whether_this_frame_match_frame_expression, :string, :string
@@ -626,7 +630,7 @@ END
     assert_command_works :wait_for_whether_this_frame_match_frame_expression, :string, :string
     assert_command_works :wait_for_not_whether_this_frame_match_frame_expression, :string, :string
     
-    assert_raise RuntimeError do
+    assert_raise ActionView::TemplateError do
       assert_command_works :store_whether_this_window_match_window_expression, :string, :string, :variable
     end
     assert_command_works :assert_whether_this_window_match_window_expression, :string, :string

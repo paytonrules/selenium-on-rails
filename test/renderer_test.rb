@@ -14,7 +14,7 @@ END
 
   def test_route
     get :test_file, :testname => 'html.html' #initialize the controller
-    assert_equal 'http://test.host/selenium/tests/suite/test_case.sel', 
+    assert_equal 'http://test.host/selenium/tests/suite%2Ftest_case.sel', 
         @controller.url_for(:controller => 'selenium', :action => 'test_file', :testname => 'suite/test_case.sel')
   end
   
