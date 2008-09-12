@@ -8,7 +8,7 @@
 # See SeleniumOnRails::TestBuilder for a list of available commands.
 class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
 end
-ActionView::Base.register_template_handler 'rsel', SeleniumOnRails::RSelenese
+ActionView::Template.register_template_handler 'rsel', SeleniumOnRails::RSelenese
 
 class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
   attr_accessor :view
@@ -20,8 +20,8 @@ class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
   end
 
   # Render _template_ using _local_assigns_.
-  def render template, locals
-    local_assigns = locals
+  def render template
+    local_assigns = template.locals
     title = (@view.assigns['page_title'] or local_assigns['page_title'])
     table(title) do
       test = self #to enable test.command
@@ -29,7 +29,7 @@ class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
       assign_locals_code = ''
       local_assigns.each_key {|key| assign_locals_code << "#{key} = local_assigns[#{key.inspect}];"}
 
-      eval assign_locals_code + "\n" + template
+      eval assign_locals_code + "\n" + template.source
     end
   end
   
