@@ -1,4 +1,6 @@
 require 'webrick/httputils'
+require 'action_view'
+require 'action_controller'
 
 class SeleniumController < ActionController::Base
   include SeleniumOnRails::FixtureLoader

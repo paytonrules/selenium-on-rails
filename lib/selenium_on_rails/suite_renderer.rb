@@ -1,3 +1,5 @@
+require 'selenium_on_rails'
+
 module SeleniumOnRails::SuiteRenderer
   def test_suite_name path
     return 'All test cases' if [nil, '/'].include? path_to_relative_url(path)
