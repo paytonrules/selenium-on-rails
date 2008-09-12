@@ -5,5 +5,5 @@ numTestFailures:
 numCommandFailures: 
 numCommandPasses: 
 numCommandErrors: 
-resultDir: ./vendor/plugins/selenium-on-rails/test/../test_result/default
+resultDir: ./test/../test_result/default
 totalTime: 

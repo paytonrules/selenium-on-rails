@@ -2,9 +2,24 @@ ENV["RAILS_ENV"] = "test"
 $: << File.expand_path(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
-gem 'rails'
+gem 'activesupport'
 require 'active_support'
+
+require 'action_view/template_handler'
+require 'action_view/template_handlers/builder'
+require 'action_view/template_handlers/erb'
+require 'action_view/template_handlers/rjs'
+require 'action_view/base'
+require 'action_view/partials'
+require 'action_view/template_error'
+require 'action_controller'
+
+require 'selenium_on_rails/suite_renderer'
+require 'selenium_on_rails/fixture_loader'
+require 'selenium_helper'
 require 'controllers/selenium_controller'
+require File.expand_path(File.dirname(__FILE__) + "/../routes")
+require 'action_controller/test_process'
 
 SeleniumController.append_view_path File.expand_path(File.dirname(__FILE__))
 

@@ -1,3 +1,6 @@
+require 'selenium_on_rails/test_builder_actions'
+require 'selenium_on_rails/test_builder_accessors'
+
 # Create test_builder_user_actions.rb to support actions included
 # in selenium-core's user-extensions.js
 #

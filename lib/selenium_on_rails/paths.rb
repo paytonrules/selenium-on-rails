@@ -1,3 +1,5 @@
+require 'selenium_on_rails_config'
+
 module SeleniumOnRails
   module Paths
     def selenium_path
