@@ -3,7 +3,11 @@ require 'webrick/httputils'
 class SeleniumController < ActionController::Base
   include SeleniumOnRails::FixtureLoader
   include SeleniumOnRails::Renderer
-
+  
+  def initialize
+    @config = SeleniumOnRailsConfig.new
+  end
+  
   def setup
     unless params.has_key? :keep_session
       reset_session
@@ -51,16 +55,17 @@ class SeleniumController < ActionController::Base
     dir = record_table
 
     @result = {'resultDir' => dir}
-    for p in ['result', 'numTestFailures', 'numTestPasses', 'numCommandFailures', 'numCommandPasses', 'numCommandErrors', 'totalTime']
-      @result[p] = params[p]
+    ['result', 'numTestFailures', 'numTestPasses', 'numCommandFailures', 'numCommandPasses', 'numCommandErrors', 'totalTime'].each_with_index do |item, index|
+      @result[index] = params[index]
     end
+    
     File.open(log_path(params[:logFile] || 'default.yml'), 'w') {|f| YAML.dump(@result, f)}
     
     render :file => view_path('record.rhtml'), :layout => layout_path
   end
 
   def record_table
-    return nil unless result_dir = SeleniumOnRailsConfig.get(:result_dir)
+    return nil unless result_dir = @config.get(:result_dir)
 
     cur_result_dir = File.join(result_dir, (params[:logFile] || "default").sub(/\.yml$/, ''))
     FileUtils.mkdir_p(cur_result_dir)

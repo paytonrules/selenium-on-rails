@@ -17,7 +17,8 @@ class SeleniumControllerTest < Test::Unit::TestCase
   end
   
   def test_record_with_result
-    SeleniumOnRailsConfig.configs["result_dir"] = @result_dir
+    @controller.config.configs["result_dir"] = @result_dir
+
     suite = <<EOS
 <script>
 </script>
@@ -26,13 +27,13 @@ class SeleniumControllerTest < Test::Unit::TestCase
   <tr><td bgcolor="#ccffcc"><a href="/selenium/tests/bar.sel">Bar</a></td></tr>
 </table>
 EOS
-    post :record, :suite => suite,
-      "testTable.1" => "<table></table>",
-      "testTable.2" => "<table></table>"
+    post :record, :suite => suite, "testTable.1" => "<table></table>", "testTable.2" => "<table></table>"
+    
     cur_result_dir = File.join(@result_dir, "default")
     assert File.directory?(cur_result_dir)
     assert_equal ["blank.html", "index.html", "suite.html", "test1.html", "test2.html"], 
-      Dir.glob("#{cur_result_dir}/*.html").map{|path| File.basename(path)}.sort
+                 Dir.glob("#{cur_result_dir}/*.html").map{|path| File.basename(path)}.sort
+
     expected = <<EOS
 <html>
 <head>

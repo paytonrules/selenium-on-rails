@@ -1,9 +1,9 @@
 --- 
-result: 
-numTestPasses: 
-numTestFailures: 
-numCommandFailures: 
-numCommandPasses: 
-numCommandErrors: 
+5: 
+0: 
+6: 
+1: 
+2: 
+3: 
+4: 
 resultDir: ./test/../test_result/default
-totalTime: 
