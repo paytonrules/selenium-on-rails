@@ -1,4 +1,4 @@
-# Rename this file to config.yml in order to configure the plugin
+# Move this file to your rails apps config directory and rename it to selenium.yml in order to configure the plugin
 
 #
 # General settings
