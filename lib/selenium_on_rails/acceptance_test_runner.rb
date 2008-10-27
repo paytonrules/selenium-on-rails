@@ -44,7 +44,7 @@ module SeleniumOnRails
           result = YAML::load_file log_file
           print_result result
           has_error ||= result['numTestFailures'].to_i > 0
-          File.delete log_file unless has_error
+          # File.delete log_file unless has_error
         end
       rescue
         stop_server
