@@ -1,11 +1,12 @@
-require File.dirname(__FILE__) + '/paths'
-require File.dirname(__FILE__) + '/../selenium_on_rails_config'
+$: << File.expand_path(File.dirname(__FILE__) + "/")
+$: << File.expand_path(File.dirname(__FILE__) + "/../")
+require 'paths'
 require 'net/http'
 require 'tempfile'
 
 
-def c(var, default = nil) SeleniumOnRailsConfig.get var, default end
-def c_b(var, default = nil) SeleniumOnRailsConfig.get(var, default) { yield } end
+def c(var, default = nil) SeleniumOnRailsConfig.new.get var, default end
+def c_b(var, default = nil) SeleniumOnRailsConfig.new.get(var, default) { yield } end
 
 BROWSERS =              c :browsers, {}
 REUSE_EXISTING_SERVER = c :reuse_existing_server, true
