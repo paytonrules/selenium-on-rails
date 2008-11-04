@@ -1,9 +1,9 @@
 --- 
-5: 
-0: 
-6: 
-1: 
-2: 
-3: 
-4: 
-resultDir: ./test/../test_result/default
+result: Failed
+numTestPasses: "1079"
+numTestFailures: "906"
+numCommandFailures: "1027"
+numCommandPasses: "3"
+numCommandErrors: "57"
+resultDir: 
+totalTime: A long time
