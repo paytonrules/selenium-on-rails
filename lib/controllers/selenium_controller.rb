@@ -55,8 +55,8 @@ class SeleniumController < ActionController::Base
     dir = record_table
 
     @result = {'resultDir' => dir}
-    ['result', 'numTestFailures', 'numTestPasses', 'numCommandFailures', 'numCommandPasses', 'numCommandErrors', 'totalTime'].each_with_index do |item, index|
-      @result[index] = params[index]
+    ['result', 'numTestFailures', 'numTestPasses', 'numCommandFailures', 'numCommandPasses', 'numCommandErrors', 'totalTime'].each do |item|
+      @result[item] = params[item]
     end
     
     File.open(log_path(params[:logFile] || 'default.yml'), 'w') {|f| YAML.dump(@result, f)}
