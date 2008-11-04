@@ -24,6 +24,13 @@ require 'action_controller/test_process'
 
 SeleniumController.append_view_path File.expand_path(File.dirname(__FILE__))
 
+def setup_controller_test(controller)
+  @controller = controller.new
+  ActionController::Routing::Routes.draw
+  @request    = ActionController::TestRequest.new
+  @response   = ActionController::TestResponse.new
+end
+
 module SeleniumOnRails::Paths
   def selenium_tests_path
     File.expand_path(File.dirname(__FILE__) + '/../test_data')
