@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 require 'mocha'
-require 'switch_environment/switch_environment_controller'
+require 'controllers/switch_environment_controller'
 
 class SwitchEnvironmentControllerTest < Test::Unit::TestCase
 
