@@ -12,9 +12,9 @@ else
   #erase all traces
   $LOAD_PATH.delete lib_path
   
-  #but help user figure out what to do
-  unless RAILS_ENV == 'production' # don't pollute production
-    require File.dirname(__FILE__) + '/switch_environment/init'
-  end
+  # #but help user figure out what to do
+  # unless RAILS_ENV == 'production' # don't pollute production
+  #   require File.dirname(__FILE__) + '/switch_environment/init'
+  # end
 end
 
