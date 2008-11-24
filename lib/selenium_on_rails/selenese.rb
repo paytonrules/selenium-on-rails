@@ -8,8 +8,7 @@ class SeleniumOnRails::Selenese
     @view = view
   end
 
-  def render template
-    local_assigns = template.locals
+  def render template, local_assigns = {}
     name = (@view.assigns['page_title'] or local_assigns['page_title'])
     lines = template.source.strip.split "\n"
     html = ''
