@@ -2,36 +2,25 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class SeleneseTest < Test::Unit::TestCase
   
+  def setup
+    @view = TestView.new
+    @sel = SeleniumOnRails::Selenese.new(@view) 
+  end
+  
   def render_selenese(page_title, input)
-    view = TestView.new
-    sel = SeleniumOnRails::Selenese.new(TestView.new)
+    create_sel_file_from(input, "html.sel")
     
-    path = File.dirname(__FILE__) + "html.sel"
-    create_html_file_from(input, path)
-    
-    sel.render ActionView::Template.new(path), {'page_title' => page_title}
+    @sel.render ActionView::Template.new(test_path_for("html.sel")), {'page_title' => page_title}
   end
   
-  def create_html_file_from(input, path)
-    File.open(path, 'w+') do |index_file|
-      index_file << input
-    end
+  def create_sel_file_from(input, name)
+    File.open(test_path_for(name), 'w+') { |index_file| index_file << input }
   end
   
- #  def selenese name, input, partial = nil, type = nil
- #     view = TestView.new
- #     # view.finder.append_view_path File.dirname(__FILE__)
- #     view.override_partial partial, type do
- #       view.assigns['page_title'] = name
- #       path = File.dirname(__FILE__) + "html.sel"
- #       File.open(path, 'w+') do |index_file|
- #         index_file << input
- #       end
- #       template = ActionView::Template.new(path)
- #       view.render_template template
- #     end
- #   end
- #   
+  def test_path_for(name)
+    "#{File.expand_path(File.dirname(__FILE__) + "/../test_data")}/#{name}"
+  end
+   
   def assert_selenese expected, name, input
     assert_text_equal expected, render_selenese(name, input)
   end
@@ -189,41 +178,44 @@ END
 END
     input = '|includePartial|override|'
     partial = '|type|partial|Selenese partial|'
+    create_sel_file_from(partial, "_override.sel")
     
+    assert_selenese(expected, 'Partial support', input)
     
-    view = TestView.new
-    sel = SeleniumOnRails::Selenese.new(TestView.new)
-    
-    assert_text_equal(expected, view.render(:inline => partial, :type => 'sel'))
-    # assert_selenese expected, 'Partial support', input, partial, 'sel'
+    File.delete(test_path_for("_override.sel"))
   end
-#    
-#   def test_partial_support_with_local_assigns
-#     expected = <<END_EXPECTED
-# <table>
-# <tr><th colspan="3">Partial support with local assigns</th></tr>
-# <tr><td>type</td><td>assigns</td><td>a=hello,b=world!,c_123ABC=</td></tr>
-# <tr><td>type</td><td>assigns</td><td>a=a b c d,b=,c_123ABC=hello</td></tr>
-# </table>
-# END_EXPECTED
-#      
-#     input = <<END_INPUT
-# |includePartial|override|a=hello|b=world!|
-# |includePartial|override|a = a b c d|b=|c_123ABC= hello  |
-# END_INPUT
-# 
-#     partial = <<END_PARTIAL
-# <table><tr><th>whatever</th></tr>
-# <tr><td>type</td><td>assigns</td><td>
-# a=<%= a if defined? a%>,
-# b=<%= b if defined? b%>,
-# c_123ABC=<%= c_123ABC if defined? c_123ABC%>
-# </td></tr>
-# </table>
-# END_PARTIAL
-#     assert_selenese expected, 'Partial support with local assigns', input, partial, 'rhtml'
-#   end
-#      
+   
+  def test_partial_support_with_local_assigns
+    expected = <<END_EXPECTED
+<table>
+<tr><th colspan="3">Partial support with local assigns</th></tr>
+<tr><td>type</td><td>assigns</td><td>a=hello,b=world!,c_123ABC=</td></tr>
+<tr><td>type</td><td>assigns</td><td>a=a b c d,b=,c_123ABC=hello</td></tr>
+</table>
+END_EXPECTED
+     
+    input = <<END_INPUT
+|includePartial|override|a=hello|b=world!|
+|includePartial|override|a = a b c d|b=|c_123ABC= hello  |
+END_INPUT
+
+    partial = <<END_PARTIAL
+<table><tr><th>whatever</th></tr>
+<tr><td>type</td><td>assigns</td><td>
+a=<%= a if defined? a%>,
+b=<%= b if defined? b%>,
+c_123ABC=<%= c_123ABC if defined? c_123ABC%>
+</td></tr>
+</table>
+END_PARTIAL
+
+    create_sel_file_from(partial, "_override.html")
+    
+    assert_selenese(expected, 'Partial support with local assigns', input)
+    
+    File.delete(test_path_for("_override.html"))
+  end
+     
   def test_raised_when_more_than_three_columns
     assert_raise RuntimeError, 'There might only be a maximum of three cells!' do
       render_selenese 'name', '|col1|col2|col3|col4|'

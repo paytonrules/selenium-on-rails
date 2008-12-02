@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 require 'mocha'
 
-RAILS_ROOT = "test" unless defined?(RAILS_ROOT)
-
 class SeleniumOnRailsConfigTest < Test::Unit::TestCase
   
   def test_config_file_in_config_directory
