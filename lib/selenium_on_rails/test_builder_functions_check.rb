@@ -2,9 +2,9 @@
 # The test_builder_actions.rb and test_builder_accessors.rb files do not
 # necessarily contain all the functions which are available in Selenium.
 # Here we use the iedoc.xml file to find functions which might need to be
-# added to the test_builder_actions.rb file.  Ultimately it would be great not
-# to need to do this process manually, however, this is a temporary step
-# toward improving function parity.
+# added to the files.  Ultimately it would be great not to need to do this
+# process manually, however, this is a temporary step toward improving
+# function parity.
 
 iedoc_file = File.read "../../selenium-core/iedoc.xml"
 test_builder_actions_file = File.read "./test_builder_actions.rb"
