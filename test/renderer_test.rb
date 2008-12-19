@@ -54,6 +54,7 @@ END
   
   def test_selenese
     get :test_file, :testname => 'selenese.sel'
+    
     assert_headers
     expected =<<END
 <html><head><title>test layout</title></head><body>

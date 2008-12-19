@@ -1,4 +1,5 @@
 ENV["RAILS_ENV"] = "test"
+RAILS_ROOT = "test" unless defined?(RAILS_ROOT)
 $: << File.expand_path(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
@@ -6,7 +7,6 @@ gem 'activesupport'
 require 'active_support'
 
 require 'action_view/template_handler'
-require 'action_view/template_handlers/compilable'
 require 'action_view/template_handlers/builder'
 require 'action_view/template_handlers/erb'
 require 'action_view/template_handlers/rjs'
@@ -79,21 +79,21 @@ end
 class TestView < ActionView::Base
   include SeleniumOnRails::PartialsSupport
   
-  alias_method :render_partial_without_override, :render_partial
-  def render_partial partial_path = default_template_name, object = nil, local_assigns = nil, status = nil
-    if @override
-      partial = render :inline => @override, :type => @override_type, :locals => local_assigns
-      extract_commands_from_partial partial
-    else
-      render_partial_without_override partial_path, object, local_assigns, status
-    end
-  end
-  
-  def override_partial partial, type
-    @override, @override_type = partial, type
-    result = yield
-    @override, @override_type = nil, nil
-    result
-  end
+  # alias_method :render_partial_without_override, :render_partial
+  # def render_partial partial_path = default_template_name, object = nil, local_assigns = nil, status = nil
+  #   if @override
+  #     partial = render :inline => @override, :type => @override_type, :locals => local_assigns
+  #     extract_commands_from_partial partial
+  #   else
+  #     render_partial_without_override partial_path, object, local_assigns, status
+  #   end
+  # end
+  # 
+  # def override_partial partial, type
+  #   @override, @override_type = partial, type
+  #   result = yield
+  #   @override, @override_type = nil, nil
+  #   result
+  # end
   
 end

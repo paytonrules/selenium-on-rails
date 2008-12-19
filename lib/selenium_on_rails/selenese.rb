@@ -1,15 +1,16 @@
+require 'selenium_on_rails/partials_support'
+
 class SeleniumOnRails::Selenese
 end
 ActionView::Template.register_template_handler 'sel', SeleniumOnRails::Selenese
 
 
-class SeleniumOnRails::Selenese
+class SeleniumOnRails::Selenese  
   def initialize view
     @view = view
   end
 
-  def render template
-    local_assigns = template.locals
+  def render template, local_assigns = {}
     name = (@view.assigns['page_title'] or local_assigns['page_title'])
     lines = template.source.strip.split "\n"
     html = ''
@@ -20,10 +21,6 @@ class SeleniumOnRails::Selenese
     html
   end
   
-  def compilable?
-    false
-  end
-
   private
     def next_line lines, expects
       while lines.any?
@@ -36,6 +33,10 @@ class SeleniumOnRails::Selenese
         end
         return l
       end
+    end
+    
+    def self.call(template)
+      "#{name}.new(self).render(template, local_assigns)"
     end
 
     def extract_comments lines
