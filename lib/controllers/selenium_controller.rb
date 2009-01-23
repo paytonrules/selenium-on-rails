@@ -10,7 +10,7 @@ class SeleniumController < ActionController::Base
   
   def setup
     unless params.has_key? :keep_session
-      reset_session
+      reset_session #  IS THIS WORKING!  NO THINK SO
       @session_wiped = true
     end
     @cleared_tables = clear_tables params[:clear_tables].to_s
