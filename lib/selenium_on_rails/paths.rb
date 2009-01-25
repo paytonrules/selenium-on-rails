@@ -1,9 +1,5 @@
-require 'selenium_on_rails_config'
-
 module SeleniumOnRails
   module Paths
-    attr_accessor :config
-    
     def selenium_path
       @@selenium_path ||= find_selenium_path
       @@selenium_path
@@ -39,22 +35,21 @@ module SeleniumOnRails
       false
     end
     
-    private ###############################################
-
-    def find_selenium_path
-      sel_dirs = @config.get :selenium_path do
-        File.expand_path(File.dirname(__FILE__) + '/../../selenium-core')
-      end
-
-      sel_dirs.to_a.each do |seleniumdir|
-        ['', 'core', 'selenium', 'javascript'].each do |subdir|
-          path = File.join seleniumdir, subdir
-          return path if File.exist?(File.join(path, 'TestRunner.html'))
+    private
+      def find_selenium_path
+        sel_dirs = SeleniumOnRailsConfig.get :selenium_path do
+          File.expand_path(File.dirname(__FILE__) + '/../../selenium-core')
         end
+
+        sel_dirs.to_a.each do |seleniumdir|
+          ['', 'core', 'selenium', 'javascript'].each do |subdir|
+            path = File.join seleniumdir, subdir
+            return path if File.exist?(File.join(path, 'TestRunner.html'))
+          end
+        end
+        
+        raise 'Could not find Selenium Core installation'
       end
-      
-      raise 'Could not find Selenium Core installation'
-    end
        
   end
 end

@@ -1,24 +1,13 @@
 require File.dirname(__FILE__) + '/test_helper'
-require 'mocha'
+require "selenium_controller"
 
 class SeleniumControllerTest < Test::Unit::TestCase
 
   def setup
     @controller = SeleniumController.new
-    ActionController::Routing::Routes.draw
-    SeleniumController.any_instance.stubs(:layout_path).returns(false)
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @result_dir = File.join(File.dirname(__FILE__), "..", "test_result")
-    
-    @suite = <<EOS
-<script>
-</script>
-<table>
-  <tr><td bgcolor="#ccffcc"><a href="/selenium/tests/foo.sel">Foo</a></td></tr>
-  <tr><td bgcolor="#ccffcc"><a href="/selenium/tests/bar.sel">Bar</a></td></tr>
-</table>
-EOS
   end
 
   def teardown
@@ -26,15 +15,22 @@ EOS
   end
   
   def test_record_with_result
-    @controller.config.configs["result_dir"] = @result_dir
-    
-    post :record, :suite => @suite, "testTable.1" => "<table></table>", "testTable.2" => "<table></table>"
-    
+    SeleniumOnRailsConfig.configs["result_dir"] = @result_dir
+    suite = <<EOS
+<script>
+</script>
+<table>
+  <tr><td bgcolor="#ccffcc"><a href="/selenium/tests/foo.sel">Foo</a></td></tr>
+  <tr><td bgcolor="#ccffcc"><a href="/selenium/tests/bar.sel">Bar</a></td></tr>
+</table>
+EOS
+    post :record, :suite => suite,
+      "testTable.1" => "<table></table>",
+      "testTable.2" => "<table></table>"
     cur_result_dir = File.join(@result_dir, "default")
     assert File.directory?(cur_result_dir)
     assert_equal ["blank.html", "index.html", "suite.html", "test1.html", "test2.html"], 
-                 Dir.glob("#{cur_result_dir}/*.html").map{|path| File.basename(path)}.sort
-
+      Dir.glob("#{cur_result_dir}/*.html").map{|path| File.basename(path)}.sort
     expected = <<EOS
 <html>
 <head>
@@ -48,19 +44,5 @@ EOS
 </body></html>
 EOS
     assert_equal expected, File.read("#{cur_result_dir}/suite.html")
-  end
-  
-  def test_result_hash
-    post :record, :suite => @suite, "testTable.1" => "<table></table>", "testTable.2" => "<table></table>",
-                  :result => 'Failed', :numTestFailures => "906", :numTestPasses => "1079", :numCommandFailures => '1027', 
-                  :numCommandErrors => '57', :numCommandPasses => '3', :totalTime => "A long time"
-    
-    assert_equal 'Failed', assigns['result']['result']
-    assert_equal '906', assigns['result']['numTestFailures']
-    assert_equal '1079', assigns['result']['numTestPasses']
-    assert_equal '1027', assigns['result']['numCommandFailures']
-    assert_equal '57', assigns['result']['numCommandErrors']
-    assert_equal '3', assigns['result']['numCommandPasses']
-    assert_equal  'A long time', assigns['result']['totalTime']
   end
 end

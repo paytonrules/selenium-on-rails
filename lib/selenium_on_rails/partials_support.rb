@@ -1,14 +1,16 @@
-require 'selenium_on_rails/paths'
-
+# Provides partials support to test cases so they can include other partial test
+# cases.
+#
+# The partial's commands are returned as html table rows.
 module SeleniumOnRails::PartialsSupport
   include SeleniumOnRails::Paths
 
   # Overrides where the partial is searched for, and returns only the command table rows.
-  def render_partial(options)
-    pattern = partial_pattern options[:partial]
+  def render_partial partial_path = default_template_name, object = nil, local_assigns = nil, status = nil
+    pattern = partial_pattern partial_path
     filename = Dir[pattern].first
     raise "Partial '#{partial_path}' cannot be found! (Looking for file: '#{pattern}')" unless filename
-    partial = render :file => filename, :use_full_path => false, :locals => options[:locals]
+    partial = render :file => filename, :use_full_path => false, :locals => local_assigns
     extract_commands_from_partial partial
   end
 

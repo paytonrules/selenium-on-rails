@@ -56,8 +56,8 @@ module SeleniumOnRails::TestBuilderActions
 
   # Explicitly simulate an event (e.g. <tt>"focus"</tt>, <tt>"blur"</tt>), to
   # trigger the corresponding <tt>"on_event_"</tt> handler.
-  def fire_event locator, event_name
-    command 'fireEvent', locator, event_name
+  def fire_event locator, event_title
+    command 'fireEvent', locator, event_title
   end
 
   # Simulates a user pressing and releasing a key.

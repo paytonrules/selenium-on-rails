@@ -13,12 +13,15 @@ ActionView::Template.register_template_handler 'rsel', SeleniumOnRails::RSelenes
 class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
   attr_accessor :view
 
+  # Create a new RSelenese renderer bound to _view_.
   def initialize view
     super view
     @view = view
   end
 
-  def render template, local_assigns
+  # Render _template_ using _local_assigns_.
+  def render template
+    local_assigns = template.locals
     title = (@view.assigns['page_title'] or local_assigns['page_title'])
     table(title) do
       test = self #to enable test.command
@@ -30,7 +33,7 @@ class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
     end
   end
   
-  def self.call(template)
-    "#{name}.new(self).render(template, local_assigns)"
+  def compilable?
+    false
   end
 end

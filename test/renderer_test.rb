@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/test_helper'
 class RendererTest < Test::Unit::TestCase
   def setup
     @controller = SeleniumController.new
-    ActionController::Routing::Routes.draw
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @controller.layout_override =<<END
@@ -54,7 +53,6 @@ END
   
   def test_selenese
     get :test_file, :testname => 'selenese.sel'
-    
     assert_headers
     expected =<<END
 <html><head><title>test layout</title></head><body>
