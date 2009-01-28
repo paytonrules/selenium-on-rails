@@ -34,3 +34,4 @@ browsers:
 #result_dir: 'c:\result' # the directory where the results will be stored after a test:acceptance run
 
 #fixtures_path: <%= "#{RAILS_ROOT}/spec/fixtures" %>
+#selenium_tests_path: <%= "#{RAILS_ROOT}/spec/selenium" %>
