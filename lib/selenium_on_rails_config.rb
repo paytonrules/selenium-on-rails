@@ -1,4 +1,5 @@
 require 'yaml'
+require 'erb'
 
 class SeleniumOnRailsConfig
   @@defaults = {:environments => ['test']}
