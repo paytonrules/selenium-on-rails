@@ -26,4 +26,8 @@ class SeleniumOnRails::PathsTest < Test::Unit::TestCase
     assert_equal "path", fixtures_path
   end
   
+  def test_view_path
+    assert_equal File.expand_path("#{RAILS_ROOT}/../lib/views/my_view"), view_path('my_view')
+  end
+  
 end
