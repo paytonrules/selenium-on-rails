@@ -57,5 +57,14 @@ class SeleniumOnRails::PathsTest < Test::Unit::TestCase
   def test_selenium_path
     assert_equal File.expand_path("#{RAILS_ROOT}/../selenium-core") + "/", selenium_path
   end
+
+  def test_selenium_path_when_selenium_core_installation_is_not_found
+    File.expects(:exist?).with("/Users/tapajos/workspace/selenium-on-rails/selenium-core/core/TestRunner.html").returns(false)
+    File.expects(:exist?).with("/Users/tapajos/workspace/selenium-on-rails/selenium-core/selenium/TestRunner.html").returns(false)
+    File.expects(:exist?).with("/Users/tapajos/workspace/selenium-on-rails/selenium-core/javascript/TestRunner.html").returns(false)
+    File.expects(:exist?).with("/Users/tapajos/workspace/selenium-on-rails/selenium-core/TestRunner.html").returns(false)
+    @@selenium_path = nil
+    assert_raise(RuntimeError) { selenium_path }
+  end
   
 end
