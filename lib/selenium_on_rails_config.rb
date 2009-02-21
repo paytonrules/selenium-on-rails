@@ -14,8 +14,7 @@ class SeleniumOnRailsConfig
     def self.configs
       @@configs ||= nil
       unless @@configs
-        files = [File.expand_path(File.dirname(__FILE__) + '/../config.yml')]
-        files << File.join(RAILS_ROOT, 'config', 'selenium.yml')
+        files = [File.join(RAILS_ROOT, 'config', 'selenium.yml')]
         files.each do |file|
           @@configs = YAML.load(ERB.new(IO.read(file)).result) if File.exist?(file)
         end
