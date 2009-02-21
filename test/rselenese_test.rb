@@ -9,8 +9,8 @@ class RSeleneseTest < Test::Unit::TestCase
     create_rsel_file_from(input, "html.rsel")
     
     @view = TestView.new
+    @view.extend(SeleniumOnRails::PathsTestHelper)
     @sel = SeleniumOnRails::RSelenese.new(@view) 
-    
     @sel.render ActionView::Template.new(test_path_for("html.rsel")), {'page_title' => page_title}
   end
   

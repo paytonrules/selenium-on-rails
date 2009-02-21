@@ -4,6 +4,7 @@ class SeleneseTest < Test::Unit::TestCase
   
   def setup
     @view = TestView.new
+    @view.extend(SeleniumOnRails::PathsTestHelper)
     @sel = SeleniumOnRails::Selenese.new(@view) 
   end
   

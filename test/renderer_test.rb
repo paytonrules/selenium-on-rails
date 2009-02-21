@@ -2,7 +2,9 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class RendererTest < Test::Unit::TestCase
   def setup
+    SeleniumOnRails::PartialsSupport.send(:include, SeleniumOnRails::PathsTestHelper)
     @controller = SeleniumController.new
+    @controller.extend(SeleniumOnRails::PathsTestHelper)
     ActionController::Routing::Routes.draw
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new

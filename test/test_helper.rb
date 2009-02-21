@@ -31,11 +31,6 @@ def setup_controller_test(controller)
   @response   = ActionController::TestResponse.new
 end
 
-module SeleniumOnRails::Paths
-  def selenium_tests_path
-    File.expand_path(File.dirname(__FILE__) + '/../test_data')
-  end
-end
 
 class SeleniumController
   attr_accessor :layout_override
@@ -74,6 +69,12 @@ class Test::Unit::TestCase
     text.gsub("\t", '  ').gsub("\r", '').gsub("\n", '').gsub(/ *</, '<')
   end
   
+end
+
+module SeleniumOnRails::PathsTestHelper
+  def selenium_tests_path
+    File.expand_path(File.dirname(__FILE__) + '/../test_data')
+  end
 end
 
 class TestView < ActionView::Base
