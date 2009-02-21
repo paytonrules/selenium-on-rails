@@ -20,8 +20,6 @@ END
   end
   
   def test_html
-    get :test_file, :testname => 'html.html'
-    assert_headers
     expected =<<END
 <html><head><title>test layout</title></head><body>
 <p>Testing plain HTML</p>
@@ -32,7 +30,15 @@ END
 <p>and it works...</p>
 </body></html>
 END
+    File.open(test_path_for('html.html'), 'w+') { |index_file| index_file << expected }
+    get :test_file, :testname => 'html.html'
+    assert_headers
+    
     assert_text_equal expected, @response.body
+  end
+  
+  def test_path_for(name)
+    "#{File.expand_path(File.dirname(__FILE__) + "/../test_data")}/#{name}"
   end
     
   def test_rhtml
