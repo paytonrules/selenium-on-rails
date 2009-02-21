@@ -34,4 +34,28 @@ class SeleniumOnRails::PathsTest < Test::Unit::TestCase
     assert_equal "layout.rhtml", layout_path
   end
   
+  def test_skip_file_when_file_contain_CVS
+    assert skip_file?("file/with/CVS/in/the/middle/of/path")
+  end
+
+  def test_skip_file_when_file_contain_dot
+    assert skip_file?("file/with/./(dot)/in/the/middle/of/path")
+  end
+
+  def test_skip_file_when_file_contain_underline
+    assert skip_file?("file/with/_underline/in/the/middle/of/path")
+  end
+  
+  def test_skip_file_when_file_contain_accent_mark
+    assert skip_file?("file/with/mark~/in/the/middle/of/path")
+  end
+
+  def test_skip_file_when_file_does_not_have_any_reason_to_skip
+    assert !skip_file?("my/valid/file")
+  end
+  
+  def test_selenium_path
+    assert_equal File.expand_path("#{RAILS_ROOT}/../selenium-core") + "/", selenium_path
+  end
+  
 end
