@@ -40,7 +40,8 @@ class SeleniumOnRailsConfigTest < Test::Unit::TestCase
     IO.expects(:read).with(@config_file).returns(@config_content)
     IO.expects(:read).with(@selenium_file).never
     assert_equal ["test"], SeleniumOnRailsConfig.get(:environments)
-    assert_equal({"firefox"=>"script/openfirefox"}, SeleniumOnRailsConfig.get(:browsers))
+    assert_equal({"safari"=>"/Applications/Safari.app/Contents/MacOS/Safari",
+     "firefox"=>"/Applications/Firefox.app/Contents/MacOS/firefox-bin"}, SeleniumOnRailsConfig.get(:browsers))
   end
   
 end
