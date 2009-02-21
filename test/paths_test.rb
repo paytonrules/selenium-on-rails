@@ -30,4 +30,8 @@ class SeleniumOnRails::PathsTest < Test::Unit::TestCase
     assert_equal File.expand_path("#{RAILS_ROOT}/../lib/views/my_view"), view_path('my_view')
   end
   
+  def test_layout_path
+    assert_equal "layout.rhtml", layout_path
+  end
+  
 end
