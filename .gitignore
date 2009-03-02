@@ -4,3 +4,55 @@ test_data/html.html
 test_data/html.rsel
 test_data/html.sel
 coverage/*
+
++== VERSION 40[http://github.com/jtrupiano/selenium-on-rails]
+0
++
+0
++* Jan 20, 2009 (inauguration day, baby!)
+0
++
+0
++* [jtrupiano] updated the CHANGELOG to include all of my changes to my branch from the last couple of months.
+0
++
+0
++* [jkrall] applied the following commits from jkrall (mostly related to updating prototype and scriptaculous versions): [http://github.com/jtrupiano/selenium-on-rails/commit/2084c9ad1740deb920483025e65db58a7cf9c573], [http://github.com/jtrupiano/selenium-on-rails/commit/d07d932437b4340db34b85d75e6f9527186b7f69], [http://github.com/jtrupiano/selenium-on-rails/commit/6738790308cb8531744513107b1a37ad26734c63]
+0
++
+0
++* [jtrupiano] Tweaks to make my recent changes environment-independent. Also now allowing password-protected access to the database (to backup and restore the database in between test cases). [http://github.com/jtrupiano/selenium-on-rails/commit/6ec035a183adc9f1bb40a04fba9104f211bc4647]
+0
++
+0
++
+0
++== VERSION 39[http://github.com/jtrupiano/selenium-on-rails/commit/47653c3bdb2f5ab434697ed9a5d50e0bf3759fbd]
+0
++
+0
++* Dec 12. 2008
+0
++
+0
++* [jtrupiano] Tweaked the javascript teardownServer() function to not use show()/hide() (from prototype). Unsure why this blows up in IE. On this note, the label itself notifying the user that the teardown is in progress does not properly display for IE. [http://github.com/jtrupiano/selenium-on-rails/commit/47653c3bdb2f5ab434697ed9a5d50e0bf3759fbd]
+0
++
+0
++* [jtrupiano] Added in support for a server-side teardown. Makes a synchronous call to /selenium/setup, which maps to my previously committed action augmentation to the selenium_controller. This server-side teardown is now called after each test is completed (on failure or success), providing us an easy mechanism for restoring the state of server-side assets (db/filesystem/etc) without having to use fixtures. [http://github.com/jtrupiano/selenium-on-rails/commit/6b03f347c584a65c5787127e8930487f1e7b1e13]
+0
++
+0
++* [jtrupiano] Added in a rakefile that exposes tasks for simulating a transactional db across selenium tests (essentially dumps a mysqldump in tmp/ and re-uses). [http://github.com/jtrupiano/selenium-on-rails/commit/2e1fee675b9c89f4a093fd0c0ae8d73943dc3f89]
+0
++
+0
++* [jtrupiano] Added a route to match /selenium/setup/:action to invoke a controller (selenium_setup_controller) that is expected to be found in the rails app itself. Changed some of the language describing the :keep_db querystring parameter that replaced the fixture/db-specific params from the original implementation. [http://github.com/jtrupiano/selenium-on-rails/commit/4b40d05e66524bab8949a9b62c47ab1673bd06d9]
+0
++
+0
++* [jtrupiano] Replaced references to fixtures w/ StoryHelper-based transactional behavior (currently only works with mysql) [http://github.com/jtrupiano/selenium-on-rails/commit/290d3a1da54a43f162551de8c5dece26de9a7d66]
+0
++
+0
++
