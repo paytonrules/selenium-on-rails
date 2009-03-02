@@ -1,10 +1,6 @@
-<<<<<<< HEAD:.gitignore
-config.yml
-gems
-=======
 /config.yml
+gems
 test_data/html.html
 test_data/html.rsel
 test_data/html.sel
 coverage/*
->>>>>>> 25e0918d65600c8c5fb76674368dbac4520434c4:.gitignore
