@@ -5,6 +5,7 @@ class SeleniumControllerTest < Test::Unit::TestCase
 
   def setup
     @controller = SeleniumController.new
+    @controller.extend(SeleniumOnRails::PathsTestHelper)
     ActionController::Routing::Routes.draw
     SeleniumController.any_instance.stubs(:layout_path).returns(false)
     @request    = ActionController::TestRequest.new
