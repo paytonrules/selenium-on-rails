@@ -183,15 +183,20 @@ from the files and restart your server.
 
 ## Credits ##
 
+* Jonas Bengston -- original creator
+* Eric Smith, http://blog.8thlight.com/eric -- Current Maintainer
 * Jon Tirsen, http://jutopia.tirsen.com -- initial inspiration[http://wiki.rubyonrails.com/rails/pages/SeleniumIntegration]
 * Eric Kidd, http://www.randomhacks.net -- contribution of RSelenese
-* Jonas Bengston -- original creator
 * Marcos Tapajós http://www.improveit.com.br/en/company/tapajos -- Several useful features, current committer
 * Ryan Bates, http://railscasts.com -- Fixes for Rails 2.1
 * Nando Vieira, http://simplesideias.com.br
-* Eric Smith, http://blog.8thlight.com/eric -- Current Maintainer
+* Gordon McCreight, a neat script that lists any unsupported methods
+
+## Contributing ## 
+
+Contributing is simple.  Fork this repo, make your changes, then issue a pull request.  *IMPORTANT* I will not take forks that do not have associated unit tests.  There must be tests, and they must pass, so I can bring the changes in.
 
 
 ## Information ##
 
-For more information, check out the [website] [http://seleniumhq.org/projects/on-rails/].
+For more information, check out the [website](http://seleniumhq.org/projects/on-rails/).
