@@ -8,6 +8,7 @@ Selenium on Rails provides an easy way to test Rails application with
 SeleniumCore[http://www.openqa.org/selenium-core/].
 
 This plugin does four things:
+
 1. The Selenium Core files don't have to pollute <tt>/public</tt>.
 2. No need to create suite files, they are generated on the fly -- one suite per directory in <tt>/test/selenium</tt> (suites can be nested).
 3. Instead of writing the test cases in HTML you can use a number of better formats (see <tt>Formats</tt>).
@@ -24,19 +25,19 @@ installation locations depending on your version of Rails:
 
 
 *Rails 2.1:*
-`
+
 	http://svn.openqa.org/svn/selenium-on-rails/tags/rails_2_1/selenium-on-rails
-`
+
 
 *Before Rails 2.1:*
-`
+
 	http://svn.openqa.org/svn/selenium-on-rails/tags/pre-rails-2-1/selenium-on-rails
-`
+
 
 The latest release is always kept on GitHub at 
-`
+
 	git clone git://github.com/paytonrules/selenium-on-rails.git
-`
+
 
 To install:
 
@@ -57,12 +58,11 @@ The test cases can be written in a number of formats. Which one you choose is a 
 
 RSelenese lets you write your tests in Ruby. This is my favorite format.
 
-`
 	setup :fixtures => :all
  	open '/'
  	assert_title 'Home'
  	('a'..'z').each {|c| open :controller => 'user', :action => 'create', :name => c }
-`
+
 
 See SeleniumOnRails::TestBuilder for available commands. *IMPORTANT NOTE:* RSelenese generates the HTML tables for Selenium behind the scenes when the page is loaded - ONCE. That means code like this:
 
