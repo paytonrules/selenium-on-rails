@@ -59,18 +59,15 @@ The test cases can be written in a number of formats. Which one you choose is a 
 RSelenese lets you write your tests in Ruby. This is my favorite format.
 
 	setup :fixtures => :all
- 	open '/'
- 	assert_title 'Home'
- 	('a'..'z').each {|c| open :controller => 'user', :action => 'create', :name => c }
-
+	open '/'
+	assert_title 'Home'
+	('a'..'z').each {|c| open :controller => 'user', :action => 'create', :name => c }
 
 See SeleniumOnRails::TestBuilder for available commands. *IMPORTANT NOTE:* RSelenese generates the HTML tables for Selenium behind the scenes when the page is loaded - ONCE. That means code like this:
 
-`
 	(1..10).each do |index|
 		do something
 	end
-`
 
 Will only be executed when the test is loaded, not when the test is run. This is a common error and leads to tests that work the first time and fail the second time.
 
@@ -78,13 +75,11 @@ Will only be executed when the test is loaded, not when the test is run. This is
 
 Selenese is the dumbest format (in a good way). You just write your commands delimited by | characters.
 
- |open|/selenium/setup|
- |open|/|
- |goBack|
+	|open|/selenium/setup|
+	|open|/|
+	|goBack|
 
 If you don‘t want to write Selenese tests by hand you can use SeleniumIDE which has support for Selenese.
-
-SeleniumIDE makes it super easy to record test and edit them.
 
 ## HTML/RHTML ##
 
@@ -96,30 +91,23 @@ If you have some common actions you want to do in several test cases you can put
 
 A partial test case is just like a normal test case besides that its filename has to start with _:
 
-`
 	#_login.rsel
 	open '/login'
- 	type 'name', name
- 	type 'password', password
- 	click 'submit', :wait=>true
-`
+	type 'name', name
+	type 'password', password
+	click 'submit', :wait=>true
 
 To include a partial test case in a RSelenese test case:
 
-`
 	include_partial 'login', :name => 'Jane Doe', :password => 'Jane Doe'.reverse
-`
 
 in a Selenese test case:
-`
+
 	|includePartial|login|name=John Doe|password=eoD nhoJ|
-`
 
 and in a RHTML test case:
 
-`
 	<%= render :partial => 'login', :locals => {:name = 'Joe Schmo', :password => 'Joe Schmo'.reverse} %>
-`
 
 ## Configuration ##
 
@@ -130,52 +118,45 @@ file.  Make your changes in that file.
 
 Per default this plugin is only available in test environment. You can change this by setting environments, such as:
 
-`
 	#selenium.yml
- 	environments:
-   		- test
-   		- development
-`
+	environments:
+		- test
+		- development
 
 ## Selenium Core path ##
 
 If you don‘t want to use the bundled Selenium Core version you can set selenium_path to the directory where Selenium Core is stored.
 
-`
 	#config.yml
- 	selenium_path: 'c:\selenium'
-`
+	selenium_path: 'c:\selenium'
 
 ## Rake Task ##
 
 You can run all your Selenium tests as a Rake task. If you're using a continuous builder this is a great way to integrate selenium into your build process.  First, if you‘re on Windows, you have to make sure win32-open3 is installed. Then you have to configure which browsers you want to run, like this:
 
-`
+
 	#config.yml
- 	browsers:
-   		firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
-   		ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
-`
+	browsers:
+		firefox: 'c:\Program Files\Mozilla Firefox\firefox.exe'
+		ie: 'c:\Program Files\Internet Explorer\iexplore.exe'
 
 Now you‘re all set. First start a server:
 
-`
 	script/server -e test
-`
 
 Then run the tests:
-`
+	
 	rake test:acceptance
-`
+	
 Now it should work, otherwise let me know!
 
 ## Store results ##
 
 If you want to store the results from a test:acceptance you just need to set in which directory they should be stored:
-`
+
 	#config.yml
- 	result_dir: 'c:\result'
-`
+	result_dir: 'c:\result'
+	
 So when you run rake test:acceptance the tables with the results will be stored as .html files in that directory.
 
 ## user_extension.js ##
