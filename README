@@ -71,7 +71,8 @@ and in a RHTML test case:
 
 Configuration
 
-There are a number of settings available. You make them by renaming config.yml.example to config.yml and make your changes in that file.
+There are a number of settings available. You make them by renaming selenium.yml.example to selenium.yml and placing it in your rails app's config 
+file.  Make your changes in that file.
 Environments
 
 Per default this plugin is only available in test environment. You can change this by setting environments, such as:
