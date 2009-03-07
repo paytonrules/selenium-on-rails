@@ -21,7 +21,7 @@ installation locations depending on your version of Rails:
 
 *Rails 2.2 and up:*
 
-	http://svn.openqa.org/svn/selenium-on-rails/tags/stable/selenium-on-rails
+	http://svn.openqa.org/svn/selenium-on-rails/stable/selenium-on-rails
 
 
 *Rails 2.1:*
