@@ -32,3 +32,5 @@ browsers:
 #multi_window: false
   
 #result_dir: 'c:\result' # the directory where the results will be stored after a test:acceptance run
+
+#fixtures_path: <%= "#{RAILS_ROOT}/spec/fixtures" %>
