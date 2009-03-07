@@ -42,7 +42,7 @@ module SeleniumOnRails
     private ###############################################
 
     def find_selenium_path
-      sel_dirs = @config.get :selenium_path do
+      sel_dirs = SeleniumOnRailsConfig.get :selenium_path do
         File.expand_path(File.dirname(__FILE__) + '/../../selenium-core')
       end
 
