@@ -1,3 +1,20 @@
+Welcome to the Selenium on Rails README.  Exciting isn't it?
+
+
+
+Installation for Rails 2.2 and up release
+Rails 2.2 changed the way views were rendered in such a way that it broke the version that works for version 2.2.  This is the current version.
+
+1. Install Selenium on Rails: script/plugin install http://svn.openqa.org/svn/selenium-on-rails/tags/stable/selenium-on-rails
+2. If you‘re on Windows, gem install win32-open3
+3. If the RedCloth gem is available the Selenese test cases can use it for better markup.
+4. Run the Rakefile in the plugin‘s directory to run the tests in order to see that everything works. (If RedCloth isn‘t installed a few tests will fail since they assume RedCloth is installed.)
+5. Create a test case: script/generate selenium <TestName>
+6. Start the server: script/server -e test
+7. Point your browser to localhost:3000/selenium
+8. If everything works as expected you should see the Selenium test runner. The north east frame contains all your test cases (just one for now), and the north frame contains your test case.
+
+Installation for Rails 2.1 release
 
 Installation for rails versions before Rails 2.1
 
@@ -328,6 +345,8 @@ the Selenese format.
 * Marcos Tapajós http://www.improveit.com.br/en/company/tapajos -- Several useful features
 * Ryan Bates, http://railscasts.com -- Fixes for Rails 2.1
 * Nando Vieira, http://simplesideias.com.br
+* Eric Smith, http://blog.8thlight.com/eric -- Current Maintainer
+
 
 == Information
 
