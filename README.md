@@ -19,9 +19,9 @@ Rails periodically changes the way that it renders pages, which unfortunately br
 installation locations depending on your version of Rails:
 
 *Rails 2.2 and up:*
-`
+
 	http://svn.openqa.org/svn/selenium-on-rails/tags/stable/selenium-on-rails
-`
+
 
 *Rails 2.1:*
 `
