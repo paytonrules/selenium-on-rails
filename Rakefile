@@ -32,6 +32,7 @@ begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |t|
     t.test_files = FileList['test/*_test.rb']
+    t.rcov_opts = ['-x /site_ruby/ -x .*gems.* --rails']
   end
 rescue LoadError #if rcov isn't available, ignore
 end

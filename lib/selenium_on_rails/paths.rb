@@ -9,6 +9,7 @@ module SeleniumOnRails
     end
     
     def selenium_tests_path
+      return SeleniumOnRailsConfig.get("selenium_tests_path") if SeleniumOnRailsConfig.get("selenium_tests_path")
       File.expand_path(File.join(RAILS_ROOT, 'test/selenium'))
     end
     

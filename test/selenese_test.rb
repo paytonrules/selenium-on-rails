@@ -4,6 +4,7 @@ class SeleneseTest < Test::Unit::TestCase
   
   def setup
     @view = TestView.new
+    @view.extend(SeleniumOnRails::PathsTestHelper)
     @sel = SeleniumOnRails::Selenese.new(@view) 
   end
   
@@ -46,7 +47,7 @@ END
     assert_selenese expected, 'One line', input
   end
    
-    def test_comments_only
+  def test_comments_only
     expected = <<END
 <p>Comment <strong>1</strong></p>
 
@@ -57,7 +58,6 @@ END
 </table>
 END
     input = <<END
-
 Comment *1*
  
 Comment 2
