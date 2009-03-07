@@ -20,17 +20,31 @@ class SeleniumOnRails::RSelenese < SeleniumOnRails::TestBuilder
 
   def render template, local_assigns
     title = (@view.assigns['page_title'] or local_assigns['page_title'])
-    table(title) do
-      test = self #to enable test.command
-
-      assign_locals_code = ''
-      local_assigns.each_key {|key| assign_locals_code << "#{key} = local_assigns[#{key.inspect}];"}
-
-      eval assign_locals_code + "\n" + template.source
-    end
+    # table(title) do
+    #   test = self #to enable test.command
+    # 
+    #   assign_locals_code = ''
+    #   local_assigns.each_key {|key| assign_locals_code << "#{key} = local_assigns[#{key.inspect}];"}
+    # 
+    #   eval assign_locals_code + "\n" + template.source
+    # end
+    assign_locals_code = ''
+    local_assigns.each_key {|key| assign_locals_code << "#{key} = local_assigns[#{key.inspect}];"}
+     
+    evaluator = Evaluator.new(@view)
+    evaluator.run_script title, assign_locals_code + "\n" + template.source, local_assigns
   end
   
   def self.call(template)
     "#{name}.new(self).render(template, local_assigns)"
+  end
+
+  class Evaluator < SeleniumOnRails::TestBuilder
+    def run_script(title, script, local_assigns)
+      table(title) do
+        test = self #to enable test.command
+        eval script
+      end 
+    end
   end
 end
