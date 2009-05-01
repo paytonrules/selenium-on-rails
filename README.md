@@ -23,7 +23,6 @@ installation locations depending on your version of Rails:
 
 	http://svn.openqa.org/svn/selenium-on-rails/stable/selenium-on-rails
 
-
 *Rails 2.1:*
 
 	http://svn.openqa.org/svn/selenium-on-rails/tags/rails_2_1/selenium-on-rails
@@ -181,6 +180,11 @@ from the files and restart your server.
 * Editor
 	Creating an editor for the test cases is currently considered out of scope for this plugin. SeleniumIDE[http://www.openqa.org/selenium-ide/] does such a good  job and has support[http://wiki.openqa.org/display/SIDE/SeleniumOnRails] for both the Selenese and RSelenese formats.
 
+
+## Contributing ## 
+
+Contributing is simple.  Fork this repo, make your changes, then issue a pull request.  *IMPORTANT* I will not take forks that do not have associated unit tests.  There must be tests, and they must pass, so I can bring the changes in.
+
 ## Credits ##
 
 * Jonas Bengston -- original creator
@@ -191,11 +195,6 @@ from the files and restart your server.
 * Ryan Bates, http://railscasts.com -- Fixes for Rails 2.1
 * Nando Vieira, http://simplesideias.com.br
 * Gordon McCreight, a neat script that lists any unsupported methods
-
-## Contributing ## 
-
-Contributing is simple.  Fork this repo, make your changes, then issue a pull request.  *IMPORTANT* I will not take forks that do not have associated unit tests.  There must be tests, and they must pass, so I can bring the changes in.
-
 
 ## Information ##
 
