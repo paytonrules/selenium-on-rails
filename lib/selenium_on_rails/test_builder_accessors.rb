@@ -874,7 +874,7 @@ private
   # Generates all assertions for the accessors.
   def self.generate_methods
     public_instance_methods.each do |method|
-      case method
+      case method.to_s
       when 'store_alert_present',
            'store_prompt_present',
            'store_confirmation_present'
@@ -983,7 +983,7 @@ private
   # Generates all the assertions needed given a +store_method+.
   def self.each_assertion store_method
     before_negation = nil
-    after_negation = store_method.split('_')[1..-1] #throw away 'store'
+    after_negation = store_method.to_s.split('_')[1..-1] #throw away 'store'
     if after_negation.last == 'present'
       before_negation, after_negation = after_negation, after_negation.pop
     end

@@ -502,7 +502,7 @@ private
   # Generates the corresponding +_and_wait+ for each action.
   def self.generate_and_wait_actions
     public_instance_methods.each do |method|
-      define_method method + '_and_wait' do |*args|
+      define_method method.to_s + '_and_wait' do |*args|
         methods_array = method.split("_")
         send 'command_and_wait', methods_array.first.downcase + methods_array[1..-1].collect{|part| part.camelize}.join, *args
       end
