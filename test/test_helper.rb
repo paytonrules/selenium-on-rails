@@ -3,17 +3,20 @@ RAILS_ROOT = "test" unless defined?(RAILS_ROOT)
 $: << File.expand_path(File.dirname(__FILE__) + "/../lib")
 
 require 'rubygems'
-gem 'activesupport'
-require 'active_support'
+require 'action_view'
 
 gem 'actionpack'
 require 'action_view/template_handler'
 require 'action_view/template_handlers/builder'
 require 'action_view/template_handlers/erb'
 require 'action_view/template_handlers/rjs'
+require 'action_view/helpers'
 require 'action_view/base'
 require 'action_view/partials'
 require 'action_view/template_error'
+gem 'activesupport'
+require 'active_support'
+
 require 'action_controller'
 
 require 'selenium_on_rails/suite_renderer'
