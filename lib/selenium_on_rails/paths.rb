@@ -47,7 +47,7 @@ module SeleniumOnRails
         File.expand_path(File.dirname(__FILE__) + '/../../selenium-core')
       end
 
-      sel_dirs.to_a.each do |seleniumdir|
+      Array(sel_dirs).each do |seleniumdir|
         ['', 'core', 'selenium', 'javascript'].each do |subdir|
           path = File.join seleniumdir, subdir
           return path if File.exist?(File.join(path, 'TestRunner.html'))
